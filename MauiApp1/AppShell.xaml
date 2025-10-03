@@ -1,0 +1,25 @@
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:MauiApp1"
+       x:Class="MauiApp1.AppShell"
+       Title="MyApp"
+       >
+
+
+    <TabBar>
+        <Tab Icon="trophy.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Goals}" />
+        </Tab>
+        <Tab Icon="pet.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Pet}" />
+        </Tab>
+        <Tab Icon="stats.png">
+            <ShellContent ContentTemplate="{DataTemplate local:stats}" />
+        </Tab>
+        <Tab Icon="settings.png">
+            <ShellContent ContentTemplate="{DataTemplate local:settings}" />
+        </Tab>
+    </TabBar>
+
+
+</Shell>
