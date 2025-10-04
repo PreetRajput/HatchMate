@@ -46,23 +46,38 @@ public partial class loginPage : ContentPage
                 var userJson = await client.GetStringAsync("https://api.github.com/user");
                 var user = JsonSerializer.Deserialize<UserInfo>(userJson);
 
-                var api = new postData();
 
-                var person = new userDetails
+                var apiForRetrieve = new retrieveData();
+                var id = user.email;
+                userDetails check = await apiForRetrieve.retrieveUserData(id);
+
+                if (check!= null)
                 {
-                    id = $"{user.email}",
-                };
-
-                bool success = await api.addUserInfo(person);
-
-                if (success)
-                    await DisplayAlert("Success", "User added", "OK");
+                    detailsPage.currentUser = check;
+		            Application.Current.MainPage = new AppShell();
+                }
                 else
-                    await DisplayAlert("Error", "Failed to add user", "OK");
+                {
+                        var api = new postData();
+
+                        var person = new userDetails
+                        {
+                            id = $"{user.email}",
+                        };
+
+                        bool success = await api.addUserInfo(person);
+
+                        if (success)
+                            await DisplayAlert("Success", "User added", "OK");
+                        else
+                            await DisplayAlert("Error", "Failed to add user", "OK");
+
+                        await Navigation.PushAsync(new SignupPage(user.email));
+                }
 
 
-                // Now you have user info (login, email, name, etc.)
-                await Navigation.PushAsync(new SignupPage(user.email));
+
+
                 // tokens will have ID token, access token, refresh token
             }
         }

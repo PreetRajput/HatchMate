@@ -3,36 +3,16 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="Black">
-    <Grid RowDefinitions="auto,*,auto">
+    <Grid RowDefinitions="auto,*,auto" x:Name="goalsContainer">
         
         <Label Text="Daily Goals" FontSize="35"  FontAttributes="Bold" Padding="15,15,0,0"/>
 
         
         <ScrollView Grid.Row="1">
+            
             <VerticalStackLayout x:Name="tasksContainer">
 
-                <Border Stroke="#E0E0E0"
-                            StrokeThickness="1"
-                             VerticalOptions="Start"
-                             StrokeShape="RoundRectangle 30"
-                             BackgroundColor="#1A1A1A"
-                             Margin="16">
-                                <Grid ColumnDefinitions="*,Auto" Padding="16">
-                                    <VerticalStackLayout Grid.Column="0" Spacing="4">
-                                        <Label Text="Wake up early"
-                                            FontSize="18"
-                                            FontAttributes="Bold"
-                                            TextColor="White"/>
-                                        <Label Text="Morning"
-                                FontSize="14"
-                                TextColor="#666666"/>
-                                    </VerticalStackLayout>
-                        <Image Grid.Column="1"
-                               VerticalOptions="Center"
-                               Source="right.png"
-                                HeightRequest="30"/>
-                    </Grid>
-                </Border>
+                
 
             </VerticalStackLayout>
 
@@ -45,7 +25,8 @@
                 FontAttributes="Bold" 
                 TextColor="Black"
                 CornerRadius="20" 
-                Margin="0,0,15,15"/>
+                Margin="0,0,15,15"
+                Clicked="addMoreTasks"/>
     </Grid>
     
 </ContentPage>

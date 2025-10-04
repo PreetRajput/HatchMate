@@ -62,6 +62,7 @@
 	<ItemGroup>
 	  <Compile Remove="Class1.cs" />
 	  <Compile Remove="Resources\Class1.cs" />
+	  <Compile Remove="Scripts\Class1.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
