@@ -21,7 +21,9 @@
                         CornerRadius="25"
                         WidthRequest="120"
                         HeightRequest="40"
-                        Clicked="choosedEgg"/>
+                        Clicked="choosedEgg"
+                        ClassId="1"
+                        />
             </VerticalStackLayout>
 
             <!-- Egg 2 -->
@@ -33,7 +35,9 @@
                         CornerRadius="25"
                         WidthRequest="120"
                         HeightRequest="40"
-                        Clicked="choosedEgg"/>
+                        Clicked="choosedEgg"
+                        ClassId="2"
+                    />
             </VerticalStackLayout>
 
             <!-- Egg 3 -->
@@ -45,7 +49,8 @@
                         CornerRadius="25"
                         WidthRequest="120"
                         HeightRequest="40"
-                        Clicked="choosedEgg"/>
+                        Clicked="choosedEgg"
+                        ClassId="3"/>
             </VerticalStackLayout>
         </VerticalStackLayout>
 

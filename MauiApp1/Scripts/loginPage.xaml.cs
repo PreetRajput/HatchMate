@@ -14,6 +14,7 @@ public partial class loginPage : ContentPage
 	}
     public async void loginClicked(object sender, EventArgs e)
     {
+        Button loginBtn = (Button)sender;
         try
         {
             var clientId = "Ov23liCktt04rNqSpZg7";
@@ -27,6 +28,8 @@ public partial class loginPage : ContentPage
             var result = await WebAuthenticator.AuthenticateAsync(authUrl, callbackUrl);
 
             // result.Properties["code"] will contain the authorization code
+            loginBtn.IsEnabled = false;
+            loginBtn.Text = "Processing...";
 
 
             if (result.Properties.TryGetValue("code", out var code))

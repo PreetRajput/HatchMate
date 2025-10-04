@@ -21,7 +21,8 @@
                    FontSize="18"
                    HorizontalTextAlignment="Center"
                    HeightRequest="50"
-                   Margin="0,10"/>
+                   Margin="0,10"
+                   x:Name="petName"/>
 
         <!-- Hatch button at the bottom -->
         <Button Text="Hatch"

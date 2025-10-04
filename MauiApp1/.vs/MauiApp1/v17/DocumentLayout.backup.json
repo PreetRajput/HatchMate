@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\signuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:scripts\\signuppage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\taskaddition.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:scripts\\taskaddition.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\apicalls\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:apicalls\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\newpage5.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:scripts\\newpage5.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\apicalls\\updatedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:apicalls\\updatedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:scripts\\loginpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\apicalls\\updatewhole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:apicalls\\updatewhole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\signuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:scripts\\signuppage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\apicalls\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:apicalls\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\apicalls\\retrievedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:apicalls\\retrievedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\petnameinput.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:scripts\\petnameinput.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\apicalls\\postdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:apicalls\\postdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\taskaddition.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:scripts\\taskaddition.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\newpage5.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|solutionrelative:scripts\\newpage5.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{122176F5-595E-471E-9E5A-984914921A66}|MauiApp1.csproj|c:\\users\\pc\\onedrive\\desktop\\app\\mauiapp1\\scripts\\loginpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -42,45 +46,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "userDetails.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\userDetails.cs",
-              "RelativeDocumentMoniker": "apiCalls\\userDetails.cs",
-              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\userDetails.cs",
-              "RelativeToolTip": "apiCalls\\userDetails.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "petNameInput.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\petNameInput.xaml.cs",
+              "RelativeDocumentMoniker": "Scripts\\petNameInput.xaml.cs",
+              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\petNameInput.xaml.cs",
+              "RelativeToolTip": "Scripts\\petNameInput.xaml.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:30:18.182Z",
+              "WhenOpened": "2025-10-04T10:21:29.033Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "retrieveData.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\retrieveData.cs",
-              "RelativeDocumentMoniker": "apiCalls\\retrieveData.cs",
-              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\retrieveData.cs",
-              "RelativeToolTip": "apiCalls\\retrieveData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABCAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "userDetails.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\userDetails.cs",
+              "RelativeDocumentMoniker": "apiCalls\\userDetails.cs",
+              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\userDetails.cs*",
+              "RelativeToolTip": "apiCalls\\userDetails.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:07:00.319Z",
+              "WhenOpened": "2025-10-04T10:21:10.209Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "postData.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\postData.cs",
-              "RelativeDocumentMoniker": "apiCalls\\postData.cs",
-              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\postData.cs",
-              "RelativeToolTip": "apiCalls\\postData.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "taskAddition.xaml",
+              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\taskAddition.xaml",
+              "RelativeDocumentMoniker": "Scripts\\taskAddition.xaml",
+              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\taskAddition.xaml",
+              "RelativeToolTip": "Scripts\\taskAddition.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-04T10:04:01.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "taskAddition.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\taskAddition.xaml.cs",
+              "RelativeDocumentMoniker": "Scripts\\taskAddition.xaml.cs",
+              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\taskAddition.xaml.cs*",
+              "RelativeToolTip": "Scripts\\taskAddition.xaml.cs*",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAMwHIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:03:11.225Z",
+              "WhenOpened": "2025-10-04T09:50:11.091Z",
               "EditorCaption": ""
             },
             {
@@ -91,53 +108,27 @@
               "RelativeDocumentMoniker": "apiCalls\\updateData.cs",
               "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\updateData.cs",
               "RelativeToolTip": "apiCalls\\updateData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:03:08.909Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SignupPage.xaml",
-              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\SignupPage.xaml",
-              "RelativeDocumentMoniker": "Scripts\\SignupPage.xaml",
-              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\SignupPage.xaml",
-              "RelativeToolTip": "Scripts\\SignupPage.xaml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-03T08:02:04.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SignupPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\SignupPage.xaml.cs",
-              "RelativeDocumentMoniker": "Scripts\\SignupPage.xaml.cs",
-              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\SignupPage.xaml.cs",
-              "RelativeToolTip": "Scripts\\SignupPage.xaml.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA1wBYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T08:00:05.281Z",
+              "WhenOpened": "2025-10-04T09:49:55.303Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "loginPage.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\loginPage.xaml.cs",
-              "RelativeDocumentMoniker": "Scripts\\loginPage.xaml.cs",
-              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\loginPage.xaml.cs",
-              "RelativeToolTip": "Scripts\\loginPage.xaml.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAmwD0AAABEAAAAAAAAAA==",
+              "Title": "updateWhole.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\updateWhole.cs",
+              "RelativeDocumentMoniker": "apiCalls\\updateWhole.cs",
+              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\apiCalls\\updateWhole.cs",
+              "RelativeToolTip": "apiCalls\\updateWhole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T05:11:51.355Z",
+              "WhenOpened": "2025-10-04T09:49:51.614Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "loginPage.xaml",
               "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\loginPage.xaml",
               "RelativeDocumentMoniker": "Scripts\\loginPage.xaml",
@@ -145,7 +136,33 @@
               "RelativeToolTip": "Scripts\\loginPage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-03T05:11:45.601Z",
+              "WhenOpened": "2025-10-04T09:48:13.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NewPage5.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\NewPage5.xaml.cs",
+              "RelativeDocumentMoniker": "Scripts\\NewPage5.xaml.cs",
+              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\NewPage5.xaml.cs*",
+              "RelativeToolTip": "Scripts\\NewPage5.xaml.cs*",
+              "ViewState": "AgIAACIAAAAAAAAAAAAMwDEAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-03T18:02:27.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NewPage5.xaml",
+              "DocumentMoniker": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\NewPage5.xaml",
+              "RelativeDocumentMoniker": "Scripts\\NewPage5.xaml",
+              "ToolTip": "C:\\Users\\pc\\OneDrive\\Desktop\\app\\MauiApp1\\Scripts\\NewPage5.xaml",
+              "RelativeToolTip": "Scripts\\NewPage5.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-03T18:02:15.732Z",
               "EditorCaption": ""
             }
           ]

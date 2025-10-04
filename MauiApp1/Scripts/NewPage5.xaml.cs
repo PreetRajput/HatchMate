@@ -1,9 +1,14 @@
+using MauiApp1.apiCalls;
+using System.Threading.Tasks;
+
 namespace MauiApp1;
 
 public partial class NewPage5 : ContentPage
 {
-	public NewPage5()
+	userDetails Player;
+	public NewPage5(userDetails Player)
 	{
+		this.Player = Player;
 		InitializeComponent();
 		animatingEgg();
 	}
@@ -40,8 +45,22 @@ public partial class NewPage5 : ContentPage
 					
 			); 
     }
-	public void navToShell(object sender, EventArgs e)
+	public async void navToShell(object sender, EventArgs e)
 	{
+        foreach (string item in Player.tasks)
+        {
+			await DisplayAlert("error", $"{item}", "OK");
+            
+        }
+
+        var api = new updateWhole();
+		bool success = await api.updateDocument(Player);
+
+        if (success)
+            await DisplayAlert("Success", "User added", "OK");
+        else
+            await DisplayAlert("Error", "Failed to add user", "OK");
+        
 		Application.Current.MainPage = new AppShell();
 	}
 }

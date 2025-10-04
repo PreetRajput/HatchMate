@@ -12,7 +12,8 @@
                    FontSize="32"
                    FontAttributes="Bold"
                    TextColor="#f0f4f8"
-                   HorizontalOptions="Center" />
+                   HorizontalOptions="Center" 
+                   x:Name="popUpText"/>
 
             
 
@@ -23,7 +24,8 @@
                     CornerRadius="12"
                     HeightRequest="50"
                     VerticalOptions="Center"
-                    Clicked="loginClicked"/>
+                    Clicked="loginClicked"
+                    />
 
            
 

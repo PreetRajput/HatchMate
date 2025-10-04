@@ -1,13 +1,18 @@
+using MauiApp1.apiCalls;
 using Microsoft.Maui.Controls.Shapes;
 using System.Drawing;
+using System.Globalization;
 
 namespace MauiApp1;
 
 public partial class taskAddition : ContentPage
 {
-
-    public taskAddition()
+    userDetails Player;
+    List<Editor> editors= new List<Editor>();
+    List<string> tasks= new List<string>();
+    public taskAddition(userDetails Player)
 	{
+        this.Player = Player;
 		InitializeComponent();
         AnimateImage();
 	}
@@ -76,6 +81,7 @@ public partial class taskAddition : ContentPage
                         },
                                     new Editor
                                     {
+                                        ClassId= "customTask",
                                         Placeholder = "Describe your task...",
                                         AutoSize = EditorAutoSizeOption.TextChanges
                                     }
@@ -100,7 +106,41 @@ public partial class taskAddition : ContentPage
     }
     public async void hatchEgg(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new petNameInput());
+        editors= findAllEditor(tasksContainer, "customTask", editors);
+        foreach (Editor item in editors)
+        {
+            tasks.Add(item.Text);
+            await DisplayAlert("Success", $"{item.Text}", "OK");
+        }
+        Player.tasks = tasks;
+        await Navigation.PushAsync(new petNameInput(Player));
+    }
+
+    public List<Editor> findAllEditor(Layout layout, string id,   List<Editor> result)
+    {
+        foreach (var item in layout.Children)
+        {
+            if(item is Editor e && e.ClassId== id)
+            {
+                result.Add(e);
+            }
+            
+            if(item is Layout nested )
+            {
+                findAllEditor(nested,id, result);
+            } 
+
+            if(item is Border border)
+            {
+                    if (border.Content is Layout bunch)
+                    {
+                        findAllEditor(bunch, id, result);
+                    }
+            }
+            
+        }
+        return result;
+        
     }
 
 

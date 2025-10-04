@@ -9,7 +9,7 @@
 
         
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout>
+            <VerticalStackLayout x:Name="tasksContainer">
 
                 <Border Stroke="#E0E0E0"
                             StrokeThickness="1"
@@ -20,9 +20,9 @@
                                 <Grid ColumnDefinitions="*,Auto" Padding="16">
                                     <VerticalStackLayout Grid.Column="0" Spacing="4">
                                         <Label Text="Wake up early"
-                                FontSize="18"
-                                FontAttributes="Bold"
-                                TextColor="White"/>
+                                            FontSize="18"
+                                            FontAttributes="Bold"
+                                            TextColor="White"/>
                                         <Label Text="Morning"
                                 FontSize="14"
                                 TextColor="#666666"/>
@@ -34,73 +34,6 @@
                     </Grid>
                 </Border>
 
-
-                <Border Stroke="#E0E0E0"
-                         StrokeThickness="1"
-                                 VerticalOptions="Start"
-                         StrokeShape="RoundRectangle 30"
-                         BackgroundColor="#1A1A1A"
-                         Margin="16">
-                                    <Grid ColumnDefinitions="*,Auto" Padding="16">
-                                        <VerticalStackLayout Grid.Column="0" Spacing="4">
-                                            <Label Text="Wake up early"
-                                    FontSize="18"
-                                    FontAttributes="Bold"
-                                    TextColor="White"/>
-                                            <Label Text="Morning"
-                                    FontSize="14"
-                                    TextColor="#666666"/>
-                                        </VerticalStackLayout>
-                                        <CheckBox Grid.Column="1"
-                                   VerticalOptions="Center"
-                                   Color="#007ACC"/>
-                                    </Grid>
-                </Border>
-                
-                
-                <Border Stroke="#E0E0E0"
-                     StrokeThickness="1"
-                             VerticalOptions="Start"
-                     StrokeShape="RoundRectangle 30"
-                     BackgroundColor="#1A1A1A"
-                     Margin="16">
-                                <Grid ColumnDefinitions="*,Auto" Padding="16">
-                                    <VerticalStackLayout Grid.Column="0" Spacing="4">
-                                        <Label Text="Wake up early"
-                                FontSize="18"
-                                FontAttributes="Bold"
-                                TextColor="White"/>
-                                        <Label Text="Morning"
-                                FontSize="14"
-                                TextColor="#666666"/>
-                                    </VerticalStackLayout>
-                                    <CheckBox Grid.Column="1"
-                               VerticalOptions="Center"
-                               Color="#007ACC"/>
-                                </Grid>
-                </Border>
-                
-                <Border Stroke="#E0E0E0"
-                         StrokeThickness="1"
-                                 VerticalOptions="Start"
-                         StrokeShape="RoundRectangle 30"
-                         BackgroundColor="#1A1A1A"
-                         Margin="16">
-                                    <Grid ColumnDefinitions="*,Auto" Padding="16">
-                                        <VerticalStackLayout Grid.Column="0" Spacing="4">
-                                            <Label Text="Wake up early"
-                                    FontSize="18"
-                                    FontAttributes="Bold"
-                                    TextColor="White"/>
-                                            <Label Text="Morning"
-                                    FontSize="14"
-                                    TextColor="#666666"/>
-                                        </VerticalStackLayout>
-                                        <CheckBox Grid.Column="1"
-                                   VerticalOptions="Center"
-                                   Color="#007ACC"/>
-                                    </Grid>
-                </Border>
             </VerticalStackLayout>
 
         </ScrollView>

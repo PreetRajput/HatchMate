@@ -51,7 +51,7 @@
                                 <Label Text="Coding Progress" Grid.Row="1" Grid.ColumnSpan="2" FontSize="18" FontAttributes="Bold" TextColor="#4A148C" LineBreakMode="WordWrap" MaxLines="0"/>
                                 <Button ImageSource="cross.png" Grid.Column="1" BackgroundColor="Transparent" HeightRequest="8" Clicked="removeCont"/>
                             </Grid>
-                            <Editor Placeholder="Describe what you coded today" AutoSize="TextChanges"/>
+                            <Editor ClassId="customTask" Placeholder="Describe what you coded today" AutoSize="TextChanges"/>
                         </VerticalStackLayout>
                     </Border>
                 

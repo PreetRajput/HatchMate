@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MauiApp1.apiCalls
 {
-    internal class userDetails
+    public class userDetails
     {
         public string? id { get; set; }
 
@@ -16,6 +16,6 @@ namespace MauiApp1.apiCalls
 
         public int petNum { get; set; }
 
-        public List<string>? task { get; set; }
+        public List<string>? tasks { get; set; }
     }
 }

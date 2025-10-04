@@ -1,9 +1,13 @@
+using MauiApp1.apiCalls;
+
 namespace MauiApp1;
 
 public partial class petNameInput : ContentPage
 {
-	public petNameInput()
+    userDetails Player;
+	public petNameInput(userDetails Player)
 	{
+        this.Player = Player;
 		InitializeComponent();
 		eggCrumbling();
 	}
@@ -21,6 +25,15 @@ public partial class petNameInput : ContentPage
     }
     public async void hatchEgg(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new NewPage5());
+        if (string.IsNullOrWhiteSpace(petName.Text))
+        {
+            await DisplayAlert("error", "A pet name is mandatory", "OK");
+        }
+        else
+        {
+            Player.petName = petName.Text;
+            await Navigation.PushAsync(new NewPage5(Player));
+
+        }
     }
 }

@@ -8,16 +8,15 @@
         <Image Source="egg1.png" HeightRequest="200" WidthRequest="200" x:Name="egg" VerticalOptions="End"/>
         <Button Text="Start Growing"
                 Grid.Row="1"
-                
                 x:Name="growBtn"
                 IsVisible="Hidden"
-        FontSize="18"
-        TextColor="Black"
-        Padding="15,10"
+                FontSize="18"
+                TextColor="Black"
+                Padding="15,10"
                 Clicked="navToShell"
-        CornerRadius="25"
-        HorizontalOptions="Center"
-        VerticalOptions="Start">
+                CornerRadius="25"
+                HorizontalOptions="Center"
+                VerticalOptions="Start">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#275a58" Offset="0.0" />
