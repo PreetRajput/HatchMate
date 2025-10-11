@@ -70,6 +70,20 @@
 	  <None Remove="Resources\Images\mis\cross.png" />
 	  <None Remove="Resources\Images\mis\right.png" />
 	  <None Remove="Resources\Images\pets\chicklet.png" />
+	  <None Remove="Resources\Images\pets\cow\cute\c1.png" />
+	  <None Remove="Resources\Images\pets\cow\cute\c2.png" />
+	  <None Remove="Resources\Images\pets\cow\cute\c3.png" />
+	  <None Remove="Resources\Images\pets\cow\cute\c4.png" />
+	  <None Remove="Resources\Images\pets\cow\feed\f1.png" />
+	  <None Remove="Resources\Images\pets\cow\feed\f2.png" />
+	  <None Remove="Resources\Images\pets\cow\feed\f3.png" />
+	  <None Remove="Resources\Images\pets\cow\feed\f4.png" />
+	  <None Remove="Resources\Images\pets\cow\sleep\s1.png" />
+	  <None Remove="Resources\Images\pets\cow\sleep\s2.png" />
+	  <None Remove="Resources\Images\pets\cow\walk\w1.png" />
+	  <None Remove="Resources\Images\pets\cow\walk\w2.png" />
+	  <None Remove="Resources\Images\pets\cow\walk\w3.png" />
+	  <None Remove="Resources\Images\pets\cow\walk\w4.png" />
 	  <None Remove="Resources\Images\tabs\pet.png" />
 	  <None Remove="Resources\Images\tabs\settings.png" />
 	  <None Remove="Resources\Images\tabs\stats.png" />
@@ -84,10 +98,27 @@
 	  <MauiImage Include="Resources\Images\mis\cross.png" />
 	  <MauiImage Include="Resources\Images\mis\right.png" />
 	  <MauiImage Include="Resources\Images\pets\chicklet.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\cute\c1.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\cute\c2.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\cute\c4.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\feed\f1.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\feed\f2.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\feed\f3.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\feed\f4.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\sleep\s1.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\sleep\s2.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\walk\w1.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\walk\w2.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\walk\w3.png" />
+	  <MauiImage Include="Resources\Images\pets\cow\walk\w4.png" />
 	  <MauiImage Include="Resources\Images\tabs\pet.png" />
 	  <MauiImage Include="Resources\Images\tabs\settings.png" />
 	  <MauiImage Include="Resources\Images\tabs\stats.png" />
 	  <MauiImage Include="Resources\Images\tabs\trophy.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\pets\cow\cute\c3.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -108,6 +139,12 @@
 	  </Compile>
 	  <Compile Update="Scripts\petNameInput.xaml.cs">
 	    <DependentUpon>petNameInput.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Scripts\appSettings.xaml.cs">
+	    <DependentUpon>AppSettings.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Scripts\appStats.xaml.cs">
+	    <DependentUpon>AppStats.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Scripts\taskAddition.xaml.cs">
 	    <DependentUpon>taskAddition.xaml</DependentUpon>
@@ -154,10 +191,10 @@
 	  <MauiXaml Update="Scripts\Pet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\settings.xaml">
+	  <MauiXaml Update="Scripts\AppSettings.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\stats.xaml">
+	  <MauiXaml Update="Scripts\AppStats.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

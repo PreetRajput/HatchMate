@@ -1,4 +1,5 @@
 using Microsoft.Maui.Authentication;
+using Microsoft.Maui.Storage;
 using System.Text.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -49,7 +50,11 @@ public partial class loginPage : ContentPage
 
                 var apiForRetrieve = new retrieveData();
                 var id = user.email;
+                
                 userDetails check = await apiForRetrieve.retrieveUserData(id);
+                Preferences.Set("email", user.email);
+                Preferences.Set("isLoggedIn", true);
+
 
                 if (check!= null)
                 {

@@ -6,11 +6,17 @@
         public enterPage()
         {
             InitializeComponent();
+            
         }
 
         private async void navToBody(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new loginPage());
+            bool exist = Preferences.Get("isLoggedIn", false);
+            if (exist)
+		        Application.Current.MainPage = new AppShell();
+            else
+                await Navigation.PushAsync(new loginPage());
+
         }
     }
 

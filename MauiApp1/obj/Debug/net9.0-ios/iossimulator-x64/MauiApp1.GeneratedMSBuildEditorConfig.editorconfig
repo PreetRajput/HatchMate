@@ -42,6 +42,18 @@ build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Resources.Styles.
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
+[C:/Users/pc/OneDrive/Desktop/app/MauiApp1/Scripts/AppSettings.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Scripts.AppSettings.xaml
+build_metadata.AdditionalFiles.TargetPath = Scripts\AppSettings.xaml
+build_metadata.AdditionalFiles.RelativePath = Scripts\AppSettings.xaml
+
+[C:/Users/pc/OneDrive/Desktop/app/MauiApp1/Scripts/AppStats.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Scripts.AppStats.xaml
+build_metadata.AdditionalFiles.TargetPath = Scripts\AppStats.xaml
+build_metadata.AdditionalFiles.RelativePath = Scripts\AppStats.xaml
+
 [C:/Users/pc/OneDrive/Desktop/app/MauiApp1/Scripts/chooseEgg.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Scripts.chooseEgg.xaml
@@ -84,23 +96,11 @@ build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Scripts.petNameIn
 build_metadata.AdditionalFiles.TargetPath = Scripts\petNameInput.xaml
 build_metadata.AdditionalFiles.RelativePath = Scripts\petNameInput.xaml
 
-[C:/Users/pc/OneDrive/Desktop/app/MauiApp1/Scripts/settings.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Scripts.settings.xaml
-build_metadata.AdditionalFiles.TargetPath = Scripts\settings.xaml
-build_metadata.AdditionalFiles.RelativePath = Scripts\settings.xaml
-
 [C:/Users/pc/OneDrive/Desktop/app/MauiApp1/Scripts/SignupPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Scripts.SignupPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Scripts\SignupPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Scripts\SignupPage.xaml
-
-[C:/Users/pc/OneDrive/Desktop/app/MauiApp1/Scripts/stats.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Scripts.stats.xaml
-build_metadata.AdditionalFiles.TargetPath = Scripts\stats.xaml
-build_metadata.AdditionalFiles.RelativePath = Scripts\stats.xaml
 
 [C:/Users/pc/OneDrive/Desktop/app/MauiApp1/Scripts/taskAddition.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
