@@ -122,34 +122,35 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Scripts\enterPage.xaml.cs">
+	  <Compile Update="view\enterPage.xaml.cs">
 	    <DependentUpon>enterPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Scripts\loginPage.xaml.cs">
+	  <Compile Update="view\loginPage.xaml.cs">
 	    <DependentUpon>loginPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Scripts\chooseEgg.xaml.cs">
+	  <Compile Update="view\chooseEgg.xaml.cs">
 	    <DependentUpon>chooseEgg.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Scripts\petNameInput.xaml.cs">
+	  <Compile Update="view\petNameInput.xaml.cs">
 	    <DependentUpon>petNameInput.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Scripts\appSettings.xaml.cs">
+	  <Compile Update="view\AppSettings.xaml.cs">
 	    <DependentUpon>AppSettings.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Scripts\appStats.xaml.cs">
+	  <Compile Update="view\AppStats.xaml.cs">
 	    <DependentUpon>AppStats.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Scripts\taskAddition.xaml.cs">
+	  <Compile Update="view\taskAddition.xaml.cs">
 	    <DependentUpon>taskAddition.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Scripts\SignupPage.xaml.cs">
+	  <Compile Update="view\SignupPage.xaml.cs">
 	    <DependentUpon>SignupPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
@@ -167,36 +168,40 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Scripts\Goals.xaml">
+	  <MauiXaml Update="view\Goals.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\loginPage.xaml">
+	  <MauiXaml Update="view\loginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\chooseEgg.xaml">
+	  <MauiXaml Update="view\chooseEgg.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\taskAddition.xaml">
+	  <MauiXaml Update="view\taskAddition.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\petNameInput.xaml">
+	  <MauiXaml Update="view\petNameInput.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\NewPage5.xaml">
+	  <MauiXaml Update="view\NewPage5.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\SignupPage.xaml">
+	  <MauiXaml Update="view\SignupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\Pet.xaml">
+	  <MauiXaml Update="view\Pet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\AppSettings.xaml">
+	  <MauiXaml Update="view\AppSettings.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Scripts\AppStats.xaml">
+	  <MauiXaml Update="view\AppStats.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Scripts\" />
 	</ItemGroup>
 
 </Project>

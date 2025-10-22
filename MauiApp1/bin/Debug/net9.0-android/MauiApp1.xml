@@ -4,11 +4,171 @@
         <name>MauiApp1</name>
     </assembly>
     <members>
+        <member name="T:MauiApp1.viewModel.AppSettingsViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MauiApp1.viewModel.AppSettingsViewModel._logOutCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.AppSettingsViewModel.logOutCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.AppSettingsViewModel.logOutCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.AppSettingsViewModel.logOut"/>.</summary>
+        </member>
+        <member name="T:MauiApp1.viewModel.chooseEggViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MauiApp1.viewModel.chooseEggViewModel._choosedEggCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.chooseEggViewModel.choosedEggCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.chooseEggViewModel.choosedEggCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MauiApp1.viewModel.chooseEggViewModel.choosedEgg(System.String)"/>.</summary>
+        </member>
+        <member name="T:MauiApp1.viewModel.entryPageViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MauiApp1.viewModel.entryPageViewModel._navToBodyCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.entryPageViewModel.navToBodyCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.entryPageViewModel.navToBodyCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.entryPageViewModel.navToBody"/>.</summary>
+        </member>
+        <member name="T:MauiApp1.viewModel.loginPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MauiApp1.viewModel.loginPageViewModel.LoginBtnText">
+            <inheritdoc cref="F:MauiApp1.viewModel.loginPageViewModel.loginBtnText"/>
+        </member>
+        <member name="F:MauiApp1.viewModel.loginPageViewModel._loginClickedCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.loginPageViewModel.loginClickedCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.loginPageViewModel.loginClickedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.loginPageViewModel.loginClicked"/>.</summary>
+        </member>
+        <member name="T:MauiApp1.viewModel.NewPage5ViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:MauiApp1.viewModel.NewPage5ViewModel._navToShellCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.NewPage5ViewModel.navToShellCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.NewPage5ViewModel.navToShellCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.NewPage5ViewModel.navToShell"/>.</summary>
+        </member>
+        <member name="T:MauiApp1.viewModel.petNameInputViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MauiApp1.viewModel.petNameInputViewModel.PetName">
+            <inheritdoc cref="F:MauiApp1.viewModel.petNameInputViewModel.petName"/>
+        </member>
+        <member name="F:MauiApp1.viewModel.petNameInputViewModel._hatchEggCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.petNameInputViewModel.hatchEggCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.petNameInputViewModel.hatchEggCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.petNameInputViewModel.hatchEgg"/>.</summary>
+        </member>
+        <member name="T:MauiApp1.viewModel.signUpPageViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MauiApp1.viewModel.signUpPageViewModel.UsernameEntry">
+            <inheritdoc cref="F:MauiApp1.viewModel.signUpPageViewModel.usernameEntry"/>
+        </member>
+        <member name="F:MauiApp1.viewModel.signUpPageViewModel._signUpCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.signUpPageViewModel.signUpCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.signUpPageViewModel.signUpCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.signUpPageViewModel.signUp"/>.</summary>
+        </member>
+        <member name="T:MauiApp1.viewModel.taskAdditionViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="T:MauiApp1.viewModel.taskAdditionViewModel.taskItem">
+            <inheritdoc/>
+        </member>
+        <member name="P:MauiApp1.viewModel.taskAdditionViewModel.taskItem.Text">
+            <inheritdoc cref="F:MauiApp1.viewModel.taskAdditionViewModel.taskItem.text"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.taskAdditionViewModel.taskItem.EntryText">
+            <inheritdoc cref="F:MauiApp1.viewModel.taskAdditionViewModel.taskItem.entryText"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.taskAdditionViewModel.Tasks">
+            <inheritdoc cref="F:MauiApp1.viewModel.taskAdditionViewModel.tasks"/>
+        </member>
+        <member name="F:MauiApp1.viewModel.taskAdditionViewModel._addGoalCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.taskAdditionViewModel.addGoalCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.taskAdditionViewModel.addGoalCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.taskAdditionViewModel.addGoal"/>.</summary>
+        </member>
+        <member name="F:MauiApp1.viewModel.taskAdditionViewModel._hatchEggCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.taskAdditionViewModel.hatchEggCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.taskAdditionViewModel.hatchEggCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.taskAdditionViewModel.hatchEgg"/>.</summary>
+        </member>
+        <member name="F:MauiApp1.viewModel.taskAdditionViewModel._removeContCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.taskAdditionViewModel.removeContCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.taskAdditionViewModel.removeContCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MauiApp1.viewModel.taskAdditionViewModel.removeCont(MauiApp1.viewModel.taskAdditionViewModel.taskItem)"/>.</summary>
+        </member>
         <member name="T:MauiApp1.Resource">
             <summary>
             Android Resource Designer class.
             Exposes the Android Resource designer assembly into the project Namespace.
             </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LoginBtnText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LoginBtnText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PetName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PetName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UsernameEntry">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UsernameEntry" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tasks">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tasks" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Text">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Text" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EntryText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EntryText" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LoginBtnText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LoginBtnText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PetName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PetName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UsernameEntry">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UsernameEntry" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tasks">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tasks" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Text">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Text" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EntryText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EntryText" generated properties.</summary>
         </member>
     </members>
 </doc>

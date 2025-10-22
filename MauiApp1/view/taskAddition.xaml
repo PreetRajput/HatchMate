@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.taskAddition"
+             BackgroundColor="#CEA2D7"
+             xmlns:local="clr-namespace:MauiApp1"
+             >
+
+    <Grid RowDefinitions="auto, *" ColumnDefinitions="*,*">
+
+
+        <VerticalStackLayout Grid.ColumnSpan="2" Grid.Row="0" BackgroundColor="#4B6382">
+            <Label Text="Daily Habit Setup" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" FontFamily="bitcount"/>
+            <BoxView HorizontalOptions="Fill" BackgroundColor="Black" HeightRequest="1" />
+            </VerticalStackLayout>
+            
+
+        
+        <Image x:Name="selectedEgg"
+                Source="egg1.png"
+               Aspect="AspectFill"
+               Opacity="0.7"
+               Grid.Row="1"
+               Grid.Column="0"
+               HeightRequest="150"
+               WidthRequest="150"
+               />
+
+        <Grid Grid.Row="1" Grid.Column="1" BackgroundColor="#FCE4B4">
+            <BoxView HorizontalOptions="Start" BackgroundColor="Black" WidthRequest="1"/>
+            <ScrollView>
+
+                <VerticalStackLayout Padding="20" Spacing="20">
+                    
+                <VerticalStackLayout Padding="20" Spacing="20" x:Name="tasksContainer" BindableLayout.ItemsSource="{Binding Tasks}">
+
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                    
+                            <Border Stroke="Black" StrokeThickness="2"  BackgroundColor="LightGray" Padding="10" StrokeShape="RoundRectangle 10" > 
+                        <VerticalStackLayout>
+                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="auto, *">
+                                <Label Text="{Binding Text}" Grid.Row="1" Grid.ColumnSpan="2" FontSize="18" FontAttributes="Bold"
+                                       TextColor="#4A148C" LineBreakMode="WordWrap" MaxLines="0"/>
+                                <Button ImageSource="cross.png" Grid.Column="1" BackgroundColor="Transparent"
+                                        HeightRequest="8" 
+                                        Command="{Binding BindingContext.removeContCommand,
+                                        Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                CommandParameter="{Binding .}"/>
+                            </Grid>
+                            <Editor ClassId="customTask" Text="{Binding EntryText}" Placeholder="Describe your Task..." AutoSize="TextChanges"/>
+                        </VerticalStackLayout>
+                    </Border>
+                            
+                        </DataTemplate>
+                        
+                    </BindableLayout.ItemTemplate>
+
+                    
+                    
+                    
+                    
+                </VerticalStackLayout>
+                             <Button  
+                            Text=" + Add Goal"  
+                            TextColor="FloralWhite"  
+                            BackgroundColor="Green"  
+                            FontSize="16"  
+                            Padding="10"  
+                            CornerRadius="25"  
+                            HorizontalOptions="End" 
+                            Command="{Binding addGoalCommand}"
+                           />
+                </VerticalStackLayout>
+
+
+
+
+
+
+            </ScrollView>
+                    <Button Text="Save Habits"
+                    BackgroundColor="#FFA726"
+                    TextColor="White"
+                    CornerRadius="50"
+                    Margin="10"
+                    HeightRequest="55"
+                    FontAttributes="Bold"
+                    FontSize="18" 
+                    VerticalOptions="End"
+                    Command="{Binding hatchEggCommand}"/>
+        </Grid>
+
+       
+        
+
+    </Grid>
+    
+    
+</ContentPage>

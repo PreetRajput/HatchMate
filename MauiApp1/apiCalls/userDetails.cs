@@ -16,6 +16,6 @@ namespace MauiApp1.apiCalls
 
         public int petNum { get; set; }
 
-        public List<string>? tasks { get; set; }
+        public List<string>? tasks { get; set; } = new();
     }
 }

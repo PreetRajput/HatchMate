@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="MauiApp1.Goals"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Black">
+    <Grid RowDefinitions="auto,*,auto" x:Name="goalsContainer">
+        
+        <Label Text="Daily Goals" FontSize="35"  FontAttributes="Bold" Padding="15,15,0,0"/>
+
+        
+        <ScrollView Grid.Row="1">
+            
+            <VerticalStackLayout x:Name="tasksContainer">
+
+                
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+        
+        <Button Grid.Row="2" 
+                HorizontalOptions="End"
+                Text="+ Add Goals" 
+                BackgroundColor="#78C001" 
+                FontAttributes="Bold" 
+                TextColor="Black"
+                CornerRadius="20" 
+                Margin="0,0,15,15"
+                Clicked="addMoreTasks"/>
+    </Grid>
+    
+</ContentPage>

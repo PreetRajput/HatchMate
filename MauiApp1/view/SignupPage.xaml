@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.SignupPage"
+             BackgroundColor="#1b1b2f">
+
+    <Grid Padding="30">
+        <VerticalStackLayout Spacing="30" VerticalOptions="Center" HorizontalOptions="Center">
+
+            <!-- Title -->
+            <Label Text="Enter Your Username"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#f0f4f8"
+                   HorizontalOptions="Center" />
+
+            <!-- Entry with container for styling -->
+            <Border BackgroundColor="#2a2a40"
+                   Padding="10"
+                   WidthRequest="300"
+                   HeightRequest="70"
+                   HorizontalOptions="Center">
+
+                <Entry Text="{Binding UsernameEntry}"
+                       Placeholder="Username"
+                       PlaceholderColor="#a3a3a3"
+                       TextColor="#f0f4f8"
+                       FontSize="18"
+                       VerticalOptions="Center"
+                      />
+            </Border>
+
+            <!-- Next button -->
+            <Button Text="Next"
+                    BackgroundColor="#4e73df"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="20"
+                    HeightRequest="50"
+                    WidthRequest="300"
+                    Command="{Binding signUpCommand}" />
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

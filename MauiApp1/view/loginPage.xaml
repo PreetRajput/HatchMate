@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             x:Class="MauiApp1.loginPage"
+             BackgroundColor="#1b1b2f"
+             >
+    <Grid Padding="30">
+        <VerticalStackLayout Spacing="25" VerticalOptions="Center" HorizontalOptions="Center">
+
+            <Label Text="Welcome Back"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="#f0f4f8"
+                   HorizontalOptions="Center" 
+                   />
+
+            
+
+            <Button Text="{Binding LoginBtnText}"
+                    BackgroundColor="#4e73df"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    VerticalOptions="Center"
+                    Command="{Binding loginClickedCommand}"
+                    />
+
+           
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

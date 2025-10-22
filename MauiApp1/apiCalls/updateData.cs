@@ -14,7 +14,8 @@ namespace MauiApp1.apiCalls
         public updateData()
         {
 
-            _httpClient = new HttpClient{BaseAddress = new Uri ( "http://192.168.1.17:5000/")};
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.5:5000/") };
+
 
         }
 
