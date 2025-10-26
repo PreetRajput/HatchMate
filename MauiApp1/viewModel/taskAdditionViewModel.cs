@@ -16,7 +16,8 @@ namespace MauiApp1.viewModel
         [ObservableProperty] 
         ObservableCollection<taskItem> tasks= new();
 
-
+        [ObservableProperty]
+        double rotateY;
         userDetails Player;
         public taskAdditionViewModel(userDetails Player)
         {
@@ -29,7 +30,20 @@ namespace MauiApp1.viewModel
             Tasks.Add(new taskItem{Text = "Custom Task", EntryText = ""});
           
         }
-      
+        [RelayCommand]
+        async void AnimateImage()
+        {
+            while (true)
+            {
+                for (global::System.Int32 i = 0; i < 360; i+=2)
+                {
+                    RotateY = i;
+                    await Task.Delay(16);
+                }
+                RotateY = 0;
+            }
+        }
+
 
         [RelayCommand]
         public async Task hatchEgg()
@@ -39,7 +53,7 @@ namespace MauiApp1.viewModel
                  await Application.Current.MainPage.DisplayAlert("Success", $"{item.EntryText}", "OK");
                   Player.tasks.Add(item.EntryText);
             }
-            await Application.Current.MainPage.Navigation.PushAsync(new NewPage5(Player));
+            await Application.Current.MainPage.Navigation.PushAsync(new petNameInput(Player));
 
         }
 

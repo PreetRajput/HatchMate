@@ -5,11 +5,12 @@
             >
     <Grid RowDefinitions="*,*">
         
-        <Image Source="egg1.png" HeightRequest="200" WidthRequest="200" x:Name="egg" VerticalOptions="End"/>
+        <Image Source="{Binding Source}" HeightRequest="200" WidthRequest="200"
+               x:Name="egg" VerticalOptions="End" Rotation="{Binding Rotate}" 
+               Opacity="{Binding OpacityMeter}" Scale="{Binding Scaling}"/>
         <Button Text="Start Growing"
                 Grid.Row="1"
-                x:Name="growBtn"
-                IsVisible="Hidden"
+                IsVisible="{Binding Visibility}"
                 FontSize="18"
                 TextColor="Black"
                 Padding="15,10"

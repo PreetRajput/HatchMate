@@ -13,12 +13,54 @@ namespace MauiApp1.viewModel
     {
         [ObservableProperty]
         string petName;
+        [ObservableProperty]
+        double rotate;
+        [ObservableProperty]
+        double translate;
 
         userDetails Player;
         public petNameInputViewModel(userDetails Player)
         {
             this.Player = Player;
 
+        }
+        [RelayCommand]
+        async Task eggCrumbling()
+        {
+            while (true)
+            {
+                for (global::System.Int32 i = 0; i < 10; i++)
+                {
+                    Rotate = i;
+                    await Task.Delay(10);
+                }
+                for (global::System.Int32 i = 0; i < 10; i++)
+                {
+                    translate = i / 2;
+                    await Task.Delay(10);
+                }
+                for (global::System.Int32 i = 0; i < 10; i++)
+                {
+                    Rotate = -i;
+                    await Task.Delay(10);
+                }
+                for (global::System.Int32 i = 0; i < 10; i++)
+                {
+                    Translate = -i / 2;
+                    await Task.Delay(10);
+                }
+                for (global::System.Int32 i = 10; i > 0; i--)
+                {
+                    Rotate = -i;
+                    await Task.Delay(10);
+                }
+                for (global::System.Int32 i = 10; i > 0; i--)
+                {
+                    Translate = -i / 2;
+                    await Task.Delay(10);
+                }
+                   
+            }
         }
         [RelayCommand]
         public async void hatchEgg()

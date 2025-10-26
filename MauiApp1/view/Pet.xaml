@@ -5,13 +5,13 @@
              BackgroundColor="White">
         <Grid RowDefinitions="*, *, *" ColumnDefinitions="*,*,*">
 
-        <Label Text="wefrwef"  Grid.Row="0" Grid.Column="0" TextColor="Black" 
-               Grid.ColumnSpan="3" x:Name="petLabel" HorizontalOptions="Center" 
+        <Label Text="{Binding LabelText}"  Grid.Row="0" Grid.Column="0" TextColor="Black" 
+               Grid.ColumnSpan="3"  HorizontalOptions="Center" 
                VerticalOptions="Center" FontAttributes="Bold" FontFamily="bitcount"
                FontSize="24"/>
 
-        <ImageButton Source="w1.png" x:Name="animal" Grid.Row="1" Grid.Column="1" 
-                     HeightRequest="150" Clicked="changeAnimation"/>
+        <ImageButton Source="{Binding ImageSource}"  Grid.Row="1" Grid.Column="1" 
+                     HeightRequest="150" Command="{Binding changeAnimationCommand}"/>
        
             
 

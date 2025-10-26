@@ -12,7 +12,7 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public void navToBody()
         {
-            bool exist = false; // change krdio bhai Microsoft.Maui.Storage.Preferences.Get("isLoggedIn", false)
+            bool exist = Microsoft.Maui.Storage.Preferences.Get("isLoggedIn", false);
             if (exist)
                 Application.Current.MainPage = new AppShell();
             else

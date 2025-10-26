@@ -10,23 +10,76 @@
         
         <ScrollView Grid.Row="1">
             
-            <VerticalStackLayout x:Name="tasksContainer">
+            <VerticalStackLayout x:Name="tasksContainer" BindableLayout.ItemsSource="{Binding BorderContext}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
 
-                
+                        <Border
+                             Stroke="#4B6382"
+                             StrokeThickness="2"
+                             BackgroundColor="Transparent"
+                             Padding="12">          
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+
+
+                            <Grid Padding="16" ColumnDefinitions="*,Auto">
+                                <Entry Text="{Binding Goal}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing}"
+                                    TextColor="White"
+                                    />
+                                <Label Text="{Binding Goal}"
+                                    IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing,  Converter={StaticResource InverseBoolConverter}}"
+                                    FontSize="18" 
+                                    FontAttributes="Bold"
+                                    TextColor="White"
+                                    VerticalOptions="Center"/>
+                               
+                                <ImageButton Grid.Column="1" 
+                                     Source="cross.png" 
+                                     Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.deleteTaskCommand}"
+                                     CommandParameter="{Binding .}"
+                                     BackgroundColor="Transparent"
+                                             HeightRequest="30"
+                                             WidthRequest="30"
+                                     VerticalOptions="Center"/>
+                            </Grid>
+                        </Border>
+
+
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+               
 
             </VerticalStackLayout>
 
         </ScrollView>
-        
+
+        <Button Grid.Row="2" 
+                HorizontalOptions="Start"
+                Text="+" 
+                BackgroundColor="#78C001" 
+                FontAttributes="Bold" 
+                TextColor="Black"
+                CornerRadius="20" 
+                IsVisible="{Binding AddBtnVisible}"
+                Margin="15,0,0,15"
+                Command="{Binding addOneMoreTaskCommand}"/>
+
+        <Label Text="{Binding Goal}" TextColor="Red"/>
+
         <Button Grid.Row="2" 
                 HorizontalOptions="End"
-                Text="+ Add Goals" 
+                Text="{Binding BtnText}" 
                 BackgroundColor="#78C001" 
                 FontAttributes="Bold" 
                 TextColor="Black"
                 CornerRadius="20" 
                 Margin="0,0,15,15"
-                Clicked="addMoreTasks"/>
+                Command="{Binding TaskBtn}"/>
     </Grid>
     
 </ContentPage>

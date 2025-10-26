@@ -1,47 +1,28 @@
 using MauiApp1.model;
+using MauiApp1.viewModel;
 using Microsoft.Maui.Dispatching;
 
 namespace MauiApp1;
 
 public partial class Pet : ContentPage
 {
-    private bool running = true;
-    private int currentAnimationIndex = 2; // start with walk
+  
 
-    private readonly List<List<string>> allAnimation = new()
-    {
-        new() { "c1.png", "c2.png", "c3.png", "c4.png" }, // cute
-        new() { "s1.png", "s2.png" },                     // sleep
-        new() { "w1.png", "w2.png", "w3.png", "w4.png" }  // walk
-    };
-
+        bool hasRun = false;
     public Pet()
     {
         InitializeComponent();
-        StartAnimationLoop();
+        BindingContext = new PetViewModel();
     }
-
-    private async void StartAnimationLoop()
+    protected override void OnAppearing()
     {
-        petLabel.Text = detailsPage.currentUser.petName;
-        int frameDelay = 100;
-        while (running)
+        base.OnAppearing(); 
+        if (!hasRun)
         {
-            var frames = allAnimation[currentAnimationIndex];
-            foreach (var frame in frames)
-            {
-                animal.Source = frame;
-                await Task.Delay(frameDelay);
-            }
+            (BindingContext as PetViewModel)?.StartAnimationLoopCommand.Execute(null);
+            hasRun = true;
         }
     }
-
-    private void changeAnimation(object sender, EventArgs e)
-    {
-        Random random = new Random();
-        currentAnimationIndex = random.Next(allAnimation.Count); // pick random animation
-    }
-
 
   
 

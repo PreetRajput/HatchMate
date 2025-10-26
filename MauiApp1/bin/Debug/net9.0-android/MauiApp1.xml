@@ -31,6 +31,66 @@
         <member name="P:MauiApp1.viewModel.entryPageViewModel.navToBodyCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.entryPageViewModel.navToBody"/>.</summary>
         </member>
+        <member name="T:MauiApp1.viewModel.GoalsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="T:MauiApp1.viewModel.GoalsViewModel.TaskList">
+            <inheritdoc/>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.TaskList.Goal">
+            <inheritdoc cref="F:MauiApp1.viewModel.GoalsViewModel.TaskList.goal"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.TaskBtn">
+            <inheritdoc cref="F:MauiApp1.viewModel.GoalsViewModel.taskBtn"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.AddBtnVisible">
+            <inheritdoc cref="F:MauiApp1.viewModel.GoalsViewModel.addBtnVisible"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.BtnText">
+            <inheritdoc cref="F:MauiApp1.viewModel.GoalsViewModel.btnText"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.IsEditing">
+            <inheritdoc cref="F:MauiApp1.viewModel.GoalsViewModel.isEditing"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.BorderContext">
+            <inheritdoc cref="F:MauiApp1.viewModel.GoalsViewModel.borderContext"/>
+        </member>
+        <member name="F:MauiApp1.viewModel.GoalsViewModel._addingTasksCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.GoalsViewModel.addingTasksCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.addingTasksCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.GoalsViewModel.addingTasks"/>.</summary>
+        </member>
+        <member name="F:MauiApp1.viewModel.GoalsViewModel._addMoreTasksCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.GoalsViewModel.addMoreTasksCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.addMoreTasksCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.GoalsViewModel.addMoreTasks"/>.</summary>
+        </member>
+        <member name="F:MauiApp1.viewModel.GoalsViewModel._addOneMoreTaskCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.GoalsViewModel.addOneMoreTaskCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.addOneMoreTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.GoalsViewModel.addOneMoreTask"/>.</summary>
+        </member>
+        <member name="F:MauiApp1.viewModel.GoalsViewModel._deleteTaskCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.GoalsViewModel.deleteTaskCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.deleteTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MauiApp1.viewModel.GoalsViewModel.deleteTask(MauiApp1.viewModel.GoalsViewModel.TaskList)"/>.</summary>
+        </member>
+        <member name="F:MauiApp1.viewModel.GoalsViewModel._addedMoreTasksCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.GoalsViewModel.addedMoreTasksCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.GoalsViewModel.addedMoreTasksCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.GoalsViewModel.addedMoreTasks"/>.</summary>
+        </member>
         <member name="T:MauiApp1.viewModel.loginPageViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -46,6 +106,29 @@
         </member>
         <member name="T:MauiApp1.viewModel.NewPage5ViewModel">
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MauiApp1.viewModel.NewPage5ViewModel.Source">
+            <inheritdoc cref="F:MauiApp1.viewModel.NewPage5ViewModel.source"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.NewPage5ViewModel.Rotate">
+            <inheritdoc cref="F:MauiApp1.viewModel.NewPage5ViewModel.rotate"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.NewPage5ViewModel.Visibility">
+            <inheritdoc cref="F:MauiApp1.viewModel.NewPage5ViewModel.visibility"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.NewPage5ViewModel.OpacityMeter">
+            <inheritdoc cref="F:MauiApp1.viewModel.NewPage5ViewModel.opacityMeter"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.NewPage5ViewModel.Scaling">
+            <inheritdoc cref="F:MauiApp1.viewModel.NewPage5ViewModel.scaling"/>
+        </member>
+        <member name="F:MauiApp1.viewModel.NewPage5ViewModel._animatingEggCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.NewPage5ViewModel.animatingEggCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.NewPage5ViewModel.animatingEggCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.NewPage5ViewModel.animatingEgg"/>.</summary>
         </member>
         <member name="F:MauiApp1.viewModel.NewPage5ViewModel._navToShellCommand">
             <summary>The backing field for <see cref="P:MauiApp1.viewModel.NewPage5ViewModel.navToShellCommand"/>.</summary>
@@ -56,15 +139,51 @@
         <member name="T:MauiApp1.viewModel.petNameInputViewModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:MauiApp1.viewModel.petNameInputViewModel.PetName">
             <inheritdoc cref="F:MauiApp1.viewModel.petNameInputViewModel.petName"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.petNameInputViewModel.Rotate">
+            <inheritdoc cref="F:MauiApp1.viewModel.petNameInputViewModel.rotate"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.petNameInputViewModel.Translate">
+            <inheritdoc cref="F:MauiApp1.viewModel.petNameInputViewModel.translate"/>
+        </member>
+        <member name="F:MauiApp1.viewModel.petNameInputViewModel._eggCrumblingCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.petNameInputViewModel.eggCrumblingCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.petNameInputViewModel.eggCrumblingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.petNameInputViewModel.eggCrumbling"/>.</summary>
         </member>
         <member name="F:MauiApp1.viewModel.petNameInputViewModel._hatchEggCommand">
             <summary>The backing field for <see cref="P:MauiApp1.viewModel.petNameInputViewModel.hatchEggCommand"/>.</summary>
         </member>
         <member name="P:MauiApp1.viewModel.petNameInputViewModel.hatchEggCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.petNameInputViewModel.hatchEgg"/>.</summary>
+        </member>
+        <member name="T:MauiApp1.viewModel.PetViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MauiApp1.viewModel.PetViewModel.LabelText">
+            <inheritdoc cref="F:MauiApp1.viewModel.PetViewModel.labelText"/>
+        </member>
+        <member name="P:MauiApp1.viewModel.PetViewModel.ImageSource">
+            <inheritdoc cref="F:MauiApp1.viewModel.PetViewModel.imageSource"/>
+        </member>
+        <member name="F:MauiApp1.viewModel.PetViewModel.startAnimationLoopCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.PetViewModel.StartAnimationLoopCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.PetViewModel.StartAnimationLoopCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.PetViewModel.StartAnimationLoop"/>.</summary>
+        </member>
+        <member name="F:MauiApp1.viewModel.PetViewModel._changeAnimationCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.PetViewModel.changeAnimationCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.PetViewModel.changeAnimationCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.PetViewModel.changeAnimation"/>.</summary>
         </member>
         <member name="T:MauiApp1.viewModel.signUpPageViewModel">
             <inheritdoc/>
@@ -85,6 +204,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="T:MauiApp1.viewModel.taskAdditionViewModel.taskItem">
             <inheritdoc/>
@@ -98,11 +218,20 @@
         <member name="P:MauiApp1.viewModel.taskAdditionViewModel.Tasks">
             <inheritdoc cref="F:MauiApp1.viewModel.taskAdditionViewModel.tasks"/>
         </member>
+        <member name="P:MauiApp1.viewModel.taskAdditionViewModel.RotateY">
+            <inheritdoc cref="F:MauiApp1.viewModel.taskAdditionViewModel.rotateY"/>
+        </member>
         <member name="F:MauiApp1.viewModel.taskAdditionViewModel._addGoalCommand">
             <summary>The backing field for <see cref="P:MauiApp1.viewModel.taskAdditionViewModel.addGoalCommand"/>.</summary>
         </member>
         <member name="P:MauiApp1.viewModel.taskAdditionViewModel.addGoalCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.taskAdditionViewModel.addGoal"/>.</summary>
+        </member>
+        <member name="F:MauiApp1.viewModel.taskAdditionViewModel.animateImageCommand">
+            <summary>The backing field for <see cref="P:MauiApp1.viewModel.taskAdditionViewModel.AnimateImageCommand"/>.</summary>
+        </member>
+        <member name="P:MauiApp1.viewModel.taskAdditionViewModel.AnimateImageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:MauiApp1.viewModel.taskAdditionViewModel.AnimateImage"/>.</summary>
         </member>
         <member name="F:MauiApp1.viewModel.taskAdditionViewModel._hatchEggCommand">
             <summary>The backing field for <see cref="P:MauiApp1.viewModel.taskAdditionViewModel.hatchEggCommand"/>.</summary>
@@ -128,17 +257,62 @@
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TaskBtn">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TaskBtn" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AddBtnVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AddBtnVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BtnText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BtnText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsEditing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsEditing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BorderContext">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BorderContext" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Goal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Goal" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LoginBtnText">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LoginBtnText" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Source">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Source" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Rotate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Rotate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Visibility">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Visibility" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.OpacityMeter">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "OpacityMeter" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Scaling">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Scaling" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PetName">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PetName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Translate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Translate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LabelText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LabelText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImageSource">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImageSource" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UsernameEntry">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UsernameEntry" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tasks">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tasks" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.RotateY">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "RotateY" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Text">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Text" generated properties.</summary>
@@ -152,17 +326,62 @@
             for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
             </summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TaskBtn">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TaskBtn" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AddBtnVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AddBtnVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BtnText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BtnText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsEditing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsEditing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BorderContext">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BorderContext" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Goal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Goal" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LoginBtnText">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LoginBtnText" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Source">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Source" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Rotate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Rotate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Visibility">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Visibility" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.OpacityMeter">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "OpacityMeter" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Scaling">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Scaling" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PetName">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PetName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Translate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Translate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LabelText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LabelText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImageSource">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImageSource" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UsernameEntry">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UsernameEntry" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tasks">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tasks" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.RotateY">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "RotateY" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Text">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Text" generated properties.</summary>

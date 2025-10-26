@@ -11,18 +11,14 @@ public partial class taskAddition : ContentPage
     public taskAddition(userDetails Player)
 	{
 		InitializeComponent();
-        AnimateImage();
         BindingContext= new taskAdditionViewModel(Player);
     }
-    async void AnimateImage()
+    protected override void OnAppearing()
     {
-        while (true)
-        {
-            // Rotate around Y-axis (pseudo-3D)
-            await selectedEgg.RotateYTo(360, 2000);  // 360 degrees in 2 seconds
-            selectedEgg.RotationY = 0;               // reset to start
-        }
+        base.OnAppearing();
+        (BindingContext as taskAdditionViewModel)?.AnimateImageCommand.Execute(null);
     }
+    
  
    
 

@@ -9,19 +9,12 @@ public partial class petNameInput : ContentPage
 	{
         BindingContext = new petNameInputViewModel(Player);
 		InitializeComponent();
-		eggCrumbling();
 	}
-	async void eggCrumbling()
-	{
-        while (true)
-        {
-            await eggUnhatched.RotateTo(10, 100);
-            await eggUnhatched.TranslateTo(5, 0, 100);
-            await eggUnhatched.RotateTo(-10, 100);
-            await eggUnhatched.TranslateTo(-5, 0, 100);
-            await eggUnhatched.RotateTo(0, 100);
-            await eggUnhatched.TranslateTo(0, 0, 100);
-        }
+    protected override  void OnAppearing()
+    {
+        base.OnAppearing();
+        (BindingContext as petNameInputViewModel)?.eggCrumblingCommand.Execute(null);
     }
+	
   
 }

@@ -20,6 +20,7 @@
                 Source="egg1.png"
                Aspect="AspectFill"
                Opacity="0.7"
+               RotationY="{Binding RotateY}"
                Grid.Row="1"
                Grid.Column="0"
                HeightRequest="150"
