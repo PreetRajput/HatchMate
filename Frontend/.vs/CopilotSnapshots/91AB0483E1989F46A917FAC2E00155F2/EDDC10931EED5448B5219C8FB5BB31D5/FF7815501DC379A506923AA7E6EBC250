@@ -1,0 +1,38 @@
+﻿using models.Dtos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MauiApp1.apiCalls
+{
+    internal class updateData
+    {
+       public readonly HttpClient _httpClient;
+
+        public updateData()
+        {
+
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:5000/") };
+        }
+
+        public async Task<bool> updateUserInfo(UserTasks user)
+        {   
+            string token = await SecureStorage.GetAsync("auth_token");
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                Console.WriteLine("yayyyyyyyyyyyyYYYYYYYAUIOASDIUASHD");
+                // Only at initialization, before any requests
+                _httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
+            }
+            HttpResponseMessage response = await _httpClient.PatchAsJsonAsync($"api/Users", user);
+            return response.IsSuccessStatusCode;
+        }
+
+    }
+}

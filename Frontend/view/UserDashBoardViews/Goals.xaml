@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="MauiApp1.Goals"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:vm="clr-namespace:MauiApp1.viewModel"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Black">
+    <Grid RowDefinitions="auto,auto,*,auto" x:Name="goalsContainer">
+        
+        
+        
+        <Label Text="Daily Goals" FontSize="35"  FontAttributes="Bold" Padding="15,15,0,0"/>
+
+        <Picker Grid.Row="1"  ItemsSource="{Binding Filters}"  SelectedItem="{Binding SelectedFilter}" />
+
+        <ScrollView Grid.Row="2">
+            
+            <VerticalStackLayout x:Name="tasksContainer" BindableLayout.ItemsSource="{Binding BorderContext}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                             Stroke="Transparent"
+                             StrokeThickness="2"
+                             BackgroundColor="{Binding BgColor}"
+                             Padding="12"
+                            >          
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+
+                            <Grid Padding="16" ColumnDefinitions="*,Auto" BackgroundColor="{Binding BgColor}">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.markAsCompletedCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Grid.GestureRecognizers>
+
+                                <Entry Text="{Binding Goal}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing}"
+                                    TextColor="White"
+                                    />
+                                <Label Text="{Binding Goal}"
+                                    IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing,  Converter={StaticResource InverseBoolConverter}}"
+                                    FontSize="18" 
+                                    FontAttributes="Bold"
+                                    TextColor="White"
+                                    
+                                    VerticalOptions="Center"/>
+
+                                <ImageButton Grid.Column="1" 
+                                     Source="cross.png" 
+                                     Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.deleteTaskCommand}"
+                                     IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing }"
+                                     CommandParameter="{Binding .}"
+                                     BackgroundColor="Transparent"
+                                     HeightRequest="30"
+                                     WidthRequest="30"
+                                     VerticalOptions="Center"/>
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+               
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <Button Grid.Row="3" 
+                HorizontalOptions="Start"
+                Text="+" 
+                BackgroundColor="#78C001" 
+                FontAttributes="Bold" 
+                TextColor="Black"
+                CornerRadius="20" 
+                IsVisible="{Binding AddBtnVisible}"
+                Margin="15,0,0,15"
+                Command="{Binding addOneMoreTaskCommand}"/>
+
+        <Button Grid.Row="3"
+        HorizontalOptions="End"
+        BackgroundColor="#78C001"
+        FontAttributes="Bold"
+        TextColor="Black"
+        CornerRadius="20"
+        Margin="0,0,15,15">
+
+            <Button.Triggers>
+
+                <DataTrigger TargetType="Button"
+                     Binding="{Binding TaskName}"
+                     Value= "{x:Static vm:TaskMode.ADD}">
+
+                    <Setter Property="Text"
+                    Value= "+ ADD" />
+
+                    <Setter Property="Command"
+                    Value="{Binding addMoreTasksCommand}" />
+
+                </DataTrigger>
+
+                <DataTrigger TargetType="Button"
+                     Binding="{Binding TaskName}"
+                     Value= "{x:Static vm:TaskMode.DONE}">
+
+                    <Setter Property="Text"
+                    Value="DONE" />
+
+                    <Setter Property="Command"
+                    Value="{Binding addedMoreTasksCommand}" />
+
+                </DataTrigger>
+                
+                <DataTrigger TargetType="Button"
+                    
+                    Binding="{Binding TaskName}"
+                    Value= "{x:Static vm:TaskMode.PATCH}">
+
+
+                    <Setter Property="Text"
+                     Value="PATCH" />
+
+                    <Setter Property="Command"
+                     Value="{Binding updateCompletedTaskCommand}" />
+
+                </DataTrigger>
+
+            </Button.Triggers>
+
+        </Button>
+
+    </Grid>
+    
+</ContentPage>
+
+

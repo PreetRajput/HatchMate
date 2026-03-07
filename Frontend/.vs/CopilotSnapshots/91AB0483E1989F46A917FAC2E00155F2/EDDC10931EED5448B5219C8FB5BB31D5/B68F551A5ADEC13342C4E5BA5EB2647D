@@ -1,0 +1,54 @@
+﻿using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json; // for PostAsJsonAsync
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+using models.Dtos;
+namespace MauiApp1.apiCalls
+{
+    internal class postData
+    {
+        public readonly HttpClient _httpClient;
+        public readonly string auth_token = "auth_token";
+        public postData()
+        {
+           
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://localhost:5000/") };
+        }
+        public async Task<bool> addUserInfo(UserAppRelatedInfoDto user)
+        {
+            string token =  await SecureStorage.GetAsync(auth_token);
+            if (!string.IsNullOrEmpty(token))
+            {
+                Console.WriteLine("asdasdas");
+                Console.WriteLine(token);
+                // Only at initialization, before any requests
+                _httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
+            }
+            HttpResponseMessage response = await  _httpClient.PostAsJsonAsync("api/users", user);
+            var body = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(response.StatusCode);
+            Console.WriteLine(body);
+            return response.IsSuccessStatusCode;
+        }
+        public async Task<bool> addTaskInfo(TaskListDto task)
+        {
+            string token = await SecureStorage.GetAsync(auth_token);
+            if (!string.IsNullOrEmpty(token))
+            {
+                Console.WriteLine("Task send api request is getting executed");
+                Console.WriteLine(token);
+                // Only at initialization, before any requests
+                _httpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
+            }
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/users/task", task);
+            var body = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(response.StatusCode);
+            Console.WriteLine(body);
+            return response.IsSuccessStatusCode;
+        }
+
+    }
+}

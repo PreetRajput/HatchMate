@@ -1,0 +1,59 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.chooseEgg">
+
+    <!-- Outer Grid with rows -->
+    <Grid RowDefinitions="Auto,*" Padding="20" RowSpacing="20">
+
+        <!-- Background image covering all rows -->
+        <Image Source="eggbg.jpg"
+               Aspect="Fill"
+               Opacity="0.7"
+               Grid.RowSpan="2"/>
+
+        <VerticalStackLayout Grid.Row="1" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <!-- Egg 1 -->
+            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Image Source="egg1.png" HeightRequest="120" WidthRequest="120"/>
+                <Button Text="Choose"
+                        BackgroundColor="#FFD54F"
+                        TextColor="Black"
+                        CornerRadius="25"
+                        WidthRequest="120"
+                        HeightRequest="40"
+                        Command="{Binding choosedEggCommand}"
+                        CommandParameter="1"
+                        />
+            </VerticalStackLayout>
+
+            <!-- Egg 2 -->
+            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Image Source="egg2.png" HeightRequest="120" WidthRequest="120"/>
+                <Button Text="Choose"
+                        BackgroundColor="#FFD54F"
+                        TextColor="Black"
+                        CornerRadius="25"
+                        WidthRequest="120"
+                        HeightRequest="40"
+                        Command="{Binding choosedEggCommand}"
+                        CommandParameter="2"
+                    />
+            </VerticalStackLayout>
+
+            <!-- Egg 3 -->
+            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Image Source="egg3.png" HeightRequest="120" WidthRequest="120"/>
+                <Button Text="Choose"
+                        BackgroundColor="#FFD54F"
+                        TextColor="Black"
+                        CornerRadius="25"
+                        WidthRequest="120"
+                        HeightRequest="40"
+                        Command="{Binding choosedEggCommand}"
+                        CommandParameter="3"
+                        />
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

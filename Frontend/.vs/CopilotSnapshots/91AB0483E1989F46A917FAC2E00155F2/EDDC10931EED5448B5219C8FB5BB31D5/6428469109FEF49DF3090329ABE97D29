@@ -1,0 +1,151 @@
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using MauiApp1.Services;
+using MauiApp1.model;
+using models.Dtos;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace MauiApp1.viewModel
+{
+    public partial class loginPageViewModel: ObservableObject
+    {
+        [ObservableProperty]
+        string loginBtnText = "Login";
+
+        private bool CanClick= true;
+        public bool canClick 
+        { 
+            get
+            {
+                return CanClick;
+            }
+            set
+            {
+                SetProperty(ref CanClick, value);
+            }
+        }
+
+        private readonly AuthApiService _authApiService;
+        private readonly ApiService _apiService;
+
+        public loginPageViewModel()
+        {
+            _authApiService = App.Current.Services.GetRequiredService<AuthApiService>();
+            _apiService = App.Current.Services.GetRequiredService<ApiService>();
+        }
+
+        [RelayCommand(CanExecute = nameof(canClick))]
+        public async Task loginClicked()
+        {
+            try
+            {
+                var clientId = "Ov23liCktt04rNqSpZg7";
+                var redirectUri = "com.virtualpet://oauth2redirect";
+                var scope = "read:user user:email";
+
+                var authUrl = new Uri($"https://github.com/login/oauth/authorize?client_id={clientId}&redirect_uri={redirectUri}&scope={scope}");
+
+                var callbackUrl = new Uri(redirectUri);
+
+                var result = await WebAuthenticator.AuthenticateAsync(authUrl, callbackUrl);
+
+                canClick = false;
+                LoginBtnText = "Processing...";
+
+
+                if (result.Properties.TryGetValue("code", out var code))
+                {
+                    // Exchange code for tokens
+                    var tokens = await ExchangeCodeForTokenAsync(code);
+                    if (tokens == null || !tokens.TryGetValue("access_token", out var accessToken))
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error", "Failed to get access token from GitHub.", "OK");
+                        return;
+                    }
+
+                    // Fetch user info from GitHub
+                    using var client = new HttpClient();
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                    client.DefaultRequestHeaders.UserAgent.ParseAdd("MauiApp1");
+
+                    var userJson = await client.GetStringAsync("https://api.github.com/user");
+                    var user = JsonSerializer.Deserialize<UserInfo>(userJson);
+                    if (user == null || string.IsNullOrEmpty(user.email))
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error", "Failed to read GitHub user email.", "OK");
+                        return;
+                    }
+
+                    var person = new UserEmailDto { Email = user.email };
+
+                    UserAuthResponseDto? check = await _authApiService.GetTokenAsync(person);
+
+                    if (check == null)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Error", "Backend did not return an auth token. See logs for details.", "OK");
+                        return;
+                    }
+
+                    if (!string.IsNullOrEmpty(check.Token))
+                    {
+                        await SecureStorage.SetAsync("auth_token", check.Token);
+                        _apiService.SetToken(check.Token);
+                    }
+
+                    if (check.IsNewUser)
+                    {
+                        await Application.Current.MainPage.Navigation.PushAsync(new SignupPage());
+                    }
+                    else
+                    {
+                        Application.Current.MainPage = new AppShell();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Asasd", "OK");
+
+                await Application.Current.MainPage.DisplayAlert("Error", ex.ToString(), "OK");
+            }
+
+        }
+      public async Task<Dictionary<string, string>> ExchangeCodeForTokenAsync(string code)
+        {
+            using var client = new HttpClient();
+
+            var parameters = new Dictionary<string, string>
+            {
+                { "client_id", "Ov23liCktt04rNqSpZg7" },
+                { "client_secret", "3873f3b84a0ab26b5906965278def5ae08a83fe6" },
+                { "code", code },
+                { "redirect_uri", "com.virtualpet://oauth2redirect" }
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://github.com/login/oauth/access_token")
+            {
+                Content = new FormUrlEncodedContent(parameters)
+            };
+
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var tokens = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+
+            return tokens;
+        }
+
+    }
+    }

@@ -1,0 +1,141 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Rider
+.idea/
+*.sln.iml
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Build results
+artifacts/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+
+# ASP.NET Core
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+*.log
+*.db
+*.db-shm
+*.db-wal
+
+#  files
+*.mdf
+*.ldf
+*.ndf
+
+# Entity Framework
+Migrations/
+
+# Test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.coverage
+*.coveragexml
+coverage/
+TestResults/
+
+# Mono auto generated files
+mono_crash.*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+
+# Publish profiles
+PublishProfiles/
+*.pubxml
+*.azurePubxml
+*.publishproj
+*.PublishSettings
+
+# Azure
+*.azurePubxml
+AppPackages/
+
+# User secrets
+secrets.json
+*.secrets.json
+
+# Certificate files
+*.pfx
+*.p12
+*.key
+*.pem
+*.crt
+*.cer
+
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+
+# Backup files
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+
+# JetBrains
+*.sln.iml
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# wwwroot generated files
+wwwroot/dist/
+wwwroot/lib/
+
+# Node modules (if using npm/yarn for frontend)
+node_modules/
+package-lock.json
+yarn.lock
