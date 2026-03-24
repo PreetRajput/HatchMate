@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using models.Dtos;
+using models.Dtos.PetDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

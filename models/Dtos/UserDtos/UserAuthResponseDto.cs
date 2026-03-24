@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace models.Dtos
+namespace models.Dtos.UserDtos
 {
     // The single DTO the client will receive
     public class UserAuthResponseDto

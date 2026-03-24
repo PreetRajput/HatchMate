@@ -65,20 +65,6 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
 });
 
-// Only enable HTTPS redirection when an HTTPS endpoint is actually configured.
-// This avoids the "Failed to determine the https port for redirect." warning during local HTTP-only runs.
-var hasHttps = app.Urls.Any(u => u.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-               || !string.IsNullOrEmpty(builder.Configuration["ASPNETCORE_HTTPS_PORT"]);
-
-if (hasHttps)
-{
-    app.UseHttpsRedirection();
-}
-else
-{
-    Console.WriteLine("Skipping HTTPS redirection because no HTTPS endpoint is configured.");
-}
-
 app.UseAuthentication();
 app.UseAuthorization();
 

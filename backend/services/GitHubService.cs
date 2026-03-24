@@ -1,4 +1,5 @@
-﻿using models.Dtos;
+﻿using models.Dtos.GitHubDtos;
+using models.Dtos.UserDtos;
 using System.Net.Http.Headers;
 using System.Text.Json;
 using static System.Net.Mime.MediaTypeNames;

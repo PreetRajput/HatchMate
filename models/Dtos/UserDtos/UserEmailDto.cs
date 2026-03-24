@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace models.Dtos
+namespace models.Dtos.UserDtos
 {
-    public class PetNameDto
+    public class UserEmailDto
     {
-        public string? PetName { get; set; }
-        public Guid Id { get; set; }
+        public string Email { get; set; }
     }
 }

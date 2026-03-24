@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace models.Dtos
+namespace models.Dtos.PetDtos
 {
-    public class PetInfoDto
+    public class PetNameDto
     {
         public string? PetName { get; set; }
-        public int PetNum { get; set; }
+        public Guid Id { get; set; }
     }
 }

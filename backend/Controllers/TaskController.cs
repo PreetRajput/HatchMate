@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using models.Dtos;
+using models.Dtos.TaskDtos;
 using models.Entities;
 using MongoDB.Driver;
 using System.Security.Claims;
@@ -13,9 +13,11 @@ namespace WebApplication1.Controllers
     public class TaskController : ControllerBase
     {
         public readonly TaskService _taskService;
-        public TaskController(TaskService TaskService)
+        public readonly UserService _userService;
+        public TaskController(TaskService TaskService, UserService UserService)
         {
             _taskService = TaskService;
+            _userService = UserService;
         }
 
         [HttpPost]
@@ -69,6 +71,7 @@ namespace WebApplication1.Controllers
                 var userIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var userId = Guid.Parse(userIdValue);
                 await _taskService.UpdateTask(dto, userId, TrueIfCompleted);
+                
             }
             catch (Exception ex)
             {

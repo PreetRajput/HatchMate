@@ -17,10 +17,8 @@ namespace models.Entities
         [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid UserId { get; set; }
 
-
-        [BsonElement("CompletedAt")]
-        public DateTime CompletedAt { get; set; }
-
+        [BsonElement("isRewarded")]
+        public bool IsRewarded { get; set; }
 
         [BsonElement("isCompleted")]
         public bool IsCompleted { get; set; }
@@ -28,5 +26,9 @@ namespace models.Entities
 
         [BsonElement("Task")]
         public string? Task { get; set; }
+
+        [BsonElement("IsGranted")]
+
+        public bool IsGranted { get; set; }
     }
 }

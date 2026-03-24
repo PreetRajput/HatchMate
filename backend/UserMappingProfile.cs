@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using models;
-using models.Dtos;
+using models.Dtos.PetDtos;
+using models.Dtos.TaskDtos;
+using models.Dtos.UserDtos;
 using models.Entities; // Corrected namespace for UserRole
 
 public class UserMappingProfile : Profile

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using models.Dtos;
+using models.Dtos.PetDtos;
 using models.Entities;
 using MongoDB.Driver;
 using System.Security.Claims;

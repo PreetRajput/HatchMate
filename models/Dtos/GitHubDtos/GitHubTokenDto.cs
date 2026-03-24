@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace models.Dtos
+namespace models.Dtos.GitHubDtos
 {
     public class GitHubTokenDto
     {

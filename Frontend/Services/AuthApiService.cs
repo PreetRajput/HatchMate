@@ -4,7 +4,8 @@ using System.Net.Http.Json;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
-using models.Dtos;
+using models.Dtos.UserDtos;
+using models.Dtos.GitHubDtos;
 
 namespace MauiApp1.Services
 {

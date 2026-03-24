@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using models.Dtos;
+using models.Dtos.GitHubDtos;
+using models.Dtos.UserDtos;
 using models.Entities;
 using MongoDB.Bson;
 using MongoDB.Driver;

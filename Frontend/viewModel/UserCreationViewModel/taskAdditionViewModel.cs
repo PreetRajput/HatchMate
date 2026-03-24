@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Controls.Shapes;
-using models.Dtos;
+using models.Dtos.TaskDtos;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

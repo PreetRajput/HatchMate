@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace models.Dtos
+namespace models.Dtos.UserDtos
 {
-    public class TasksIdDto
+    public class UserTasks
     {
-        public List<Guid> TaskIds { get; set; } = new();
+        public List<string> Tasks { get; set; } = new();
+
     }
 }

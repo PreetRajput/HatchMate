@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace models.Dtos
+namespace models.Dtos.UserDtos
 {
-    public class UserEmailDto
+    public class UserAppRelatedInfoDto
     {
-        public string Email { get; set; }
+        public string? Username { get; set; }
+
     }
 }

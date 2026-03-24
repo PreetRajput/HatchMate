@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using models.Dtos;
+using models.Dtos.PetDtos;
 using models.Entities;
 using MongoDB.Driver;
 

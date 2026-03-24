@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace models.Dtos
+namespace models.Dtos.TaskDtos
 {
-    public class GitHubCodeDto
+    public class TaskListDto
     {
-        public string code {  get; set; }
+        public List<string> Tasks { get; set; } = new();
+
     }
 }

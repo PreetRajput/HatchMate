@@ -1,7 +1,9 @@
 ﻿using MauiApp1.Services;
 using MauiApp1.viewModel;
 using Microsoft.Extensions.Logging;
-using models.Dtos;
+using models.Dtos.PetDtos;
+using models.Dtos.TaskDtos;
+using models.Dtos.UserDtos;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace MauiApp1

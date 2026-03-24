@@ -5,7 +5,9 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using models.Dtos;
+using models.Dtos.UserDtos;
+using models.Dtos.PetDtos;
+using models.Dtos.TaskDtos;
 
 namespace MauiApp1.Services
 {

@@ -13,11 +13,11 @@ namespace models.Entities
         [BsonElement("Username")]
         public string? Username { get; set; }
 
-        [BsonElement("PetName")]
-        public string? PetName { get; set; }
+        [BsonElement("TotalTaskXp")]
+        public int TotalTaskXp { get; set; }
 
-        [BsonElement("PetNum")]
-        public int PetNum { get; set; }
+        [BsonElement("TodayXp")]
+        public int TodayXp { get; set; }
 
 
     }

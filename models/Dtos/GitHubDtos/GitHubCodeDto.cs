@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace models.Dtos
+namespace models.Dtos.GitHubDtos
 {
-    public class UserAppRelatedInfoDto
+    public class GitHubCodeDto
     {
-        public string? Username { get; set; }
-
+        public string code {  get; set; }
     }
 }

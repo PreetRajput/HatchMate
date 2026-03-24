@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using models.Dtos;
+using models.Dtos.PetDtos;
+using models.Dtos.UserDtos;
 using models.Entities;
 using MongoDB.Driver;
 using System;
@@ -93,6 +94,19 @@ namespace WebApplication1.services // Replace with your Service project namespac
             return pet;
         }
 
+        public async Task UpdateXp(Guid userId)
+        {
+            try
+            {
+                var filter = Builders<UserEntity>.Filter.Eq(t=> t.Id, userId);
+                var update = Builders<UserEntity>.Update.Inc(t => t.TotalTaskXp, 10);
+                await _users.UpdateOneAsync(filter, update);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+        }
         // --- Helper Function ---
     }
 }

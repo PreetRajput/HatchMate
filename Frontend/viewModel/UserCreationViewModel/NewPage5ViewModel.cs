@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiApp1.Services;
-using models.Dtos;
+using models.Dtos.PetDtos;
+using models.Dtos.TaskDtos;
+using models.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

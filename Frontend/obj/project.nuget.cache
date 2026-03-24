@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "opEn+G1XQtI=",
+  "dgSpecHash": "fbcYUOd1ReE=",
   "success": true,
   "projectFilePath": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\frontend\\MauiApp1.csproj",
   "expectedPackageFiles": [
@@ -31,7 +31,7 @@
     "C:\\Users\\rajpu\\.nuget\\packages\\microsoft.maui.graphics\\9.0.111\\microsoft.maui.graphics.9.0.111.nupkg.sha512",
     "C:\\Users\\rajpu\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\9.0.111\\microsoft.maui.graphics.win2d.winui.desktop.9.0.111.nupkg.sha512",
     "C:\\Users\\rajpu\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.111\\microsoft.maui.resizetizer.9.0.111.nupkg.sha512",
-    "C:\\Users\\rajpu\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.10\\microsoft.net.illink.tasks.9.0.10.nupkg.sha512",
+    "C:\\Users\\rajpu\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.14\\microsoft.net.illink.tasks.9.0.14.nupkg.sha512",
     "C:\\Users\\rajpu\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\rajpu\\.nuget\\packages\\microsoft.web.webview2\\1.0.3179.45\\microsoft.web.webview2.1.0.3179.45.nupkg.sha512",
     "C:\\Users\\rajpu\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
