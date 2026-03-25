@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using models;
+using models.Dtos.LogDtos;
 using models.Dtos.PetDtos;
 using models.Dtos.TaskDtos;
 using models.Dtos.UserDtos;
@@ -18,6 +19,6 @@ public class UserMappingProfile : Profile
         CreateMap<PetEntity, PetNameDto>();
         CreateMap<PetInfoDto, PetEntity>();
         CreateMap<TaskEntity, TaskItemDto>();
-
+        CreateMap<LogEntity, LogInfoDto>();
     }
 }

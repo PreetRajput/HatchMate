@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using models.Dtos.LogDtos;
 using models.Dtos.TaskDtos;
 using models.Entities;
 using MongoDB.Driver;
@@ -11,6 +12,7 @@ namespace WebApplication1.services
     {
         private readonly IMongoCollection<TaskEntity> _tasks;
         private readonly IMongoCollection<LogEntity> _logs;
+        private readonly IMongoCollection<UserEntity> _users;
         private readonly IMapper _mapper;
         
         public TaskService(MongoDBService mongo, IMapper mapper)
@@ -18,6 +20,7 @@ namespace WebApplication1.services
             _tasks = mongo.GetCollection<TaskEntity>("TaskDetails");
             _mapper = mapper;
             _logs = mongo.GetCollection<LogEntity>("LogDetails");
+            _users = mongo.GetCollection<UserEntity>("UserDetails");
         }
         public async Task<List<TaskItemDto>> AddTask(TaskListDto dto, Guid userId)
         {
@@ -58,19 +61,18 @@ namespace WebApplication1.services
 
                     var filter = Builders<TaskEntity>.Filter.And(
                             Builders<TaskEntity>.Filter.Eq(t => t.UserId, userId),
-                            Builders<TaskEntity>.Filter.Eq(t => t.Id, item)
+                            Builders<TaskEntity>.Filter.Eq(t => t.Id, item),
+                             Builders<TaskEntity>.Filter.Eq(t => t.IsCompleted, false)
                         );
                 
+                    update = Builders<TaskEntity>.Update.Set(u => u.IsCompleted, true);
+                    var result = await _tasks.UpdateOneAsync(filter, update);
+                    if (result.MatchedCount == 0)
+                        continue;
                     Console.WriteLine("entered the uodatedTasks field");
-                    if(TrueIfCompleted)
-                    {
                         try
                         {
-
-                            update = Builders<TaskEntity>.Update.Set(u => u.IsCompleted, true);
-                            var IsRewarded = await RetrieveIsRewarded(userId, item);
-                            if (IsRewarded == false)
-                            {
+                            
                                 LogEntity logEntity = new LogEntity();
                                 logEntity.UserId = userId;
                                 logEntity.TaskId = item;
@@ -78,54 +80,34 @@ namespace WebApplication1.services
                                 logEntity.Id = Id;
                                 logEntity.ExpGranted = 10;
                                 await _logs.InsertOneAsync(logEntity);
-                            }
-                            var result = await _tasks.UpdateOneAsync(filter, update);
-                            if (result.MatchedCount == 0)
-                                throw new Exception("User not found");
 
+                            UpdateDefinition<UserEntity> updateUser;
+                            var filterForUser = Builders<UserEntity>.Filter.And(
+                                Builders<UserEntity>.Filter.Eq(t => t.Id, userId),
+                                Builders<UserEntity>.Filter.Lt(t => t.TodayXp, 200)
+                                );
+                                
+                            
+                            updateUser = Builders<UserEntity>.Update
+                                                .Inc(t => t.TotalTaskXp, 10)
+                                                .Inc(t=> t.TodayXp, 10);
+                            await  _users.UpdateOneAsync(filterForUser, updateUser);
                         }
                         catch (Exception ex)
                         {
                                 Console.WriteLine($"Error: {ex}");
-                         }
+                        }
 
 
                     }
-                    else
-                    {
-                         update = Builders<TaskEntity>.Update.Set(u => u.IsCompleted, false);
-                        var result = await _tasks.UpdateOneAsync(filter, update);
-
-                        if (result.MatchedCount == 0)
-                            throw new Exception("User not found");
-                    }
 
 
-                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
 
-        }
-        public async Task<bool?> RetrieveIsRewarded(Guid UserId, Guid TaskId)
-        {
-            try
-            {
-                var Filter = Builders<TaskEntity>.Filter.And(
-                Builders<TaskEntity>.Filter.Eq(t => t.UserId, UserId),
-                Builders<TaskEntity>.Filter.Eq(t => t.Id, TaskId)
-                );
-
-                return await _tasks.Find(Filter).Project(x => x.IsRewarded).FirstOrDefaultAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                return null;
-            }
-            
         }
         public async Task<DeleteResult> DeleteTask(Guid userId, Guid id)
         {

@@ -13,5 +13,16 @@ namespace WebApplication1.services
             _log = mongo.GetCollection<LogEntity>("LogDetails");
             _mapper = mapper;
         }
+
+        public async Task GetLog(Guid UserId, Guid TaskId)
+        {
+            var Filter = Builders<LogEntity>.Filter.And(
+                Builders<LogEntity>.Filter.Eq(t=> t.TaskId, TaskId),
+                Builders<LogEntity>.Filter.Eq(t=> t.UserId, UserId)
+            );
+
+            var result= await _log.Find(Filter).ToListAsync();
+
+        }
     }
 }

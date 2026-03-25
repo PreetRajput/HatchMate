@@ -17,8 +17,6 @@ namespace models.Entities
         [BsonGuidRepresentation(GuidRepresentation.Standard)]
         public Guid UserId { get; set; }
 
-        [BsonElement("isRewarded")]
-        public bool IsRewarded { get; set; }
 
         [BsonElement("isCompleted")]
         public bool IsCompleted { get; set; }

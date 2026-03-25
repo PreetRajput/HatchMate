@@ -19,6 +19,8 @@ namespace models.Entities
         [BsonElement("TodayXp")]
         public int TodayXp { get; set; }
 
+        [BsonElement("LastExpGrantedDate")]
+        public DateTime LastExpGrantedDate { get; set; }
 
     }
 }
