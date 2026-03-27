@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using models;
+using models.Dtos.EmoteSeedDtos;
 using models.Dtos.LogDtos;
 using models.Dtos.PetDtos;
 using models.Dtos.TaskDtos;
@@ -20,5 +20,6 @@ public class UserMappingProfile : Profile
         CreateMap<PetInfoDto, PetEntity>();
         CreateMap<TaskEntity, TaskItemDto>();
         CreateMap<LogEntity, LogInfoDto>();
+        CreateMap<EmoteSeedEntity, EmoteInfoDto>();
     }
 }

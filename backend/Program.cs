@@ -53,6 +53,7 @@ builder.Services.AddSingleton<JWTservice>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<PetService>();
 builder.Services.AddSingleton<TaskService>();
+builder.Services.AddSingleton<SeedService>();
 builder.Services.AddSingleton<GitHubService>();
 builder.Services.AddAuthorization();
 

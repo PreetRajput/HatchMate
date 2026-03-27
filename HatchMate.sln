@@ -25,6 +25,7 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3763BB55-4D17-471F-9599-3F25D0B0E028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3763BB55-4D17-471F-9599-3F25D0B0E028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3763BB55-4D17-471F-9599-3F25D0B0E028}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{3763BB55-4D17-471F-9599-3F25D0B0E028}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{3763BB55-4D17-471F-9599-3F25D0B0E028}.Debug|x64.Build.0 = Debug|Any CPU
 		{3763BB55-4D17-471F-9599-3F25D0B0E028}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -66,5 +67,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3763BB55-4D17-471F-9599-3F25D0B0E028} = {CE609670-85B9-0D16-FB54-ED063D5D8A6D}
 		{C478575C-0112-4127-B74F-375104488E7A} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3414F817-1A65-41E7-8B2E-60197D3C03A2}
 	EndGlobalSection
 EndGlobal
