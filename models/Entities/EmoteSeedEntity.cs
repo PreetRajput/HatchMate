@@ -10,8 +10,6 @@ namespace models.Entities
 {
     public class EmoteSeedEntity
     {
-        [BsonGuidRepresentation(GuidRepresentation.Standard)]
-        public Guid Id { get; set; }
         [BsonElement("Pet_Type")]
         public string Pet_Type { get; set; }
 

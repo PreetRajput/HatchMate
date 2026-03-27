@@ -6,6 +6,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using NSwag.AspNetCore;
 using System.Text;
+using WebApplication1.Seed;
 using WebApplication1.services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,11 +55,17 @@ builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<PetService>();
 builder.Services.AddSingleton<TaskService>();
 builder.Services.AddSingleton<SeedService>();
+builder.Services.AddSingleton<EmoteSeed>();
 builder.Services.AddSingleton<GitHubService>();
 builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var obj = scope.ServiceProvider.GetRequiredService<EmoteSeed>();
+    await obj.EmoteSeedAsync();
+}
 app.UseOpenApi();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
