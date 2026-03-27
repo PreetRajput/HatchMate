@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using models.Dtos.LogDtos;
 using models.Dtos.TaskDtos;
 using models.Entities;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 
@@ -81,17 +82,55 @@ namespace WebApplication1.services
                                 logEntity.ExpGranted = 10;
                                 await _logs.InsertOneAsync(logEntity);
 
-                            UpdateDefinition<UserEntity> updateUser;
-                            var filterForUser = Builders<UserEntity>.Filter.And(
-                                Builders<UserEntity>.Filter.Eq(t => t.Id, userId),
-                                Builders<UserEntity>.Filter.Lt(t => t.TodayXp, 200)
-                                );
-                                
-                            
-                            updateUser = Builders<UserEntity>.Update
-                                                .Inc(t => t.TotalTaskXp, 10)
-                                                .Inc(t=> t.TodayXp, 10);
-                            await  _users.UpdateOneAsync(filterForUser, updateUser);
+                          var filterForCheck = Builders<UserEntity>.Filter.Eq(t => t.Id, userId);
+                            var currentDate = DateTime.UtcNow.Date;
+
+                       
+                      var updates = new PipelineUpdateDefinition<UserEntity>(new[]
+                            {
+                                new BsonDocument("$set", new BsonDocument
+                                {
+                                    { "TodayXp",
+
+                                        new BsonDocument("$cond", new BsonArray
+                                        {
+                                            new BsonDocument("$ne", new  BsonArray {"$LastExpGrantedDate", currentDate}),
+                                            10,
+                                            new BsonDocument("$min", new BsonArray {200, 
+                                                new BsonDocument("$add", new BsonArray
+                                                {
+                                                    "$TodayXp" , 10
+                                                })
+                                            })
+                                        })
+                                     },
+                                      {
+
+                                    "LastExpGrantedDate",  currentDate
+                                    },
+                                    {
+                                        "TotalXp", new BsonDocument("$add", new BsonArray
+                                        {
+                                            "$TotalXp", new BsonDocument("$max",
+                                            new BsonArray
+                                            { 0,
+                                            new BsonDocument("$min",
+                                                    new BsonArray{10,
+                                                        new BsonDocument("$subtract",
+                                                            new BsonArray{200 ,
+                                                                "$TodayXp"})
+                                                                  })
+                                            })
+                                        })
+                                    }
+                                })
+                            }
+
+                        );
+
+                            await _users.UpdateOneAsync(filterForCheck, updates);
+                          
+
                         }
                         catch (Exception ex)
                         {

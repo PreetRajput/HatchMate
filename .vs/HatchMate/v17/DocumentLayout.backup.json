@@ -3,92 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\services\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\services\\taskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\entities\\taskentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\entities\\taskentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\entities\\userentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\services\\petservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\services\\petservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\services\\logservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\services\\logservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\usermappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\usermappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\dtos\\logdtos\\loginfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\dtos\\logdtos\\loginfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\entities\\logentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\entities\\logentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\controllers\\taskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3763BB55-4D17-471F-9599-3F25D0B0E028}|frontend\\MauiApp1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\frontend\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3763BB55-4D17-471F-9599-3F25D0B0E028}|frontend\\MauiApp1.csproj|solutionrelative:frontend\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3763BB55-4D17-471F-9599-3F25D0B0E028}|frontend\\MauiApp1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\frontend\\viewmodel\\userdashboardviewmodel\\goalsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3763BB55-4D17-471F-9599-3F25D0B0E028}|frontend\\MauiApp1.csproj|solutionrelative:frontend\\viewmodel\\userdashboardviewmodel\\goalsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\services\\mongodbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\services\\mongodbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C478575C-0112-4127-B74F-375104488E7A}|backend\\WebApplication1.csproj|solutionrelative:backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\dtos\\githubdtos\\githubtokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\dtos\\githubdtos\\githubtokendto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\entities\\petentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\entities\\petentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\dtos\\taskdtos\\taskitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\dtos\\taskdtos\\taskitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\dtos\\petdtos\\petinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\dtos\\petdtos\\petinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\models\\dtos\\userdtos\\userapprelatedinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{12FCF43B-B9CE-4857-8904-D5139EF53331}|models\\models.csproj|solutionrelative:models\\dtos\\userdtos\\userapprelatedinfodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3763BB55-4D17-471F-9599-3F25D0B0E028}|frontend\\MauiApp1.csproj|c:\\users\\rajpu\\onedrive\\desktop\\hatchmate\\frontend\\viewmodel\\usercreationviewmodel\\loginpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3763BB55-4D17-471F-9599-3F25D0B0E028}|frontend\\MauiApp1.csproj|solutionrelative:frontend\\viewmodel\\usercreationviewmodel\\loginpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -97,7 +21,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 401,
+          "DockedHeight": 190,
           "SelectedChildIndex": 1,
           "Children": [
             {
@@ -107,283 +31,46 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserEntity.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\UserEntity.cs",
-              "RelativeDocumentMoniker": "models\\Entities\\UserEntity.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\UserEntity.cs",
-              "RelativeToolTip": "models\\Entities\\UserEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T10:22:24.403Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserMappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\UserMappingProfile.cs",
-              "RelativeDocumentMoniker": "backend\\UserMappingProfile.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\UserMappingProfile.cs",
-              "RelativeToolTip": "backend\\UserMappingProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T09:10:37.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "LogInfoDto.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\LogDtos\\LogInfoDto.cs",
-              "RelativeDocumentMoniker": "models\\Dtos\\LogDtos\\LogInfoDto.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\LogDtos\\LogInfoDto.cs",
-              "RelativeToolTip": "models\\Dtos\\LogDtos\\LogInfoDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T07:56:11.159Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LogService.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\LogService.cs",
-              "RelativeDocumentMoniker": "backend\\services\\LogService.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\LogService.cs",
-              "RelativeToolTip": "backend\\services\\LogService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:27:17.38Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "TaskService.cs",
               "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\TaskService.cs",
               "RelativeDocumentMoniker": "backend\\services\\TaskService.cs",
               "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\TaskService.cs",
               "RelativeToolTip": "backend\\services\\TaskService.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAgwFsAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAFQAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T09:21:32.886Z",
+              "WhenOpened": "2026-03-27T05:12:21.091Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LogEntity.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\LogEntity.cs",
-              "RelativeDocumentMoniker": "models\\Entities\\LogEntity.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\LogEntity.cs",
-              "RelativeToolTip": "models\\Entities\\LogEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "UserEntity.cs",
+              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\UserEntity.cs",
+              "RelativeDocumentMoniker": "models\\Entities\\UserEntity.cs",
+              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\UserEntity.cs",
+              "RelativeToolTip": "models\\Entities\\UserEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:28:58.346Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\Program.cs",
-              "RelativeDocumentMoniker": "backend\\Program.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\Program.cs",
-              "RelativeToolTip": "backend\\Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T09:47:14.305Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PetService.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\PetService.cs",
-              "RelativeDocumentMoniker": "backend\\services\\PetService.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\PetService.cs",
-              "RelativeToolTip": "backend\\services\\PetService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:27:18.851Z",
+              "WhenOpened": "2026-03-27T05:12:06.885Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TaskEntity.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\TaskEntity.cs",
-              "RelativeDocumentMoniker": "models\\Entities\\TaskEntity.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\TaskEntity.cs",
-              "RelativeToolTip": "models\\Entities\\TaskEntity.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Title": "loginPageViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\Frontend\\viewModel\\UserCreationViewModel\\loginPageViewModel.cs",
+              "RelativeDocumentMoniker": "Frontend\\viewModel\\UserCreationViewModel\\loginPageViewModel.cs",
+              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\Frontend\\viewModel\\UserCreationViewModel\\loginPageViewModel.cs",
+              "RelativeToolTip": "Frontend\\viewModel\\UserCreationViewModel\\loginPageViewModel.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T09:16:48.94Z",
+              "WhenOpened": "2026-03-27T05:09:19.231Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ApiService.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\Frontend\\Services\\ApiService.cs",
-              "RelativeDocumentMoniker": "Frontend\\Services\\ApiService.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\Frontend\\Services\\ApiService.cs",
-              "RelativeToolTip": "Frontend\\Services\\ApiService.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAApwFYAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T08:46:00.628Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GoalsViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\Frontend\\viewModel\\UserDashBoardViewModel\\GoalsViewModel.cs",
-              "RelativeDocumentMoniker": "Frontend\\viewModel\\UserDashBoardViewModel\\GoalsViewModel.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\Frontend\\viewModel\\UserDashBoardViewModel\\GoalsViewModel.cs",
-              "RelativeToolTip": "Frontend\\viewModel\\UserDashBoardViewModel\\GoalsViewModel.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAWwHIAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T08:56:40.568Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TaskController.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\Controllers\\TaskController.cs",
-              "RelativeDocumentMoniker": "backend\\Controllers\\TaskController.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\Controllers\\TaskController.cs",
-              "RelativeToolTip": "backend\\Controllers\\TaskController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAzwA4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T08:55:24.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MongoDBService.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\MongoDBService.cs",
-              "RelativeDocumentMoniker": "backend\\services\\MongoDBService.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\MongoDBService.cs",
-              "RelativeToolTip": "backend\\services\\MongoDBService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:35:09.522Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "backend\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "backend\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T08:28:32.706Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "authController.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\Controllers\\authController.cs",
-              "RelativeDocumentMoniker": "backend\\Controllers\\authController.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\Controllers\\authController.cs",
-              "RelativeToolTip": "backend\\Controllers\\authController.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T08:29:26.072Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\UserService.cs",
-              "RelativeDocumentMoniker": "backend\\services\\UserService.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\services\\UserService.cs",
-              "RelativeToolTip": "backend\\services\\UserService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAGgAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T08:33:06.027Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\appsettings.json",
-              "RelativeDocumentMoniker": "backend\\appsettings.json",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\backend\\appsettings.json",
-              "RelativeToolTip": "backend\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-24T08:07:58.957Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "PetEntity.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\PetEntity.cs",
-              "RelativeDocumentMoniker": "models\\Entities\\PetEntity.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Entities\\PetEntity.cs",
-              "RelativeToolTip": "models\\Entities\\PetEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T09:48:31.407Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "GitHubTokenDto.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\GitHubDtos\\GitHubTokenDto.cs",
-              "RelativeDocumentMoniker": "models\\Dtos\\GitHubDtos\\GitHubTokenDto.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\GitHubDtos\\GitHubTokenDto.cs",
-              "RelativeToolTip": "models\\Dtos\\GitHubDtos\\GitHubTokenDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T09:19:49.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "TaskItemDto.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\TaskDtos\\TaskItemDto.cs",
-              "RelativeDocumentMoniker": "models\\Dtos\\TaskDtos\\TaskItemDto.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\TaskDtos\\TaskItemDto.cs",
-              "RelativeToolTip": "models\\Dtos\\TaskDtos\\TaskItemDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T09:19:33.392Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "PetInfoDto.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\PetDtos\\PetInfoDto.cs",
-              "RelativeDocumentMoniker": "models\\Dtos\\PetDtos\\PetInfoDto.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\PetDtos\\PetInfoDto.cs",
-              "RelativeToolTip": "models\\Dtos\\PetDtos\\PetInfoDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T09:19:14.316Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "UserAppRelatedInfoDto.cs",
-              "DocumentMoniker": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\UserDtos\\UserAppRelatedInfoDto.cs",
-              "RelativeDocumentMoniker": "models\\Dtos\\UserDtos\\UserAppRelatedInfoDto.cs",
-              "ToolTip": "C:\\Users\\rajpu\\OneDrive\\Desktop\\HatchMate\\models\\Dtos\\UserDtos\\UserAppRelatedInfoDto.cs",
-              "RelativeToolTip": "models\\Dtos\\UserDtos\\UserAppRelatedInfoDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-23T09:18:48.24Z"
             }
           ]
         },
         {
-          "DockedHeight": 224,
+          "DockedHeight": 435,
           "SelectedChildIndex": -1,
           "Children": [
             {

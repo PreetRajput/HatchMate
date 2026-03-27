@@ -130,8 +130,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\models\models.csproj" />
-	  <ProjectReference Include="..\Models\models.csproj" />
+	  <ProjectReference Include="..\models\models.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
