@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace models.Dtos.PetDtos
 {
-    public class PetNameDto
+    public class PetDto
     {
-        public string? PetName { get; set; }
-        public Guid Id { get; set; }
+        public string Pet_Type { get; set; }
+        public int Pet_Level { get; set; }
     }
 }

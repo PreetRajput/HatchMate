@@ -19,8 +19,11 @@ namespace models.Entities
         [BsonElement("PetName")]
         public string? PetName { get; set; }
 
-        [BsonElement("PetNum")]
+        [BsonElement("Pet_Level")]
+        public int Pet_Level { get; set; }
 
-        public int PetNum { get; set; }
+        [BsonElement("Pet_Type")]
+        public string Pet_Type { get; set; }
+
     }
 }

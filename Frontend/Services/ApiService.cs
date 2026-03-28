@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using models.Dtos.UserDtos;
 using models.Dtos.PetDtos;
 using models.Dtos.TaskDtos;
+using models.Dtos.EmoteSeedDtos;
 
 namespace MauiApp1.Services
 {
@@ -32,7 +33,7 @@ namespace MauiApp1.Services
             }
             return false;
         }
-
+        
         public void SetToken(string token)
         {
             _token = token?.Trim().Trim('"');
@@ -48,13 +49,20 @@ namespace MauiApp1.Services
         }
 
         // GetPet
-        public async Task<PetNameDto?> GetPetAsync()
+        public async Task<PetInfoDto?> GetPetAsync()
         {
             var response = await _httpClient.GetAsync("api/pet");
             var body = await response.Content.ReadAsStringAsync();
             Debug.WriteLine($"[ApiService] GetPetAsync -> {(int)response.StatusCode} {body}");
             if (!response.IsSuccessStatusCode) return null;
-            return JsonSerializer.Deserialize<PetNameDto>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<PetInfoDto>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+        public async Task<EmoteInfoDto> GetAnimationAsync(PetDto dto)
+        {
+            var response = await _httpClient.PostAsJsonAsync("api/seed", dto);
+            var body = await response.Content.ReadAsStringAsync();
+            if(!response.IsSuccessStatusCode) return null;
+            return JsonSerializer.Deserialize<EmoteInfoDto>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         // Post user

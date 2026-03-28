@@ -60,26 +60,7 @@ namespace WebApplication1.Controllers
             return Ok();
         }
 
-        [Authorize]
-        [HttpGet("pet")]
-        public async Task<PetNameDto?> GetPet()
-        {
-            Console.Write("getpet run");
-            var userIdValue = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if(string.IsNullOrEmpty(userIdValue))
-            {
-                Console.WriteLine("no token valid");
-                return null;
-            }
-
-            var userId = Guid.Parse(userIdValue);
-
-            var pet = await _userService.GetPetName(userId);
-
-                Console.WriteLine("uyuguyg", pet);
-            return pet;
-           
-        }
+       
     }
 }
 

@@ -116,7 +116,7 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public async Task navToShell()
         {
-            Debug.WriteLine(pet.PetName + "preeeet" + pet.PetNum);
+            pet.Pet_Level = 1;
             bool success = await _apiService.PostUserAsync(Player);
             bool petSuccess = await _apiService.PostPetAsync(pet);
 

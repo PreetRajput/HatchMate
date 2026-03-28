@@ -11,16 +11,17 @@
                FontSize="24"/>
             
         <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-            <ImageButton  />
-            <ImageButton  />
+            <ImageButton  Source="{Binding EmoteOne}"/>
+            <ImageButton  Source="{Binding EmoteTwo}"/>
         </VerticalStackLayout>
             
         <VerticalStackLayout Grid.Row="1" Grid.Column="2">
-            <ImageButton  />
-            <ImageButton  />
+            <ImageButton  Source="{Binding EmoteThree}"/>
+            <ImageButton  Source="{Binding EmoteFour}"/>
         </VerticalStackLayout>
-            
 
+
+        <Image Source="{Binding ImageSource}" Grid.Row="1" Grid.Column="1" HeightRequest="200" WidthRequest="200"/>
 
 
 

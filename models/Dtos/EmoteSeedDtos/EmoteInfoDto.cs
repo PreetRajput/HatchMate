@@ -9,6 +9,6 @@ namespace models.Dtos.EmoteSeedDtos
     public class EmoteInfoDto
     {
         public string Icon { get; set; }
-        public string Animation { get; set; }
+        public List<string> Animation { get; set; }
     }
 }

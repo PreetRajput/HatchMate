@@ -22,7 +22,7 @@
                         WidthRequest="120"
                         HeightRequest="40"
                         Command="{Binding choosedEggCommand}"
-                        CommandParameter="1"
+                        CommandParameter="cow"
                         />
             </VerticalStackLayout>
 
@@ -36,23 +36,10 @@
                         WidthRequest="120"
                         HeightRequest="40"
                         Command="{Binding choosedEggCommand}"
-                        CommandParameter="2"
+                        CommandParameter="DragonWarrior"
                     />
             </VerticalStackLayout>
 
-            <!-- Egg 3 -->
-            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
-                <Image Source="egg3.png" HeightRequest="120" WidthRequest="120"/>
-                <Button Text="Choose"
-                        BackgroundColor="#FFD54F"
-                        TextColor="Black"
-                        CornerRadius="25"
-                        WidthRequest="120"
-                        HeightRequest="40"
-                        Command="{Binding choosedEggCommand}"
-                        CommandParameter="3"
-                        />
-            </VerticalStackLayout>
         </VerticalStackLayout>
 
     </Grid>

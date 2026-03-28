@@ -47,6 +47,7 @@ namespace MauiApp1
             builder.Services.AddTransient<AppSettingsViewModel>();
 
             builder.Services.AddSingleton<PetInfoDto>();
+            builder.Services.AddSingleton<PetDto>();
             builder.Services.AddSingleton<UserAppRelatedInfoDto>();
             builder.Services.AddSingleton<TaskListDto>();
 

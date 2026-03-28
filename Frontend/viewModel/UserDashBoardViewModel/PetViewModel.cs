@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiApp1.Services;
+using models.Dtos.PetDtos;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,6 +19,7 @@ namespace MauiApp1.viewModel
 
         [ObservableProperty]
         string imageSource = "";
+
 
         private bool running = true;
         private int currentAnimationIndex = 2; // start with walk
@@ -37,28 +39,22 @@ namespace MauiApp1.viewModel
         }
 
         [RelayCommand]
-         async void StartAnimationLoop()
-        {
-            int frameDelay = 100;
-            while (running)
-            {
-                var frames = allAnimation[currentAnimationIndex];
-                foreach (var frame in frames)
-                {
-                    ImageSource = frame;
-                    await Task.Delay(frameDelay);
-                }
-            }
-        }
-        [RelayCommand]
         public async void getPetName()
         {
             Debug.WriteLine("GETPETNAME command run");
             if (start)
                 return;
-            var petName = await _apiService.GetPetAsync();
-            if (petName != null)
-                LabelText = petName.PetName;
+            var pet = await _apiService.GetPetAsync();
+            if (pet != null)
+                LabelText = pet.PetName;
+            PetDto dto = new()
+            {
+                Pet_Type = pet.Pet_Type,
+                Pet_Level = pet.Pet_Level
+
+            };
+            var Animation = await _apiService.GetAnimationAsync(dto);
+            
             start = true;
         }
 
@@ -67,6 +63,11 @@ namespace MauiApp1.viewModel
         {
             Random random = new Random();
             currentAnimationIndex = random.Next(allAnimation.Count); // pick random animation
+        }
+
+        void IdleAnimation()
+        {
+            foreach(var animation in allAnimation)
         }
 
 

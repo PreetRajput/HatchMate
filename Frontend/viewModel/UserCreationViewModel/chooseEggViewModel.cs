@@ -19,7 +19,7 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public async Task choosedEgg(string eggBtn)
         {
-            pet.PetNum = int.Parse(eggBtn);
+            pet.Pet_Type = eggBtn;
             var page = ((App)Application.Current).Services.GetRequiredService<taskAddition>();
             var vm = (taskAdditionViewModel)page.BindingContext;
             await Application.Current.MainPage.Navigation.PushAsync(page);

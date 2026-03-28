@@ -40,7 +40,7 @@ namespace WebApplication1.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<PetNameDto> getPetInfo()
+        public async Task<PetInfoDto> getPetInfo()
         {
             try
             {

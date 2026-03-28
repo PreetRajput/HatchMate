@@ -77,23 +77,6 @@ namespace WebApplication1.services // Replace with your Service project namespac
                 return; 
             }
         }
-        public async Task<PetNameDto> GetPetName(Guid userId)
-        {
-            Console.WriteLine("userservice run");
-            var Filter = Builders<UserEntity>.Filter.Eq(u => u.Id, userId);
-            var userInfo = await _users.Find(Filter).FirstOrDefaultAsync();
-            if (userInfo == null)
-            {
-                return null;
-            }
-            Console.WriteLine(userInfo);
-
-            var pet = _mapper.Map<PetNameDto>(userInfo);
-            Console.WriteLine(pet.PetName);
-            Console.WriteLine(pet);
-            return pet;
-        }
-
         public async Task UpdateXp(Guid userId)
         {
             try

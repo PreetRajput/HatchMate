@@ -32,7 +32,7 @@ namespace WebApplication1.services
             }
         }
 
-        public async Task<PetNameDto> RetrievingPetInfo(Guid Id)
+        public async Task<PetInfoDto> RetrievingPetInfo(Guid Id)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace WebApplication1.services
                 var res= await _pet.Find(filter).FirstOrDefaultAsync();
                 if (res == null)
                     return null;
-                return _mapper.Map<PetNameDto>(res);
+                return _mapper.Map<PetInfoDto>(res);
             }
             catch (Exception ex)
             {

@@ -12,13 +12,15 @@ public partial class Pet : ContentPage
     }
     protected override void OnAppearing()
     {
+
         base.OnAppearing();
-       
-        (BindingContext as PetViewModel)?.StartAnimationLoopCommand.Execute(null);
+        
+
         (BindingContext as PetViewModel)?.getPetNameCommand.Execute(null);
+
     }
 
-  
+    
 
 
 
