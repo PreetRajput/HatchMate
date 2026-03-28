@@ -17,7 +17,7 @@ namespace MauiApp1.viewModel
         string labelText = "";
 
         [ObservableProperty]
-        string imageSource = "w1.png";
+        string imageSource = "";
 
         private bool running = true;
         private int currentAnimationIndex = 2; // start with walk

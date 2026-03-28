@@ -17,7 +17,7 @@ namespace models.Entities
         public string Icon { get; set; }
 
         [BsonElement("Animation")]
-        public string Animation { get; set; }
+        public List<string> Animation = new();
         
         [BsonElement("Unlock_Level")]
         public int Unlock_Level { get; set; }
