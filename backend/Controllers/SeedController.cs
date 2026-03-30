@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<List<EmoteInfoDto>> Get([FromBody] PetDto Dto)
+        public async Task<List<EmoteInfoDto>> post([FromBody] PetDto Dto)
         {
             try
             {

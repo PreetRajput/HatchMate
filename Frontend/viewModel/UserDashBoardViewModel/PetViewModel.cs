@@ -13,63 +13,63 @@ namespace MauiApp1.viewModel
 {
     public partial class PetViewModel: ObservableObject
     {
-        bool start;
-        [ObservableProperty]
-        string labelText = "";
-
-        [ObservableProperty]
-        string imageSource = "";
-
-
-        private bool running = true;
-        private int currentAnimationIndex = 2; // start with walk
-
-        private readonly List<List<string>> allAnimation = new()
-        {
-            new() { "c1.png", "c2.png", "c3.png", "c4.png" }, // cute
-            new() { "s1.png", "s2.png" },                     // sleep
-            new() { "w1.png", "w2.png", "w3.png", "w4.png" }  // walk
-        };
-
-        private readonly ApiService _apiService;
-
+        public ApiService _apiService;
+        public Action<string>[] _setter;
         public PetViewModel(ApiService apiService)
         {
             _apiService = apiService;
+            _setter = new Action<string>[]
+             {
+                       v => EmoteOne =v,
+                       v => EmoteTwo =v,
+                       v => EmoteThree =v,
+                       v => EmoteFour =v,
+
+                };
         }
 
-        [RelayCommand]
-        public async void getPetName()
+
+        [ObservableProperty]
+        public string petImage= "./pets/default.png";
+
+      
+        [ObservableProperty]
+        public string emoteOne;
+        
+        [ObservableProperty]
+        public string emoteTwo;
+        
+        [ObservableProperty]
+        public string emoteThree;
+        
+        [ObservableProperty]
+        public string emoteFour;
+
+
+        public async Task getEmotes()
         {
-            Debug.WriteLine("GETPETNAME command run");
-            if (start)
-                return;
-            var pet = await _apiService.GetPetAsync();
-            if (pet != null)
-                LabelText = pet.PetName;
-            PetDto dto = new()
+            var petInfo = await _apiService.GetPetAsync();
+            PetDto dto = new PetDto()
             {
-                Pet_Type = pet.Pet_Type,
-                Pet_Level = pet.Pet_Level
-
+                Pet_Type = petInfo.Pet_Type,
+                Pet_Level = petInfo.Pet_Level,
             };
-            var Animation = await _apiService.GetAnimationAsync(dto);
-            
-            start = true;
+            petImage = "sdsd";
+            var emoteInfo = await _apiService.GetAnimationAsync(dto);
+            for (int i = 0; i < Math.Min(_setter.Length, emoteInfo.Count); i++)
+            {
+                _setter[i](emoteInfo[i].Icon);
+            }
+
         }
 
-        [RelayCommand]
-        void changeAnimation()
+        public async Task IdleAnimaton()
         {
-            Random random = new Random();
-            currentAnimationIndex = random.Next(allAnimation.Count); // pick random animation
-        }
+            if(petInfo.Pet_Type=="cow")
+            {
 
-        void IdleAnimation()
-        {
-            foreach(var animation in allAnimation)
+            }
         }
-
 
     }
 }

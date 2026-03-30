@@ -16,7 +16,7 @@ namespace WebApplication1.Seed
         {
             foreach(var emote in EmoteSeedData.Data)
             {
-                var filter = Builders<EmoteSeedEntity>.Filter.Eq(t=> t.Pet_Type, emote.Pet_Type);
+                var filter = Builders<EmoteSeedEntity>.Filter.Eq(t=> t.Icon, emote.Icon);
                 var checkIfExist = await _emotes.Find(filter).AnyAsync();
                 if (!checkIfExist)
                 {

@@ -61,16 +61,16 @@ namespace WebApplication1.Controllers
 
             return NoContent();
         }
-        [HttpPatch("{TrueIfCompleted}")]
+        [HttpPatch]
         [Authorize]
-        public async Task markTaskAsCompleted([FromBody] TasksIdDto dto, bool TrueIfCompleted)
+        public async Task markTaskAsCompleted([FromBody] TasksIdDto dto)
         {
             try
             {
                     Console.WriteLine("yayyy");
                 var userIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var userId = Guid.Parse(userIdValue);
-                await _taskService.UpdateTask(dto, userId, TrueIfCompleted);
+                await _taskService.UpdateTask(dto, userId);
                 
             }
             catch (Exception ex)

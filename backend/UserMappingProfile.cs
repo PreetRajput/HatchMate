@@ -13,10 +13,9 @@ public class UserMappingProfile : Profile
         CreateMap<UserAppRelatedInfoDto, UserEntity>();
         CreateMap<UserEntity, UserTasks>();
         CreateMap<UserEmailDto, UserEntity>();
-        CreateMap<UserEntity, PetNameDto>();
         CreateMap<TaskItemDto, TaskEntity>();
         CreateMap<TaskEntity, TaskItemDto>();
-        CreateMap<PetEntity, PetInfoDto>();
+        CreateMap<PetInfoDto, PetEntity>();
         CreateMap<TaskEntity, TaskItemDto>();
         CreateMap<LogEntity, LogInfoDto>();
         CreateMap<EmoteSeedEntity, EmoteInfoDto>();

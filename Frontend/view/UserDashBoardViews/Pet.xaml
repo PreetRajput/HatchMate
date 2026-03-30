@@ -3,39 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pet"
              BackgroundColor="White">
-        <Grid RowDefinitions="*, *, *" ColumnDefinitions="*,*,*">
+    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*" >
 
-        <Label Text="{Binding LabelText}"  Grid.Row="0" Grid.Column="0" TextColor="Black" 
-               Grid.ColumnSpan="3"  HorizontalOptions="Center" 
-               VerticalOptions="Center" FontAttributes="Bold" FontFamily="bitcount"
-               FontSize="24"/>
-            
-        <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-            <ImageButton  Source="{Binding EmoteOne}"/>
-            <ImageButton  Source="{Binding EmoteTwo}"/>
+
+        <Label Grid.Row="1" Grid.Column="1"/>
+
+
+        <VerticalStackLayout Grid.Row="1">
+            <ImageButton Source="{Binding EmoteOne}"/>
+            <ImageButton Source="{Binding EmoteTwo}"/>
         </VerticalStackLayout>
-            
+        
         <VerticalStackLayout Grid.Row="1" Grid.Column="2">
-            <ImageButton  Source="{Binding EmoteThree}"/>
-            <ImageButton  Source="{Binding EmoteFour}"/>
+            <ImageButton Source= "{Binding EmoteThree}"/>
+            <ImageButton Source= "{Binding EmoteFour}"/>
         </VerticalStackLayout>
 
-
-        <Image Source="{Binding ImageSource}" Grid.Row="1" Grid.Column="1" HeightRequest="200" WidthRequest="200"/>
-
-
-
-        <ImageButton Source="{Binding ImageSource}"  Grid.Row="1" Grid.Column="1" 
-                     HeightRequest="150" Command="{Binding changeAnimationCommand}"/>
-       
-            
-
-            <ProgressBar x:Name="expBar" Progress="0" Grid.Row="2"
-                Grid.Column="1"  ProgressColor="Green" BackgroundColor="#B0BEC5"
-                         HeightRequest="5" VerticalOptions="Start"/>
-
-
-
+        <Image x:Name="Pet" Source="{Binding PetImage}"/>
 
     </Grid>
 </ContentPage>

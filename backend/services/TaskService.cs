@@ -50,7 +50,7 @@ namespace WebApplication1.services
                 return null;
             }
         }
-        public async Task UpdateTask(TasksIdDto dto, Guid userId, bool TrueIfCompleted)
+        public async Task UpdateTask(TasksIdDto dto, Guid userId)
         {
             try
             {
@@ -79,6 +79,7 @@ namespace WebApplication1.services
                                 logEntity.TaskId = item;
                                 Guid Id = Guid.NewGuid();
                                 logEntity.Id = Id;
+                                logEntity.ExpGrantedDate = DateTime.UtcNow.Date;
                                 logEntity.ExpGranted = 10;
                                 await _logs.InsertOneAsync(logEntity);
 
@@ -109,9 +110,9 @@ namespace WebApplication1.services
                                     "LastExpGrantedDate",  currentDate
                                     },
                                     {
-                                        "TotalXp", new BsonDocument("$add", new BsonArray
+                                        "TotalTaskXp", new BsonDocument("$add", new BsonArray
                                         {
-                                            "$TotalXp", new BsonDocument("$max",
+                                            "$TotalTaskXp", new BsonDocument("$max",
                                             new BsonArray
                                             { 0,
                                             new BsonDocument("$min",
@@ -122,19 +123,20 @@ namespace WebApplication1.services
                                                                   })
                                             })
                                         })
-                                    }
+                                    },
+                                    
                                 })
                             }
 
                         );
-
+                        Console.WriteLine("preet is okay");
                             await _users.UpdateOneAsync(filterForCheck, updates);
                           
 
                         }
                         catch (Exception ex)
                         {
-                                Console.WriteLine($"Error: {ex}");
+                                Console.WriteLine($"ummm Error: {ex}");
                         }
 
 

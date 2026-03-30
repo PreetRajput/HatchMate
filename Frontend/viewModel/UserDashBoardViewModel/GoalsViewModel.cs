@@ -35,7 +35,6 @@ namespace MauiApp1.viewModel
         int trash = 0;
 
         public event PropertyChangedEventHandler PropertyChanged;
-        bool TrueIfCompleted;
         public void OnPropertyChanged(string prop)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
@@ -232,7 +231,7 @@ namespace MauiApp1.viewModel
                 Debug.WriteLine($"Error: {ex.ToString()}");
             }
 
-                await _apiService.UpdateTaskToCompletedAsync(UpdatedTasks, TrueIfCompleted);
+                await _apiService.UpdateTaskToCompletedAsync(UpdatedTasks);
                 UpdatedTasks.TaskIds.Clear();
                 TaskName = TaskMode.ADD;
                 Debug.WriteLine("value of TaskName is:", TaskName);
@@ -300,7 +299,6 @@ namespace MauiApp1.viewModel
             BorderContext.Clear();
             if(SelectedFilter == Filter.Completed)
             {
-                TrueIfCompleted = false;
                 foreach (var task in AllTasks)
                 {
                     if (task.IsCompleted)
@@ -312,7 +310,6 @@ namespace MauiApp1.viewModel
             }
             else
             {
-                TrueIfCompleted = true;
                 foreach (var task in AllTasks)
                 {
                     if (!task.IsCompleted)
@@ -336,7 +333,7 @@ namespace MauiApp1.viewModel
             public bool IsSelected;
 
             [ObservableProperty]
-            public string? bgColor;
+            public string? bgColor = "Transparent";
 
         }
 

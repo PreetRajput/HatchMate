@@ -83,6 +83,7 @@
 	  <None Remove="Resources\Images\pets\cow\walk\w2.png" />
 	  <None Remove="Resources\Images\pets\cow\walk\w3.png" />
 	  <None Remove="Resources\Images\pets\cow\walk\w4.png" />
+	  <None Remove="Resources\Images\pets\default.png" />
 	  <None Remove="Resources\Images\tabs\pet.png" />
 	  <None Remove="Resources\Images\tabs\settings.png" />
 	  <None Remove="Resources\Images\tabs\stats.png" />
@@ -131,6 +132,10 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\models\models.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\pets\default.png" />
 	</ItemGroup>
 
 	<ItemGroup>

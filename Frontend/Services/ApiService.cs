@@ -20,7 +20,7 @@ namespace MauiApp1.Services
 
         public ApiService()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.39:5000/") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.34:5000/") };
         }
 
         public async Task<bool> InitializeFromStorageAsync()
@@ -57,12 +57,12 @@ namespace MauiApp1.Services
             if (!response.IsSuccessStatusCode) return null;
             return JsonSerializer.Deserialize<PetInfoDto>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
-        public async Task<EmoteInfoDto> GetAnimationAsync(PetDto dto)
+        public async Task<List<EmoteInfoDto>> GetAnimationAsync(PetDto dto)
         {
             var response = await _httpClient.PostAsJsonAsync("api/seed", dto);
             var body = await response.Content.ReadAsStringAsync();
             if(!response.IsSuccessStatusCode) return null;
-            return JsonSerializer.Deserialize<EmoteInfoDto>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return JsonSerializer.Deserialize<List<EmoteInfoDto>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         // Post user
@@ -106,12 +106,12 @@ namespace MauiApp1.Services
                 return null;
             }
         }
-        public async Task<bool> UpdateTaskToCompletedAsync(TasksIdDto dto, bool TrueIfCompleted)
+        public async Task<bool> UpdateTaskToCompletedAsync(TasksIdDto dto)
         {
             try
             {
 
-                var response = await _httpClient.PatchAsJsonAsync($"api/task/{TrueIfCompleted}", dto);
+                var response = await _httpClient.PatchAsJsonAsync($"api/task", dto);
                 return response.IsSuccessStatusCode;
             }
             catch (Exception ex)
@@ -142,5 +142,7 @@ namespace MauiApp1.Services
             var res = await _httpClient.DeleteAsync($"api/task/{id}");
             return res.IsSuccessStatusCode;
         }
+    
+
     }
 }
