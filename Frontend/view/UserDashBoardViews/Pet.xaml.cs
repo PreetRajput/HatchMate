@@ -16,7 +16,7 @@ public partial class Pet : ContentPage
         base.OnAppearing();
         
 
-        (BindingContext as PetViewModel)?.getPetNameCommand.Execute(null);
+        (BindingContext as PetViewModel)?.getEmotesCommand.Execute(null);
 
     }
 

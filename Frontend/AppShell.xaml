@@ -13,9 +13,6 @@
         <Tab Icon="pet.png">
             <ShellContent ContentTemplate="{DataTemplate local:Pet}" />
         </Tab>
-        <Tab Icon="stats.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AppStats}" />
-        </Tab>
         <Tab Icon="settings.png">
             <ShellContent ContentTemplate="{DataTemplate local:AppSettings}" />
         </Tab>

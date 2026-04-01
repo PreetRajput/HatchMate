@@ -30,22 +30,28 @@ namespace MauiApp1.viewModel
 
 
         [ObservableProperty]
-        public string petImage= "./pets/default.png";
-
-      
-        [ObservableProperty]
-        public string emoteOne;
-        
-        [ObservableProperty]
-        public string emoteTwo;
-        
-        [ObservableProperty]
-        public string emoteThree;
-        
-        [ObservableProperty]
-        public string emoteFour;
+        public string petImage= "./pets/default_img.png";
 
 
+        [ObservableProperty]
+        public int petLevel = 0;
+
+        [ObservableProperty]
+        public string emoteOne = "./pets/default_img.png" ;
+        
+        [ObservableProperty]
+        public string emoteTwo = "./pets/default_img.png";
+        
+        [ObservableProperty]
+        public string emoteThree= "./pets/default_img.png";
+        
+        [ObservableProperty]
+        public string emoteFour= "./pets/default_img.png";
+
+        [ObservableProperty]
+        public string petName;
+
+        [RelayCommand]
         public async Task getEmotes()
         {
             var petInfo = await _apiService.GetPetAsync();
@@ -54,7 +60,9 @@ namespace MauiApp1.viewModel
                 Pet_Type = petInfo.Pet_Type,
                 Pet_Level = petInfo.Pet_Level,
             };
-            petImage = "sdsd";
+            PetName = petInfo.PetName;
+            PetLevel = petInfo.Pet_Level;
+            PetImage = "sdsd";
             var emoteInfo = await _apiService.GetAnimationAsync(dto);
             for (int i = 0; i < Math.Min(_setter.Length, emoteInfo.Count); i++)
             {
@@ -65,10 +73,7 @@ namespace MauiApp1.viewModel
 
         public async Task IdleAnimaton()
         {
-            if(petInfo.Pet_Type=="cow")
-            {
-
-            }
+   
         }
 
     }

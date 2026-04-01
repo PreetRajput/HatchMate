@@ -83,7 +83,6 @@
 	  <None Remove="Resources\Images\pets\cow\walk\w2.png" />
 	  <None Remove="Resources\Images\pets\cow\walk\w3.png" />
 	  <None Remove="Resources\Images\pets\cow\walk\w4.png" />
-	  <None Remove="Resources\Images\pets\default.png" />
 	  <None Remove="Resources\Images\tabs\pet.png" />
 	  <None Remove="Resources\Images\tabs\settings.png" />
 	  <None Remove="Resources\Images\tabs\stats.png" />
@@ -135,7 +134,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Images\pets\default.png" />
+	  <MauiImage Include="Resources\Images\pets\default_img.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -147,12 +146,6 @@
 	  </Compile>
 	  <Compile Update="view\UserCreationViews\petNameInput.xaml.cs">
 	    <DependentUpon>petNameInput.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="view\UserDashBoardViews\AppSettings.xaml.cs">
-	    <DependentUpon>AppSettings.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="view\UserDashBoardViews\AppStats.xaml.cs">
-	    <DependentUpon>AppStats.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="view\UserCreationViews\taskAddition.xaml.cs">
 	    <DependentUpon>taskAddition.xaml</DependentUpon>
@@ -197,12 +190,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="view\UserDashBoardViews\Pet.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="view\UserDashBoardViews\AppSettings.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="view\UserDashBoardViews\AppStats.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

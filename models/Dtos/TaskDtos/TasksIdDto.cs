@@ -9,5 +9,6 @@ namespace models.Dtos.TaskDtos
     public class TasksIdDto
     {
         public List<Guid> TaskIds { get; set; } = new();
+        public bool IsCompleted { get; set; }
     }
 }

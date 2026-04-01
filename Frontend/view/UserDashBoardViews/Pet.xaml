@@ -6,8 +6,9 @@
     <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*" >
 
 
-        <Label Grid.Row="1" Grid.Column="1"/>
+        <Label Grid.Row="0" Grid.Column="1" Text="{Binding PetName}"/>
 
+        <Label Grid.Row="0" Grid.Column="2" Text="{Binding PetLevel}"/>
 
         <VerticalStackLayout Grid.Row="1">
             <ImageButton Source="{Binding EmoteOne}"/>
@@ -19,7 +20,7 @@
             <ImageButton Source= "{Binding EmoteFour}"/>
         </VerticalStackLayout>
 
-        <Image x:Name="Pet" Source="{Binding PetImage}"/>
+        <Image x:Name="myPet" Source="{Binding PetImage}" Grid.Column="1" Grid.Row="1" />
 
     </Grid>
 </ContentPage>

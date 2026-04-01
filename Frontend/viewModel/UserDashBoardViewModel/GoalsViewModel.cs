@@ -75,6 +75,7 @@ namespace MauiApp1.viewModel
         bool forColor= true;
         List<TaskList> NewAddedTasks = new List<TaskList>();
 
+        bool ToCheckIfTaskCompleted;
 
         [ObservableProperty]
         bool addBtnVisible = false;
@@ -212,18 +213,20 @@ namespace MauiApp1.viewModel
         {
             try
             {
-                foreach (var item in BorderContext)
-                {
-                    if (item.IsSelected)
-                    {
-                        UpdatedTasks.TaskIds.Add(item.Id);
-                        item.IsCompleted = item.IsCompleted == true ? false : true;
-                        item.IsSelected = item.IsSelected == true ? false : true;
-                        BorderContext.Remove(item);
+               
+                var toProcess = BorderContext.Where(x => x.IsSelected).ToList();
 
-                        Debug.WriteLine($"goal id is {item.Id}");
-                    }
-                    Debug.WriteLine($"huh id is {item.Id}");
+                foreach (var item in toProcess)
+                {
+                    UpdatedTasks.TaskIds.Add(item.Id);
+
+                    item.IsCompleted = !item.IsCompleted;
+                    item.IsSelected = item.IsSelected == true ? false : true;
+                    UpdatedTasks.IsCompleted = item.IsCompleted;
+
+                    BorderContext.Remove(item);
+
+                    Debug.WriteLine($"goal id is {item.Id}");
                 }
             }
             catch (Exception ex)

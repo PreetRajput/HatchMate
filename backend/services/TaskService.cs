@@ -62,33 +62,36 @@ namespace WebApplication1.services
 
                     var filter = Builders<TaskEntity>.Filter.And(
                             Builders<TaskEntity>.Filter.Eq(t => t.UserId, userId),
-                            Builders<TaskEntity>.Filter.Eq(t => t.Id, item),
-                             Builders<TaskEntity>.Filter.Eq(t => t.IsCompleted, false)
+                            Builders<TaskEntity>.Filter.Eq(t => t.Id, item)
                         );
                 
-                    update = Builders<TaskEntity>.Update.Set(u => u.IsCompleted, true);
+                    update = Builders<TaskEntity>.Update.Set(u => u.IsCompleted, dto.IsCompleted);
                     var result = await _tasks.UpdateOneAsync(filter, update);
-                    if (result.MatchedCount == 0)
-                        continue;
-                    Console.WriteLine("entered the uodatedTasks field");
+
+                    var filterToCheckIfLogExist = Builders<LogEntity>.Filter.Eq(t => t.TaskId, item);
+                    var TrueIfExist = await _logs.Find(filterToCheckIfLogExist).AnyAsync();
+
+                    if (!TrueIfExist)
+                    {
+                        Console.WriteLine("entered the uodatedTasks field");
                         try
                         {
-                            
-                                LogEntity logEntity = new LogEntity();
-                                logEntity.UserId = userId;
-                                logEntity.TaskId = item;
-                                Guid Id = Guid.NewGuid();
-                                logEntity.Id = Id;
-                                logEntity.ExpGrantedDate = DateTime.UtcNow.Date;
-                                logEntity.ExpGranted = 10;
-                                await _logs.InsertOneAsync(logEntity);
 
-                          var filterForCheck = Builders<UserEntity>.Filter.Eq(t => t.Id, userId);
+                            LogEntity logEntity = new LogEntity();
+                            logEntity.UserId = userId;
+                            logEntity.TaskId = item;
+                            Guid Id = Guid.NewGuid();
+                            logEntity.Id = Id;
+                            logEntity.ExpGrantedDate = DateTime.UtcNow.Date;
+                            logEntity.ExpGranted = 10;
+                            await _logs.InsertOneAsync(logEntity);
+
+                            var filterForCheck = Builders<UserEntity>.Filter.Eq(t => t.Id, userId);
                             var currentDate = DateTime.UtcNow.Date;
 
-                       
-                      var updates = new PipelineUpdateDefinition<UserEntity>(new[]
-                            {
+
+                            var updates = new PipelineUpdateDefinition<UserEntity>(new[]
+                                  {
                                 new BsonDocument("$set", new BsonDocument
                                 {
                                     { "TodayXp",
@@ -97,7 +100,7 @@ namespace WebApplication1.services
                                         {
                                             new BsonDocument("$ne", new  BsonArray {"$LastExpGrantedDate", currentDate}),
                                             10,
-                                            new BsonDocument("$min", new BsonArray {200, 
+                                            new BsonDocument("$min", new BsonArray {200,
                                                 new BsonDocument("$add", new BsonArray
                                                 {
                                                     "$TodayXp" , 10
@@ -124,22 +127,24 @@ namespace WebApplication1.services
                                             })
                                         })
                                     },
-                                    
+
                                 })
                             }
 
-                        );
-                        Console.WriteLine("preet is okay");
+                              );
+                            Console.WriteLine("preet is okay");
                             await _users.UpdateOneAsync(filterForCheck, updates);
-                          
+
 
                         }
                         catch (Exception ex)
                         {
-                                Console.WriteLine($"ummm Error: {ex}");
+                            Console.WriteLine($"ummm Error: {ex}");
                         }
 
 
+                    
+                        }
                     }
 
 

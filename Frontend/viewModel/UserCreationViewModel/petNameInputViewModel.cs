@@ -18,6 +18,7 @@ namespace MauiApp1.viewModel
         [ObservableProperty]
         double translate;
 
+
         public PetInfoDto pet;
         public petNameInputViewModel(PetInfoDto pet)
         {

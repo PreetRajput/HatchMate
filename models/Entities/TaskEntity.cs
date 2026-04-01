@@ -25,8 +25,6 @@ namespace models.Entities
         [BsonElement("Task")]
         public string? Task { get; set; }
 
-        [BsonElement("IsGranted")]
-
-        public bool IsGranted { get; set; }
+      
     }
 }
