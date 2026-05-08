@@ -1,12 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using models.Dtos.PetDtos;
 using models.Dtos.UserDtos;
 using models.Entities;
 using MongoDB.Driver;
-using System;
-using System.Threading.Tasks;
 
 namespace WebApplication1.services // Replace with your Service project namespace
 {

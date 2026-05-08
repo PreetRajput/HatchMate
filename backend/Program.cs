@@ -1,10 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
-using NSwag.AspNetCore;
 using System.Text;
 using WebApplication1.Seed;
 using WebApplication1.services;
@@ -17,7 +11,6 @@ builder.WebHost.UseUrls("http://0.0.0.0:5000");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<MongoDBService>();
 builder.Services.AddOpenApiDocument(config =>
 {
     config.Title = "My API";
@@ -50,6 +43,7 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer(options => {
                 Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
+builder.Services.AddSingleton<MongoDBService>();
 builder.Services.AddSingleton<JWTservice>();
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<PetService>();

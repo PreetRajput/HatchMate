@@ -10,6 +10,8 @@ namespace models.Entities
 {
     public class EmoteSeedEntity
     {
+        [BsonId]
+        public ObjectId Id { get; set; }
         [BsonElement("Pet_Type")]
         public string Pet_Type { get; set; }
 

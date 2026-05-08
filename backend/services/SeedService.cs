@@ -3,7 +3,6 @@ using models.Dtos.EmoteSeedDtos;
 using models.Dtos.PetDtos;
 using models.Entities;
 using MongoDB.Driver;
-using WebApplication1.services;
 
 namespace WebApplication1.services
 {
@@ -21,7 +20,6 @@ namespace WebApplication1.services
         {
             try
             {
-
                 var filter = Builders<EmoteSeedEntity>.Filter.And(
                     Builders<EmoteSeedEntity>.Filter.Lte(t => t.Unlock_Level, dto.Pet_Level),
                     Builders<EmoteSeedEntity>.Filter.Eq(t => t.Pet_Type, dto.Pet_Type));
@@ -33,7 +31,6 @@ namespace WebApplication1.services
                     dtoList.Add(EmoteInfoDto);
                 }
                 return dtoList;
-
             }
             catch (Exception ex)
             {

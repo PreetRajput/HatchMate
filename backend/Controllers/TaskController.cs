@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using models.Dtos.TaskDtos;
-using models.Entities;
-using MongoDB.Driver;
 using System.Security.Claims;
 using WebApplication1.services;
 

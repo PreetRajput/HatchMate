@@ -1,6 +1,5 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using System.Diagnostics;
 using System.Security.Authentication;
 
 namespace WebApplication1.services

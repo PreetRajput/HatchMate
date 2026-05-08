@@ -14,7 +14,7 @@ namespace WebApplication1.Controllers
     public class SeedController :ControllerBase
     {
         public readonly SeedService _seedService;
-        SeedController(SeedService seedService)
+        public SeedController(SeedService seedService)
         {
             _seedService = seedService;
         }
