@@ -15,7 +15,7 @@ namespace MauiApp1.Services
 
         public AuthApiService()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.34:5000/") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.7:5000/") };
 
         }
 

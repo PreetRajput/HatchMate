@@ -2,7 +2,7 @@
 using System.Globalization;
 using Microsoft.Maui.Controls;
 
-namespace MauiApp1
+namespace MauiApp1.Converters
 {
 public class InverseBoolConverter : IValueConverter
 {

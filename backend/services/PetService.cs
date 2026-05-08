@@ -32,14 +32,13 @@ namespace WebApplication1.services
             }
         }
 
-        public async Task<PetInfoDto> RetrievingPetInfo(Guid Id)
+        public async Task<PetInfoDto?> RetrievingPetInfo(Guid Id)
         {
             try
             {
                 var filter = Builders<PetEntity>.Filter.Where(x => x.UserId == Id);
                 var res= await _pet.Find(filter).FirstOrDefaultAsync();
-                if (res == null)
-                    return null;
+                if (res == null) return null;
                 return _mapper.Map<PetInfoDto>(res);
             }
             catch (Exception ex)

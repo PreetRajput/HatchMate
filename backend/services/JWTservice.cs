@@ -22,11 +22,6 @@ namespace WebApplication1.services
                 new Claim(ClaimTypes.NameIdentifier, id.ToString()),
                 new Claim(ClaimTypes.Email, email),
             };
-
-
-            Console.Write($"id: '{id}'");
-
-
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_config["Jwt:Key"])
             );
@@ -39,9 +34,6 @@ namespace WebApplication1.services
                 expires: DateTime.UtcNow.AddDays(7),
                 signingCredentials: creds
             );
-            string abc = new JwtSecurityTokenHandler().WriteToken(token);
-            Debug.WriteLine(abc);
-
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

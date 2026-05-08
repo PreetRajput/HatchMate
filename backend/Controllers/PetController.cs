@@ -40,14 +40,18 @@ namespace WebApplication1.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<PetInfoDto> getPetInfo()
+        public async Task<PetInfoDto?> getPetInfo()
         {
             try
             {
                 var UserIdVal = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                var UserId = Guid.Parse(UserIdVal);
-                Console.WriteLine("getPetiNFO");
-                return await _petService.RetrievingPetInfo(UserId);
+                if (UserIdVal is not null)
+                {
+                    var UserId = Guid.Parse(UserIdVal);
+                    return await _petService.RetrievingPetInfo(UserId);
+                }
+                else
+                    throw new Exception("UserId is not availabe probably an api claims issue");
             }
             catch (Exception ex)
             {

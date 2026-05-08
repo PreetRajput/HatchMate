@@ -54,28 +54,35 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public async Task getEmotes()
         {
-            var petInfo = await _apiService.GetPetAsync();
-            PetDto dto = new PetDto()
+            try
             {
-                Pet_Type = petInfo.Pet_Type,
-                Pet_Level = petInfo.Pet_Level,
-            };
-            PetName = petInfo.PetName;
-            PetLevel = petInfo.Pet_Level;
-            if(petInfo.Pet_Type is "cow")
-            {
+                var petInfo = await _apiService.GetPetAsync();
+                PetDto dto = new PetDto()
+                {
+                    Pet_Type = petInfo.Pet_Type,
+                    Pet_Level = petInfo.Pet_Level,
+                };
+                PetName = petInfo.PetName;
+                PetLevel = petInfo.Pet_Level;
+                if(petInfo.Pet_Type is "cow")
+                {
 
-                PetImage = "./pets/cow.jpg";
-            }
-            else if (petInfo.Pet_Type is "DragonWarrior")
-            {
-                PetImage = "./pets/DragonWarrior.png";
+                    PetImage = "./pets/cow.jpg";
+                }
+                else if (petInfo.Pet_Type is "DragonWarrior")
+                {
+                    PetImage = "./pets/DragonWarrior.png";
 
+                }
+                var emoteInfo = await _apiService.GetAnimationAsync(dto);
+                for (int i = 0; i < Math.Min(_setter.Length, emoteInfo.Count); i++)
+                {
+                    _setter[i](emoteInfo[i].Icon);
+                }
             }
-            var emoteInfo = await _apiService.GetAnimationAsync(dto);
-            for (int i = 0; i < Math.Min(_setter.Length, emoteInfo.Count); i++)
+            catch(Exception e)
             {
-                _setter[i](emoteInfo[i].Icon);
+                return;
             }
 
         }
