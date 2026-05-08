@@ -66,13 +66,11 @@ namespace MauiApp1.viewModel
                 PetLevel = petInfo.Pet_Level;
                 if(petInfo.Pet_Type is "cow")
                 {
-
-                    PetImage = "./pets/cow.jpg";
+                    PetImage = "./pets/cow/cute/c1.png";
                 }
                 else if (petInfo.Pet_Type is "DragonWarrior")
                 {
-                    PetImage = "./pets/DragonWarrior.png";
-
+                    PetImage = "./pets/dragon_warrior.png";
                 }
                 var emoteInfo = await _apiService.GetAnimationAsync(dto);
                 for (int i = 0; i < Math.Min(_setter.Length, emoteInfo.Count); i++)

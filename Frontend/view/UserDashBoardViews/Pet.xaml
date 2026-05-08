@@ -3,24 +3,88 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pet"
              BackgroundColor="White">
-    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*" >
+    <Grid RowDefinitions="Auto,*" 
+          RowSpacing="20" 
+          Padding="20">
 
+        <!-- Top Row: Pet Name (Center) and Level (Right) -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <Label Grid.Column="0" 
+                   Text="{Binding PetName}" 
+                   TextColor="Black"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
 
-        <Label Grid.Row="0" Grid.Column="1" Text="{Binding PetName}"/>
+            <Label Grid.Column="1" 
+                   Text="{Binding PetLevel, StringFormat='Level: {0}'}" 
+                   TextColor="Black"
+                   FontSize="18"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center"
+                   Margin="20,0,0,0"/>
+        </Grid>
 
-        <Label Grid.Row="0" Grid.Column="2" Text="{Binding PetLevel}"/>
+        <!-- Center Row: 4 Emotes as corners with Pet in center -->
+        <Grid Grid.Row="1" 
+              ColumnDefinitions="Auto,*,Auto" 
+              RowDefinitions="Auto,*,Auto"
+              ColumnSpacing="20"
+              RowSpacing="20">
 
-        <VerticalStackLayout Grid.Row="1">
-            <ImageButton Source="{Binding EmoteOne}"/>
-            <ImageButton Source="{Binding EmoteTwo}"/>
-        </VerticalStackLayout>
-        
-        <VerticalStackLayout Grid.Row="1" Grid.Column="2">
-            <ImageButton Source= "{Binding EmoteThree}"/>
-            <ImageButton Source= "{Binding EmoteFour}"/>
-        </VerticalStackLayout>
+            <!-- Top Left Emote -->
+            <ImageButton Grid.Row="0" 
+                         Grid.Column="0"
+                         Source="{Binding EmoteOne}" 
+                         WidthRequest="80" 
+                         HeightRequest="80"
+                         Aspect="AspectFit"
+                         VerticalOptions="Start"
+                         HorizontalOptions="Start"/>
 
-        <Image x:Name="myPet" Source="{Binding PetImage}" Grid.Column="1" Grid.Row="1" />
+            <!-- Top Right Emote -->
+            <ImageButton Grid.Row="0" 
+                         Grid.Column="2"
+                         Source="{Binding EmoteTwo}" 
+                         WidthRequest="80" 
+                         HeightRequest="80"
+                         Aspect="AspectFit"
+                         VerticalOptions="Start"
+                         HorizontalOptions="End"/>
+
+            <!-- Center Pet Image -->
+            <Image x:Name="myPet" 
+                   Grid.Row="1" 
+                   Grid.Column="1"
+                   Source="{Binding PetImage}" 
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   WidthRequest="200"
+                   HeightRequest="200"/>
+
+            <!-- Bottom Left Emote -->
+            <ImageButton Grid.Row="2" 
+                         Grid.Column="0"
+                         Source="{Binding EmoteThree}" 
+                         WidthRequest="80" 
+                         HeightRequest="80"
+                         Aspect="AspectFit"
+                         VerticalOptions="End"
+                         HorizontalOptions="Start"/>
+
+            <!-- Bottom Right Emote -->
+            <ImageButton Grid.Row="2" 
+                         Grid.Column="2"
+                         Source="{Binding EmoteFour}" 
+                         WidthRequest="80" 
+                         HeightRequest="80"
+                         Aspect="AspectFit"
+                         VerticalOptions="End"
+                         HorizontalOptions="End"/>
+
+        </Grid>
 
     </Grid>
 </ContentPage>

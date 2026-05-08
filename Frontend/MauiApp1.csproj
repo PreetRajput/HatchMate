@@ -110,6 +110,7 @@
 	  <MauiImage Include="Resources\Images\pets\cow\walk\w2.png" />
 	  <MauiImage Include="Resources\Images\pets\cow\walk\w3.png" />
 	  <MauiImage Include="Resources\Images\pets\cow\walk\w4.png" />
+	  <MauiImage Include="Resources\Images\pets\dragon_warrior.png" />
 	  <MauiImage Include="Resources\Images\tabs\pet.png" />
 	  <MauiImage Include="Resources\Images\tabs\settings.png" />
 	  <MauiImage Include="Resources\Images\tabs\stats.png" />
