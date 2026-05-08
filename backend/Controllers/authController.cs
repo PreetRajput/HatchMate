@@ -21,6 +21,7 @@ public class authController : ControllerBase
     private readonly IMapper _mapper;
     private readonly UserService _userService;
     private readonly GitHubService _gitHubService;
+    
     public authController(MongoDBService mongoService, IMapper mapper, UserService userService, GitHubService gitHubService)
     {
         try
@@ -38,6 +39,18 @@ public class authController : ControllerBase
         }
     }
 
+    [HttpGet("github-config")]
+    public IActionResult GetGitHubConfig()
+    {
+        return Ok(new
+        {
+            ClientId = _gitHubService.GetClientId(),
+            RedirectUri = _gitHubService.GetRedirectUri(),
+            Scope = _gitHubService.GetScope(),
+            AuthUrl = _gitHubService.GetAuthorizationUrl()
+        });
+    }
+
     [HttpPost("github-login")]
     public async Task<IActionResult> GitHubLogin([FromBody] UserEmailDto user)
     {
@@ -47,14 +60,13 @@ public class authController : ControllerBase
 
         return Unauthorized();
     }
+    
     [HttpPost("githubCollect")] 
     public async Task<UserInfoDto> gettinSomeEmail([FromBody] GitHubCodeDto dto)
     {
-        Console.WriteLine("asdjhbasjbdhsad");
+        Console.WriteLine("Processing GitHub code exchange");
         GitHubTokenDto token = await _gitHubService.ExchangeCodeForTokenAsync(dto);
         UserInfoDto response = await _gitHubService.ExchangeTokenForInfo(token);
         return response;
     }
-  
-
 }

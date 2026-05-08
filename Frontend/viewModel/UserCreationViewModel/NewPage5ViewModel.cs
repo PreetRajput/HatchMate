@@ -119,17 +119,12 @@ namespace MauiApp1.viewModel
             pet.Pet_Level = 1;
             bool success = await _apiService.PostUserAsync(Player);
             bool petSuccess = await _apiService.PostPetAsync(pet);
-
-            foreach (var abc in _tasks.Tasks)
-            {
-                Debug.WriteLine("goal hai",abc);
-            }
-             await _apiService.PostTaskAsync(_tasks);
+            await _apiService.PostTaskAsync(_tasks);
 
             if (success && petSuccess)
             {
                     await Application.Current.MainPage.DisplayAlert("Success", "User added", "OK");
-                Application.Current.MainPage = new AppShell();
+                    Application.Current.MainPage = new AppShell();
 
             }
             else

@@ -50,12 +50,8 @@ namespace MauiApp1.viewModel
         {
             foreach (var item in Tasks)
             {
-                Console.WriteLine("before the loop");
-                 await Application.Current.MainPage.DisplayAlert("Success", $"{item.EntryText}", "OK");
                   _tasks.Tasks.Add(item.EntryText);
-                Console.WriteLine("after the loop ");
             }
-            Console.WriteLine("omggggg");
             var page = ((App)Application.Current).Services.GetRequiredService<petNameInput>();
             await Application.Current.MainPage.Navigation.PushAsync(page);
 

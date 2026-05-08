@@ -12,7 +12,6 @@ namespace MauiApp1
             Services = services;
             _apiService = apiService;
             InitializeComponent();
-
             MainPage = new ContentPage(); // temporary blank page
             _ = InitializeEverything();
         }
@@ -20,10 +19,8 @@ namespace MauiApp1
         async Task InitializeEverything()
         {
             bool ans = await _apiService.InitializeFromStorageAsync();
-
             if (ans)
             {
-
                 MainPage = new AppShell();
             }
             else

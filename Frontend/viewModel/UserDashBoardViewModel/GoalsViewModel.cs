@@ -2,18 +2,9 @@
 using CommunityToolkit.Mvvm.Input;
 using MauiApp1.Services;
 using models.Dtos.TaskDtos;
-using models.Entities;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace MauiApp1.viewModel
@@ -33,20 +24,17 @@ namespace MauiApp1.viewModel
     {
         string? id;
         int trash = 0;
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-
         [ObservableProperty]
         ObservableCollection<Filter> filters = new ObservableCollection<Filter>()
         {
           Filter.Completed,
           Filter.Pending
         };
-
         private Filter selectedFilter= Filter.Pending;
         public  Filter SelectedFilter
         {
@@ -61,11 +49,6 @@ namespace MauiApp1.viewModel
                 ShowFilteredTasks();
             }
         }
-
-        
-           
-
-
         [ObservableProperty]
         ICommand taskBtn;
 

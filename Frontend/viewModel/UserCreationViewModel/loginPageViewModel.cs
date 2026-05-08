@@ -21,7 +21,7 @@ namespace MauiApp1.viewModel
         [ObservableProperty]
         string loginBtnText = "Login";
 
-        private bool CanClick= true;
+        private bool CanClick = true;
         public bool canClick 
         { 
             get
@@ -48,41 +48,49 @@ namespace MauiApp1.viewModel
         {
             try
             {
-                var clientId = "Ov23liCktt04rNqSpZg7";
-                var redirectUri = "com.virtualpet://oauth2redirect";
-                var scope = "read:user user:email";
+                // Fetch GitHub OAuth config from backend
+                var config = await _apiService.GetAsync();
+                
+                if (config == null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Failed to load authentication configuration.", "OK");
+                    return;
+                }
 
-                var authUrl = new Uri($"https://github.com/login/oauth/authorize?client_id={clientId}&redirect_uri={redirectUri}&scope={scope}");
-
-                var callbackUrl = new Uri(redirectUri);
+                var authUrl = new Uri(config.AuthUrl);
+                var callbackUrl = new Uri(config.RedirectUri);
 
                 var result = await WebAuthenticator.AuthenticateAsync(authUrl, callbackUrl);
 
                 canClick = false;
                 LoginBtnText = "Processing...";
 
-
                 if (result.Properties.TryGetValue("code", out var code))
                 {
-                    Debug.WriteLine("code is: ", code);
-                    GitHubCodeDto dto = new GitHubCodeDto();
-                    dto.code = code;
-                    // Exchange code for tokens
-                   var user = await _authApiService.PostCode(dto);
-                   if (user == null )
+                    Debug.WriteLine($"Authorization code received: {code}");
+                    
+                    GitHubCodeDto dto = new GitHubCodeDto { code = code };
+                    
+                    // Exchange code for tokens via backend
+                    var user = await _authApiService.PostCode(dto);
+                    if (user == null)
                     {
-                        await Application.Current.Windows[0].Page.DisplayAlert("Error", "Failed to get access token from GitHub.", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Error", "Failed to get access token from GitHub.", "OK");
+                        canClick = true;
+                        LoginBtnText = "Login";
                         return;
                     }
                    
                     var person = new UserEmailDto { Email = user.Email };
-                    Debug.WriteLine("user email is: ", user.Email);
+                    Debug.WriteLine($"User email: {user.Email}");
 
                     UserAuthResponseDto check = await _authApiService.GetTokenAsync(person);
 
-                   if (check == null)
+                    if (check == null)
                     {
                         await Application.Current.MainPage.DisplayAlert("Error", "Backend did not return an auth token. See logs for details.", "OK");
+                        canClick = true;
+                        LoginBtnText = "Login";
                         return;
                     }
 
@@ -102,15 +110,20 @@ namespace MauiApp1.viewModel
                     }
                 }
             }
+            catch (TaskCanceledException)
+            {
+                // User cancelled authentication
+                Debug.WriteLine("User cancelled authentication");
+                canClick = true;
+                LoginBtnText = "Login";
+            }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Asasd", "OK");
-
-                await Application.Current.MainPage.DisplayAlert("Error", ex.ToString(), "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", $"Authentication failed: {ex.Message}", "OK");
+                Debug.WriteLine($"Login error: {ex}");
+                canClick = true;
+                LoginBtnText = "Login";
             }
-
         }
-     
-
     }
     }

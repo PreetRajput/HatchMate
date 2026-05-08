@@ -9,6 +9,7 @@ using models.Dtos.UserDtos;
 using models.Dtos.PetDtos;
 using models.Dtos.TaskDtos;
 using models.Dtos.EmoteSeedDtos;
+using models.Dtos.GitHubDtos;
 
 namespace MauiApp1.Services
 {
@@ -23,28 +24,26 @@ namespace MauiApp1.Services
             _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.34:5000/") };
         }
 
+        //to retrieve the token taken from secure storage 
         public async Task<bool> InitializeFromStorageAsync()
         {
             var token = await SecureStorage.GetAsync(AuthKey);
-            if (!string.IsNullOrEmpty(token))
-            {
-                SetToken(token);
-                return true;
-            }
-            return false;
+            return  SetToken(token);
         }
-        
-        public void SetToken(string token)
+        //to check the validity of token taken from secure storage 
+        public bool SetToken(string? token)
         {
             _token = token?.Trim().Trim('"');
             if (!string.IsNullOrEmpty(_token))
             {
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
                 _ = SecureStorage.SetAsync(AuthKey, _token);
+                return true;
             }
             else
             {
                 _httpClient.DefaultRequestHeaders.Authorization = null;
+                return false;
             }
         }
 
@@ -121,7 +120,21 @@ namespace MauiApp1.Services
             }
 
         }
+        public async Task<GitHubConfigDto?> GetAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync("api/auth/github-config");
+                var content = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode) return null;
+                return JsonSerializer.Deserialize<GitHubConfigDto>(content, new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
 
+        }
         public async Task<bool> PostPetAsync(PetInfoDto pet)
         {
             try
