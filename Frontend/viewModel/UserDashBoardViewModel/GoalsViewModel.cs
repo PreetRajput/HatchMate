@@ -9,12 +9,12 @@ using System.Windows.Input;
 
 namespace MauiApp1.viewModel
 {
-        public enum TaskMode
-        {
-            ADD,
-            DONE,
-            PATCH
-        };
+    public enum TaskMode
+    {
+        ADD,
+        DONE,
+        PATCH
+    };
     public enum Filter
     {
         Completed,
@@ -91,14 +91,10 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public async Task addingTasks()
         {
-            Debug.WriteLine("addingTasks command run");
             try
             {
-
-            currentTasks = await _apiService.RetrieveUserTasksAsync();
-            BorderContext.Clear();
-
-
+                currentTasks = await _apiService.RetrieveUserTasksAsync();
+                BorderContext.Clear();
                 for (int i = 0; i < currentTasks.Count; i++)
                 {
                     AllTasks.Add(new TaskList
@@ -127,8 +123,8 @@ namespace MauiApp1.viewModel
             IsEditing = true;
             AddBtnVisible = true;
             TaskName = TaskMode.DONE;
-
         }
+
         [RelayCommand]
         public void addOneMoreTask()
         {
@@ -136,14 +132,11 @@ namespace MauiApp1.viewModel
             AllTasks.Add(newTask);
             BorderContext.Add(newTask);
             NewAddedTasks.Add(newTask);
-            
         }
 
         [RelayCommand]
         public async void deleteTask(TaskList task)
         {
-            Debug.WriteLine("deleteTask run");
-
             BorderContext.Remove(task);
             NewAddedTasks.Remove(task);
 
@@ -152,7 +145,6 @@ namespace MauiApp1.viewModel
             {
                 if(!(id == Guid.Empty))
                 {
-
                   await _apiService.DeleteTaskAsync(id);
                 }
 
@@ -166,16 +158,8 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public void markAsCompleted(TaskList task)
         {
-            Debug.WriteLine("markAsCompleetd ran");
-            Debug.WriteLine("color of the task was", task.BgColor);
-
             task.BgColor = task.BgColor == "Transparent" ? "LightGreen" : "Transparent";
-
-            Debug.WriteLine("color of the task is", task.BgColor);
-
-
             task.IsSelected = task.IsSelected == true ? false : true;
-
             foreach (var item in BorderContext)
                 {
                     if (item.IsSelected)
@@ -196,33 +180,23 @@ namespace MauiApp1.viewModel
         {
             try
             {
-               
                 var toProcess = BorderContext.Where(x => x.IsSelected).ToList();
-
                 foreach (var item in toProcess)
                 {
                     UpdatedTasks.TaskIds.Add(item.Id);
-
                     item.IsCompleted = !item.IsCompleted;
                     item.IsSelected = item.IsSelected == true ? false : true;
                     UpdatedTasks.IsCompleted = item.IsCompleted;
-
                     BorderContext.Remove(item);
-
-                    Debug.WriteLine($"goal id is {item.Id}");
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error: {ex.ToString()}");
             }
-
                 await _apiService.UpdateTaskToCompletedAsync(UpdatedTasks);
                 UpdatedTasks.TaskIds.Clear();
                 TaskName = TaskMode.ADD;
-                Debug.WriteLine("value of TaskName is:", TaskName);
-            
-
         }
 
        
@@ -241,41 +215,29 @@ namespace MauiApp1.viewModel
             }
             if (trash == 0)
             {
-
                 TaskName = TaskMode.ADD;
-
                 AddBtnVisible = false;
-
                 IsEditing = false;
-
-
-
                 foreach (var item  in NewAddedTasks)
                 {
-
                     totalTasks.Add(item.Goal!);
                 }
                     updatedUserData.Tasks = totalTasks;
-               List<TaskItemDto> goalsList=  await _apiService.PostTaskAsync(updatedUserData);
+                    List<TaskItemDto> goalsList=  await _apiService.PostTaskAsync(updatedUserData);
                     for(int i= 0; i<goalsList.Count; i++)
-                {
-                    Debug.WriteLine("UMOKAYYY");
-                    foreach (var item in BorderContext)
                     {
-                    Debug.WriteLine("UMOKAYYY12");
-                    Debug.WriteLine(item.Id);
-                        if (item.Id == Guid.Empty)
+                        foreach (var item in BorderContext)
                         {
-                            Debug.WriteLine("UMOKAYYY12345");
-                            item.Id = goalsList[i].Id;
-                            break;
+                            if (item.Id == Guid.Empty)
+                            {
+                                item.Id = goalsList[i].Id;
+                                break;
+                            }
                         }
                     }
-                }
                 NewAddedTasks.Clear();
                 totalTasks.Clear();
             }
-
         }
 
         public void ShowFilteredTasks()

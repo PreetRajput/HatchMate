@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
-using models.Dtos.LogDtos;
 using models.Dtos.TaskDtos;
 using models.Entities;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using System.Threading.Tasks;
 
 namespace WebApplication1.services
 {
@@ -132,18 +129,12 @@ namespace WebApplication1.services
                             }
 
                               );
-                            Console.WriteLine("preet is okay");
                             await _users.UpdateOneAsync(filterForCheck, updates);
-
-
                         }
                         catch (Exception ex)
                         {
                             Console.WriteLine($"ummm Error: {ex}");
                         }
-
-
-                    
                         }
                     }
 
@@ -168,14 +159,11 @@ namespace WebApplication1.services
         {
             try
             {
-                Console.WriteLine("preeet");
-
                 var filter = Builders<TaskEntity>.Filter.Eq(t => t.UserId, userId);
                 var response = await _tasks.Find(filter).ToListAsync();
                 List<TaskItemDto> taskItem = new List<TaskItemDto>();
                 foreach (var entity in response)
                 {
-                    Console.WriteLine("huh");
                    taskItem.Add(_mapper.Map<TaskItemDto>(entity));
                 }
                 return taskItem; 

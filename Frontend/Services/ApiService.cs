@@ -96,7 +96,6 @@ namespace MauiApp1.Services
             try
             {
                 var res=  await _httpClient.GetFromJsonAsync<List<TaskItemDto>>("api/task");
-                Debug.WriteLine("preeeet", res);
                 return res;
             }
             catch (Exception ex)
