@@ -10,14 +10,14 @@ public partial class Pet : ContentPage
         InitializeComponent();
         BindingContext = viewModel;
     }
+    bool _isInitialized = false;
     protected override void OnAppearing()
     {
 
         base.OnAppearing();
-        
-
+        if (_isInitialized) return;
         (BindingContext as PetViewModel)?.getEmotesCommand.Execute(null);
-
+        _isInitialized = true;
     }
 
     

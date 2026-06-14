@@ -36,9 +36,11 @@
             <!-- Top Left Emote -->
             <ImageButton Grid.Row="0" 
                          Grid.Column="0"
-                         Source="{Binding EmoteOne}" 
+                         Source="{Binding EmoteOne.Image}" 
                          WidthRequest="80" 
                          HeightRequest="80"
+                         Command="{Binding PlayAnimationCommand}"
+                         CommandParameter="{Binding EmoteOne}"
                          Aspect="AspectFit"
                          VerticalOptions="Start"
                          HorizontalOptions="Start"/>
@@ -46,9 +48,11 @@
             <!-- Top Right Emote -->
             <ImageButton Grid.Row="0" 
                          Grid.Column="2"
-                         Source="{Binding EmoteTwo}" 
+                         Source="{Binding EmoteTwo.Image}" 
                          WidthRequest="80" 
                          HeightRequest="80"
+                         Command="{Binding PlayAnimationCommand}"
+                         CommandParameter="{Binding EmoteTwo}"
                          Aspect="AspectFit"
                          VerticalOptions="Start"
                          HorizontalOptions="End"/>
@@ -67,9 +71,11 @@
             <!-- Bottom Left Emote -->
             <ImageButton Grid.Row="2" 
                          Grid.Column="0"
-                         Source="{Binding EmoteThree}" 
+                         Source="{Binding EmoteThree.Image}" 
                          WidthRequest="80" 
                          HeightRequest="80"
+                         Command="{Binding PlayAnimationCommand}"
+                         CommandParameter="{Binding EmoteThree}"
                          Aspect="AspectFit"
                          VerticalOptions="End"
                          HorizontalOptions="Start"/>
@@ -77,9 +83,11 @@
             <!-- Bottom Right Emote -->
             <ImageButton Grid.Row="2" 
                          Grid.Column="2"
-                         Source="{Binding EmoteFour}" 
+                         Source="{Binding EmoteFour.Image}" 
                          WidthRequest="80" 
                          HeightRequest="80"
+                         Command="{Binding PlayAnimationCommand}"
+                         CommandParameter="{Binding EmoteFour}"
                          Aspect="AspectFit"
                          VerticalOptions="End"
                          HorizontalOptions="End"/>
