@@ -21,7 +21,7 @@ namespace MauiApp1.Services
 
         public ApiService()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.7:5000/") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.4:5000/") };
         }
 
         //to retrieve the token taken from secure storage 

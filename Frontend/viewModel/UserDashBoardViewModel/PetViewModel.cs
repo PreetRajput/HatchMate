@@ -37,7 +37,6 @@ namespace MauiApp1.viewModel
             };
         }
 
-        bool _Animating;
         [ObservableProperty]
         public partial string? PetImage { get; set; }
 
@@ -80,6 +79,7 @@ namespace MauiApp1.viewModel
                            _ImageSetter[i](emoteInfo[i].Icon);
                            _AnimationSetter[i](emoteInfo[i].Animation.ToList());
                     }
+                _= IdleAnimation();
             }
             catch(Exception e)
             {
@@ -87,26 +87,49 @@ namespace MauiApp1.viewModel
             }
 
         }
-
-        [RelayCommand]
-        public async Task PlayAnimation(Pet pet)
+        public async Task IdleAnimation()
         {
             try
             {
                 _token?.Cancel();
                 _token = new CancellationTokenSource();
-                var token = _token.Token;
+                CancellationToken token = _token.Token;
+                if (EmoteOne?.Animation == null || EmoteOne.Animation.Count == 0)
+                    return;
+                while (!token.IsCancellationRequested)
+                {
+                    foreach (var frame in EmoteOne.Animation)
+                    {
+                        token.ThrowIfCancellationRequested();
+                        PetImage = frame;
+                        await Task.Delay(100);
+                    }
+                }
+            }
+            catch (Exception e) { 
+            }
+        }
+        [RelayCommand]
+        public async Task PlayAnimation(Pet pet)
+        {
+            _= RunAnimation(pet);
+            return;
+        }
+        public async Task RunAnimation(Pet pet)
+        {
+            try
+            {
+                _token?.Cancel();
+                _token = new CancellationTokenSource();
+                CancellationToken token = _token.Token;
                 if (pet?.Animation == null || pet.Animation.Count == 0)
                     return;
 
-                _Animating = true;
-
-                while (_Animating)
+                while (!token.IsCancellationRequested)
                 {
                     foreach (var frame in pet.Animation)
                     {
-                        if (token.IsCancellationRequested)
-                            return;
+                        token.ThrowIfCancellationRequested();
                         PetImage = frame;
                         await Task.Delay(100);
                     }
@@ -114,15 +137,14 @@ namespace MauiApp1.viewModel
             }
             catch (Exception e)
             {
-            
-            }
 
+            }
         }
     }
     public partial class Pet : ObservableObject
     {
         [ObservableProperty]
-        public partial string? Image { get; set; }
+        public partial string? Image { get; set; } = "pets/default_img.png";
         [ObservableProperty]
         public partial List<string>? Animation { get; set; }
     }

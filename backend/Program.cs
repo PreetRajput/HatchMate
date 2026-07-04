@@ -10,13 +10,8 @@ Console.WriteLine("Starting application...");
 builder.WebHost.UseUrls("http://0.0.0.0:5000");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
-builder.Services.AddOpenApiDocument(config =>
-{
-    config.Title = "My API";
-    config.Version = "v1";
-    // config.UseXmlDocumentation = true;  // Enable XML comments
-});
 builder.Services.AddAutoMapper(typeof(Program));
 // Validate JWT key length early so the runtime error becomes actionable.
 var jwtKeyString = builder.Configuration["Jwt:Key"];
@@ -61,11 +56,7 @@ using (var scope = app.Services.CreateScope())
     await obj.EmoteSeedAsync();
 }
 app.UseOpenApi();
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-});
+app.UseSwaggerUi();
 
 app.UseAuthentication();
 app.UseAuthorization();
