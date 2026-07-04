@@ -189,14 +189,14 @@ namespace MauiApp1.viewModel
                     UpdatedTasks.IsCompleted = item.IsCompleted;
                     BorderContext.Remove(item);
                 }
+                await _apiService.UpdateTaskToCompletedAsync(UpdatedTasks);
+                UpdatedTasks.TaskIds.Clear();
+                TaskName = TaskMode.ADD;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error: {ex.ToString()}");
             }
-                await _apiService.UpdateTaskToCompletedAsync(UpdatedTasks);
-                UpdatedTasks.TaskIds.Clear();
-                TaskName = TaskMode.ADD;
         }
 
        
