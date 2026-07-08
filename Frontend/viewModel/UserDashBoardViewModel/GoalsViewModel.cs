@@ -20,17 +20,13 @@ namespace MauiApp1.viewModel
         Completed,
         Pending
     };
-    public partial class GoalsViewModel:ObservableObject
+    public partial class GoalsViewModel(ApiService api) : ObservableObject
     {
         string? id;
         int trash = 0;
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged(string prop)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
+
         [ObservableProperty]
-        ObservableCollection<Filter> filters = new ObservableCollection<Filter>()
+        ObservableCollection<Filter> filters = new()
         {
           Filter.Completed,
           Filter.Pending
@@ -69,24 +65,21 @@ namespace MauiApp1.viewModel
         [ObservableProperty]
         bool isEditing = false;
 
-        List<TaskItemDto> currentTasks;
+        List<TaskItemDto>? currentTasks;
         TasksIdDto UpdatedTasks= new();
         int totalTask = 0;
         List<string> totalTasks = new();
 
-        TaskListDto updatedUserData = new();
+        readonly TaskListDto updatedUserData = new();
 
         [ObservableProperty]
         ObservableCollection<TaskList> borderContext= new();
-        Collection<TaskList> AllTasks = new();
+        private static readonly Collection<TaskList> taskLists = new();
+        readonly Collection<TaskList> AllTasks = taskLists;
 
         public const string auth_token = "auth_token";
 
-         private readonly ApiService _apiService;
-        public GoalsViewModel(ApiService api)
-        {
-            _apiService = api;
-        }
+         private readonly ApiService _apiService = api;
 
         [RelayCommand]
         public async Task addingTasks()
@@ -95,7 +88,7 @@ namespace MauiApp1.viewModel
             {
                 currentTasks = await _apiService.RetrieveUserTasksAsync();
                 BorderContext.Clear();
-                for (int i = 0; i < currentTasks.Count; i++)
+                for (int i = 0; i < currentTasks?.Count; i++)
                 {
                     AllTasks.Add(new TaskList
                     {
@@ -113,7 +106,7 @@ namespace MauiApp1.viewModel
             }
             catch(Exception ex)
             {
-                Console.WriteLine("errorr", ex.ToString());
+                Console.WriteLine("errorr", ex);
             }
         }
 
@@ -128,14 +121,14 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public void addOneMoreTask()
         {
-            TaskList newTask = new TaskList { Goal = "" };
+            TaskList newTask = new() { Goal = "" };
             AllTasks.Add(newTask);
             BorderContext.Add(newTask);
             NewAddedTasks.Add(newTask);
         }
 
         [RelayCommand]
-        public async void deleteTask(TaskList task)
+        public async Task deleteTask(TaskList task)
         {
             BorderContext.Remove(task);
             NewAddedTasks.Remove(task);
@@ -159,7 +152,7 @@ namespace MauiApp1.viewModel
         public void markAsCompleted(TaskList task)
         {
             task.BgColor = task.BgColor == "Transparent" ? "LightGreen" : "Transparent";
-            task.IsSelected = task.IsSelected == true ? false : true;
+            task.IsSelected = task.IsSelected != true;
             foreach (var item in BorderContext)
                 {
                     if (item.IsSelected)
@@ -176,7 +169,7 @@ namespace MauiApp1.viewModel
         }
 
         [RelayCommand]
-        public async  void updateCompletedTask()
+        public async Task updateCompletedTask()
         {
             try
             {
@@ -185,7 +178,7 @@ namespace MauiApp1.viewModel
                 {
                     UpdatedTasks.TaskIds.Add(item.Id);
                     item.IsCompleted = !item.IsCompleted;
-                    item.IsSelected = item.IsSelected == true ? false : true;
+                    item.IsSelected = !item.IsSelected;
                     UpdatedTasks.IsCompleted = item.IsCompleted;
                     BorderContext.Remove(item);
                 }
@@ -195,13 +188,14 @@ namespace MauiApp1.viewModel
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error: {ex.ToString()}");
+                Debug.WriteLine($"Error: {ex}");
             }
         }
 
        
 
         [RelayCommand]
+        [Obsolete]
         public async Task addedMoreTasks()
         {
             trash = 0;
@@ -223,8 +217,8 @@ namespace MauiApp1.viewModel
                     totalTasks.Add(item.Goal!);
                 }
                     updatedUserData.Tasks = totalTasks;
-                    List<TaskItemDto> goalsList=  await _apiService.PostTaskAsync(updatedUserData);
-                    for(int i= 0; i<goalsList.Count; i++)
+                    List<TaskItemDto>? goalsList=  await _apiService.PostTaskAsync(updatedUserData);
+                    for(int i= 0; i<goalsList?.Count; i++)
                     {
                         foreach (var item in BorderContext)
                         {

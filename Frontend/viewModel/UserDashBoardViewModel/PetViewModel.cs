@@ -22,18 +22,18 @@ namespace MauiApp1.viewModel
             _apiService = apiService;
             _ImageSetter = new Action<string>[]
              {
-                       v => EmoteOne.Image =v,
-                       v => EmoteTwo.Image =v,
-                       v => EmoteThree.Image =v,
-                       v => EmoteFour.Image =v,
+                       v => EmoteOne?.Image =v,
+                       v => EmoteTwo?.Image =v,
+                       v => EmoteThree?.Image =v,
+                       v => EmoteFour?.Image =v,
 
                 };
             _AnimationSetter = new Action<List<string>>[]
             {
-                       v => EmoteOne.Animation =v,
-                       v => EmoteTwo.Animation =v,
-                       v => EmoteThree.Animation =v,
-                       v => EmoteFour.Animation =v,
+                       v => EmoteOne?.Animation =v,
+                       v => EmoteTwo?.Animation =v,
+                       v => EmoteThree?.Animation =v,
+                       v => EmoteFour?.Animation =v,
             };
         }
 
@@ -59,7 +59,7 @@ namespace MauiApp1.viewModel
 
 
         [RelayCommand]
-        public async Task getEmotes()
+        public async Task GetEmotes()
         {
            
             try
@@ -67,22 +67,23 @@ namespace MauiApp1.viewModel
                 var petInfo = await _apiService.GetPetAsync();
                 PetDto dto = new PetDto()
                 {
-                    Pet_Type = petInfo.Pet_Type,
-                    Pet_Level = petInfo.Pet_Level,
+                    Pet_Type = petInfo?.Pet_Type,
+                    Pet_Level = petInfo?.Pet_Level ?? 0,
                 };
-                PetName = petInfo.PetName;
-                PetLevel = petInfo.Pet_Level;
+                PetName = petInfo?.PetName;
+                PetLevel = petInfo?.Pet_Level ?? 0;
                 var emoteInfo = await _apiService.GetAnimationAsync(dto);
-                        for (int i = 0; i < Math.Min(_ImageSetter.Length, emoteInfo.Count); i++)
+                        for (int i = 0; i < Math.Min(_ImageSetter.Length, emoteInfo?.Count ?? 0); i++)
                     {
                             
-                           _ImageSetter[i](emoteInfo[i].Icon);
-                           _AnimationSetter[i](emoteInfo[i].Animation.ToList());
+                           _ImageSetter[i](emoteInfo[i]?.Icon);
+                           _AnimationSetter[i](emoteInfo[i]?.Animation?.ToList() ?? new List<string>());
                     }
                 _= IdleAnimation();
             }
             catch(Exception e)
             {
+                Debug.WriteLine(e);
                 return;
             }
 
@@ -107,6 +108,7 @@ namespace MauiApp1.viewModel
                 }
             }
             catch (Exception e) { 
+                Debug.WriteLine(e);
             }
         }
         [RelayCommand]
@@ -137,7 +139,7 @@ namespace MauiApp1.viewModel
             }
             catch (Exception e)
             {
-
+                Debug.WriteLine(e);
             }
         }
     }

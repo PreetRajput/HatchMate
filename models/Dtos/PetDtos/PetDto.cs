@@ -8,7 +8,7 @@ namespace models.Dtos.PetDtos
 {
     public class PetDto
     {
-        public string Pet_Type { get; set; }
+        public string? Pet_Type { get; set; }
         public int Pet_Level { get; set; }
     }
 }
