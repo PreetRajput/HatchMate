@@ -13,8 +13,8 @@
 	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="JWT" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
-	  <PackageReference Include="MongoDB.Driver" Version="3.5.2" />
-	  <PackageReference Include="MongoDB.Bson" Version="3.5.2" />
+	  <PackageReference Include="MongoDB.Driver" Version="3.10.0" />
+	  <PackageReference Include="MongoDB.Bson" Version="3.10.0" />
 	  <PackageReference Include="NSwag.AspNetCore" Version="14.6.3" />
     <PackageReference Include="NSwag.MSBuild" Version="14.6.3">
       <PrivateAssets>all</PrivateAssets>
