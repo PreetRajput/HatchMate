@@ -11,14 +11,16 @@ namespace WebApplication1.services
         private readonly IMongoCollection<TaskEntity> _tasks;
         private readonly IMongoCollection<LogEntity> _logs;
         private readonly IMongoCollection<UserEntity> _users;
+        private readonly IMongoCollection<LevelSeedEntity> _level;
         private readonly IMapper _mapper;
         
         public TaskService(MongoDBService mongo, IMapper mapper)
         {
             _tasks = mongo.GetCollection<TaskEntity>("TaskDetails");
-            _mapper = mapper;
             _logs = mongo.GetCollection<LogEntity>("LogDetails");
             _users = mongo.GetCollection<UserEntity>("UserDetails");
+            _level = mongo.GetCollection<LevelSeedEntity>("LevelDetails");
+            _mapper = mapper;
         }
         public async Task<List<TaskItemDto>> AddTask(TaskListDto dto, Guid userId)
         {
@@ -47,48 +49,62 @@ namespace WebApplication1.services
                 return null;
             }
         }
-        public async Task UpdateTask(TasksIdDto dto, Guid userId)
+        public async Task<int> UpdateTask(TasksIdDto dto, Guid userId)
         {
             try
             {
                 UpdateDefinition<TaskEntity> update;
-                    Console.WriteLine("im NOT in the loop yayyy");
-                foreach(var item in dto.TaskIds)
+                foreach (var item in dto.TaskIds)
                 {
-                    Console.WriteLine("im in the loop yayyy");
-
                     var filter = Builders<TaskEntity>.Filter.And(
                             Builders<TaskEntity>.Filter.Eq(t => t.UserId, userId),
                             Builders<TaskEntity>.Filter.Eq(t => t.Id, item)
                         );
-                
+
                     update = Builders<TaskEntity>.Update.Set(u => u.IsCompleted, dto.IsCompleted);
                     var result = await _tasks.UpdateOneAsync(filter, update);
 
                     var filterToCheckIfLogExist = Builders<LogEntity>.Filter.Eq(t => t.TaskId, item);
-                    var TrueIfExist = await _logs.Find(filterToCheckIfLogExist).AnyAsync();
+                    await UpdateLog(filterToCheckIfLogExist, userId, item);
+                }
+                    return await UpdatePetLevelAsync(userId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
 
-                    if (!TrueIfExist)
-                    {
-                        Console.WriteLine("entered the uodatedTasks field");
-                        try
-                        {
-
-                            LogEntity logEntity = new LogEntity();
-                            logEntity.UserId = userId;
-                            logEntity.TaskId = item;
-                            Guid Id = Guid.NewGuid();
-                            logEntity.Id = Id;
-                            logEntity.ExpGrantedDate = DateTime.UtcNow.Date;
-                            logEntity.ExpGranted = 10;
-                            await _logs.InsertOneAsync(logEntity);
-
-                            var filterForCheck = Builders<UserEntity>.Filter.Eq(t => t.Id, userId);
-                            var currentDate = DateTime.UtcNow.Date;
-
-
-                            var updates = new PipelineUpdateDefinition<UserEntity>(new[]
-                                  {
+        }
+        public async Task UpdateLog(FilterDefinition<LogEntity> filterToCheckIfLogExist, Guid userId, Guid item)
+        {
+            try
+            {
+                var TrueIfExist = await _logs.Find(filterToCheckIfLogExist).AnyAsync();
+            if (!TrueIfExist)
+                {
+                    LogEntity logEntity = new LogEntity();
+                    logEntity.UserId = userId;
+                    logEntity.TaskId = item;
+                    Guid Id = Guid.NewGuid();
+                    logEntity.Id = Id;
+                    logEntity.ExpGrantedDate = DateTime.UtcNow.Date;
+                    logEntity.ExpGranted = 10;
+                    await _logs.InsertOneAsync(logEntity);
+                    await UpdateXp(userId);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ummm Error: {ex}");
+            }
+        }
+        public async Task UpdateXp(Guid userId)
+        {
+            var filterForCheck = Builders<UserEntity>.Filter.Eq(t => t.Id, userId);
+            var currentDate = DateTime.UtcNow.Date;
+            var updates = new PipelineUpdateDefinition<UserEntity>(new[]
+                  {
                                 new BsonDocument("$set", new BsonDocument
                                 {
                                     { "TodayXp",
@@ -128,23 +144,14 @@ namespace WebApplication1.services
                                 })
                             }
 
-                              );
-                            await _users.UpdateOneAsync(filterForCheck, updates);
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"ummm Error: {ex}");
-                        }
-                        }
-                    }
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-
+              );
+            await _users.UpdateOneAsync(filterForCheck, updates);
+        }
+        public async Task<int> UpdatePetLevelAsync(Guid userId)
+        {
+            var filterForXp = Builders<UserEntity>.Filter.Eq(t=> t.Id, userId);
+            var UserTotalXp = await _users.Find(filterForXp).Project(x => x.TotalTaskXp).FirstOrDefaultAsync();
+            return await _level.Find(x => x.RequiredXp <= UserTotalXp).SortByDescending(x => x.RequiredXp).Project(x=> x.Level).FirstOrDefaultAsync();
         }
         public async Task<DeleteResult> DeleteTask(Guid userId, Guid id)
         {
@@ -175,5 +182,6 @@ namespace WebApplication1.services
                 return new List<TaskItemDto>(); 
             }
         }
+        
     }
 }
