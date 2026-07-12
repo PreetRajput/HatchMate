@@ -14,14 +14,22 @@ namespace WebApplication1.Seed
         }
         public async Task LevelAsync()
         {
-            foreach(var level in LevelSeedData.Data)
+            try
             {
-                var filter = Builders<LevelSeedEntity>.Filter.Eq(x => x.Level, level.Level);
-                var checkIfExist = await (await _level.FindAsync(filter)).AnyAsync();
-                if (!checkIfExist)
+
+                foreach (var level in LevelSeedData.Data)
                 {
-                    await _level.InsertOneAsync(level);
+                    var filter = Builders<LevelSeedEntity>.Filter.Eq(x => x.Level, level.Level);
+                    var checkIfExist = await (await _level.FindAsync(filter)).AnyAsync();
+                    if (!checkIfExist)
+                    {
+                        await _level.InsertOneAsync(level);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("aasdasdas"+ex.ToString());
             }
         }
     }
