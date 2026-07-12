@@ -104,18 +104,22 @@ namespace MauiApp1.Services
                 return null;
             }
         }
-        public async Task<bool> UpdateTaskToCompletedAsync(TasksIdDto dto)
+        public async Task<int?> UpdateTaskToCompletedAsync(TasksIdDto dto)
         {
             try
             {
 
                 var response = await _httpClient.PatchAsJsonAsync($"api/task", dto);
-                return response.IsSuccessStatusCode;
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+                return await response.Content.ReadFromJsonAsync<int?>();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("error might be:", ex.ToString());
-                return false;
+                throw;
             }
 
         }

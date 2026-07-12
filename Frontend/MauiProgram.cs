@@ -1,4 +1,5 @@
-﻿using MauiApp1.Services;
+﻿using HatchMate.Api;
+using MauiApp1.Services;
 using MauiApp1.viewModel;
 using Microsoft.Extensions.Logging;
 using models.Dtos.PetDtos;
@@ -28,7 +29,7 @@ namespace MauiApp1
 
             builder.Services.AddSingleton<ApiService>();
             builder.Services.AddSingleton<AuthApiService>();
-
+            builder.Services.AddHttpClient<IAuthClient,AuthClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/"));
             builder.Services.AddTransient<loginPage>();
             builder.Services.AddTransient<SignupPage>();
             builder.Services.AddTransient<chooseEgg>();
@@ -46,7 +47,7 @@ namespace MauiApp1
             builder.Services.AddTransient<PetViewModel>();
             builder.Services.AddTransient<AppSettingsViewModel>();
 
-            builder.Services.AddSingleton<PetInfoDto>();
+            builder.Services.AddSingleton<HatchMate.Api.PetInfoDto>();
             builder.Services.AddSingleton<PetDto>();
             builder.Services.AddSingleton<UserAppRelatedInfoDto>();
             builder.Services.AddSingleton<TaskListDto>();

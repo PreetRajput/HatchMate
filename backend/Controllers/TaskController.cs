@@ -61,20 +61,20 @@ namespace WebApplication1.Controllers
         }
         [HttpPatch]
         [Authorize]
-        public async Task markTaskAsCompleted([FromBody] TasksIdDto dto)
+        public async Task<int> markTaskAsCompleted([FromBody] TasksIdDto dto)
         {
             try
             {
                     Console.WriteLine("yayyy");
                 var userIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var userId = Guid.Parse(userIdValue);
-                await _taskService.UpdateTask(dto, userId);
+                return await _taskService.UpdateTask(dto, userId);
                 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"errrorrrrr is sssss {ex.Message}");
-
+                throw;
             }
 
         }
