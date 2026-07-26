@@ -93,12 +93,6 @@ namespace MauiApp1.viewModel
                         LoginBtnText = "Login";
                         return;
                     }
-
-                    if (!string.IsNullOrEmpty(check.Token))
-                    {
-                        _apiService.SetToken(check.Token);
-                    }
-
                     if (check.IsNewUser)
                     {
                         var page = ((App)Application.Current).Services.GetRequiredService<SignupPage>();

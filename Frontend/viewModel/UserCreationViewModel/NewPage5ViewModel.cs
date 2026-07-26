@@ -1,15 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using HatchMate.Api;
 using MauiApp1.Services;
-using models.Dtos.PetDtos;
-using models.Dtos.TaskDtos;
-using models.Dtos.UserDtos;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MauiApp1.viewModel
 {
@@ -117,19 +110,13 @@ namespace MauiApp1.viewModel
         public async Task navToShell()
         {
             pet.Pet_Level = 1;
-            bool success = await _apiService.PostUserAsync(Player);
-            bool petSuccess = await _apiService.PostPetAsync(pet);
+            await _apiService.PostUserAsync(Player);
+            await _apiService.PostPetAsync(pet);
             await _apiService.PostTaskAsync(_tasks);
 
-            if (success && petSuccess)
-            {
-                    await Application.Current.MainPage.DisplayAlert("Success", "User added", "OK");
-                    Application.Current.MainPage = new AppShell();
+            await Application.Current.MainPage.DisplayAlert("Success", "User added", "OK");
+            Application.Current.MainPage = new AppShell();
 
             }
-            else
-                await Application.Current.MainPage.DisplayAlert("Error", "Failed to add user or pet", "OK");
-
-        }
     }
 }

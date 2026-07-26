@@ -1,14 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MauiApp1.Services;
-using models.Dtos.PetDtos;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using HatchMate.Api;
 namespace MauiApp1.viewModel
 {
     public partial class PetViewModel: ObservableObject
@@ -72,7 +66,7 @@ namespace MauiApp1.viewModel
                 };
                 PetName = petInfo?.PetName;
                 PetLevel = petInfo?.Pet_Level ?? 0;
-                var emoteInfo = await _apiService.GetAnimationAsync(dto);
+                var emoteInfo = (await _apiService.GetAnimationAsync(dto))?.ToList();
                         for (int i = 0; i < Math.Min(_ImageSetter.Length, emoteInfo?.Count ?? 0); i++)
                     {
                             
