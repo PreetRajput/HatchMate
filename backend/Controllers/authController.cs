@@ -52,13 +52,13 @@ public class authController : ControllerBase
     }
 
     [HttpPost("github-login")]
-    public async Task<IActionResult> GitHubLogin([FromBody] UserEmailDto user)
+    public async Task<UserAuthResponseDto?> GitHubLogin([FromBody] UserEmailDto user)
     {
-        UserAuthResponseDto response = await _userService.UpsertAndAuthenticate(user);
+        UserAuthResponseDto? response = await _userService.UpsertAndAuthenticate(user);
         if (response != null)
-            return Ok(response);
+            return response;
 
-        return Unauthorized();
+        return null;
     }
     
     [HttpPost("githubCollect")] 

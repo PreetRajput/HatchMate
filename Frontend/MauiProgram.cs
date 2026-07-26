@@ -1,10 +1,9 @@
 ﻿using HatchMate.Api;
 using MauiApp1.Services;
+using MauiApp1.Services.Generated;
 using MauiApp1.viewModel;
 using Microsoft.Extensions.Logging;
-using models.Dtos.PetDtos;
-using models.Dtos.TaskDtos;
-using models.Dtos.UserDtos;
+using Microsoft.Maui.Controls.Handlers;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace MauiApp1
@@ -29,7 +28,13 @@ namespace MauiApp1
 
             builder.Services.AddSingleton<ApiService>();
             builder.Services.AddSingleton<AuthApiService>();
+        
+
             builder.Services.AddHttpClient<IAuthClient,AuthClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/"));
+            builder.Services.AddHttpClient<IPetClient,PetClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>(); 
+            builder.Services.AddHttpClient<ISeedClient,SeedClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
+            builder.Services.AddHttpClient<ITaskClient,TaskClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
+            builder.Services.AddHttpClient<IUsersClient,UsersClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
             builder.Services.AddTransient<loginPage>();
             builder.Services.AddTransient<SignupPage>();
             builder.Services.AddTransient<chooseEgg>();
@@ -48,9 +53,9 @@ namespace MauiApp1
             builder.Services.AddTransient<AppSettingsViewModel>();
 
             builder.Services.AddSingleton<HatchMate.Api.PetInfoDto>();
-            builder.Services.AddSingleton<PetDto>();
-            builder.Services.AddSingleton<UserAppRelatedInfoDto>();
-            builder.Services.AddSingleton<TaskListDto>();
+            builder.Services.AddSingleton<HatchMate.Api.PetDto>();
+            builder.Services.AddSingleton<HatchMate.Api.UserAppRelatedInfoDto>();
+            builder.Services.AddSingleton<HatchMate.Api.TaskListDto>();
 
             return builder.Build();
         }
