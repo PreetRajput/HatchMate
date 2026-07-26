@@ -40,15 +40,15 @@ public class authController : ControllerBase
     }
 
     [HttpGet("github-config")]
-    public IActionResult GetGitHubConfig()
+    public GitHubConfigDto GetGitHubConfig()
     {
-        return Ok(new
+        return new GitHubConfigDto
         {
             ClientId = _gitHubService.GetClientId(),
             RedirectUri = _gitHubService.GetRedirectUri(),
             Scope = _gitHubService.GetScope(),
             AuthUrl = _gitHubService.GetAuthorizationUrl()
-        });
+        };
     }
 
     [HttpPost("github-login")]
@@ -60,13 +60,22 @@ public class authController : ControllerBase
 
         return null;
     }
-    
-    [HttpPost("githubCollect")] 
-    public async Task<UserInfoDto> gettinSomeEmail([FromBody] GitHubCodeDto dto)
+
+    [HttpPost("githubCollect")]
+    public async Task<UserInfoDto?> gettinSomeEmail([FromBody] GitHubCodeDto dto)
     {
-        Console.WriteLine("Processing GitHub code exchange");
-        GitHubTokenDto token = await _gitHubService.ExchangeCodeForTokenAsync(dto);
-        UserInfoDto response = await _gitHubService.ExchangeTokenForInfo(token);
-        return response;
+        try
+        {
+            Console.WriteLine("Processing GitHub code exchange");
+            GitHubTokenDto? token = await _gitHubService.ExchangeCodeForTokenAsync(dto);
+            UserInfoDto? response = await _gitHubService.ExchangeTokenForInfo(token);
+            if (response != null) return response;
+            return response;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error in gettinSomeEmail: " + ex.Message);
+            throw;
+        }
     }
 }

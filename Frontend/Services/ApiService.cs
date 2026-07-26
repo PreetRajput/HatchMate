@@ -6,7 +6,6 @@ using System.Text.Json;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using HatchMate.Api;
-using models.Dtos.GitHubDtos;
 
 namespace MauiApp1.Services
 {
@@ -133,16 +132,12 @@ namespace MauiApp1.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync("api/auth/github-config");
-                var content = await response.Content.ReadAsStringAsync();
-                if (!response.IsSuccessStatusCode) return null;
-                return JsonSerializer.Deserialize<GitHubConfigDto>(content, new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+               return await _authClient.GetGitHubConfigAsync();
             }
             catch (Exception ex)
             {
                 return null;
             }
-
         }
         public async Task<bool> PostPetAsync(PetInfoDto pet)
         {
