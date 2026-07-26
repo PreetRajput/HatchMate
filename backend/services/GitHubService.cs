@@ -71,10 +71,15 @@ namespace WebApplication1.services
             }
         }
 
-        public async Task<UserInfoDto?> ExchangeTokenForInfo(GitHubTokenDto dto)
+        public async Task<UserInfoDto?> ExchangeTokenForInfo(GitHubTokenDto? dto)
         {
             try
             {
+                if (dto == null)
+                {
+                    return null;
+                }
+
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", dto.access_token);
                 _client.DefaultRequestHeaders.UserAgent.ParseAdd("MauiApp1");
 
