@@ -28,9 +28,9 @@ namespace MauiApp1
 
             builder.Services.AddSingleton<ApiService>();
             builder.Services.AddSingleton<AuthApiService>();
-        
 
-            builder.Services.AddHttpClient<IAuthClient,AuthClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/"));
+            builder.Services.AddTransient<AuthHandler>();
+            builder.Services.AddHttpClient<IAuthClient,AuthClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
             builder.Services.AddHttpClient<IPetClient,PetClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>(); 
             builder.Services.AddHttpClient<ISeedClient,SeedClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
             builder.Services.AddHttpClient<ITaskClient,TaskClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
@@ -51,12 +51,6 @@ namespace MauiApp1
             builder.Services.AddTransient<GoalsViewModel>();
             builder.Services.AddTransient<PetViewModel>();
             builder.Services.AddTransient<AppSettingsViewModel>();
-
-            builder.Services.AddSingleton<HatchMate.Api.PetInfoDto>();
-            builder.Services.AddSingleton<HatchMate.Api.PetDto>();
-            builder.Services.AddSingleton<HatchMate.Api.UserAppRelatedInfoDto>();
-            builder.Services.AddSingleton<HatchMate.Api.TaskListDto>();
-
             return builder.Build();
         }
     }

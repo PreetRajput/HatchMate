@@ -11,21 +11,21 @@ namespace MauiApp1.Services
 {
     public class ApiService
     {
-        private readonly HttpClient _httpClient;
         private readonly IAuthClient _authClient;
+        private readonly ISeedClient _seedClient;
         private readonly IPetClient _petClient;
         private readonly IUsersClient _usersClient;
         private readonly ITaskClient _taskClient;
         private string? _token;
         private const string AuthKey = "auth_token";
 
-        public ApiService(IAuthClient authClient, IPetClient petClient, IUsersClient usersClient, ITaskClient taskClient)
+        public ApiService(IAuthClient authClient, IPetClient petClient, IUsersClient usersClient, ITaskClient taskClient, ISeedClient seedClient)
         {
             _authClient = authClient;
+            _seedClient = seedClient;
             _petClient = petClient;
             _usersClient = usersClient;
             _taskClient = taskClient;
-            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.4:5000/") };
         }
 
         //to retrieve the token taken from secure storage 
@@ -38,126 +38,51 @@ namespace MauiApp1.Services
         public bool SetToken(string? token)
         {
             _token = token?.Trim().Trim('"');
-            if (!string.IsNullOrEmpty(_token))
-            {
-                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
-                _ = SecureStorage.SetAsync(AuthKey, _token);
-                return true;
-            }
-            else
-            {
-                _httpClient.DefaultRequestHeaders.Authorization = null;
-                return false;
-            }
+            return !string.IsNullOrEmpty(_token);
         }
 
         // GetPet
-        public async Task<PetInfoDto?> GetPetAsync()
+        public Task<PetInfoDto?> GetPetAsync()
         {
-
-            var response = await _httpClient.GetAsync("api/pet");
-            var body = await response.Content.ReadAsStringAsync();
-            Debug.WriteLine($"[ApiService] GetPetAsync -> {(int)response.StatusCode} {body}");
-            if (!response.IsSuccessStatusCode) return null;
-            return JsonSerializer.Deserialize<PetInfoDto>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            return _petClient.GetPetInfoAsync();
         }
-        public async Task<List<EmoteInfoDto>?> GetAnimationAsync(PetDto dto)
+        public Task<ICollection<EmoteInfoDto>?> GetAnimationAsync(PetDto dto)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/seed", dto);
-            var body = await response.Content.ReadAsStringAsync();
-            if(!response.IsSuccessStatusCode) return null;
-            return JsonSerializer.Deserialize<List<EmoteInfoDto>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<EmoteInfoDto>();
+            return _seedClient.PostAsync(dto);
         }
 
         // Post user
-        public async Task<bool> PostUserAsync(UserAppRelatedInfoDto user)
+        public Task PostUserAsync(UserAppRelatedInfoDto user)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/users", user);
-            return response.IsSuccessStatusCode;
+            return _usersClient.CreateAsync(user);
         }
 
         // Post task
-        public async Task<List<TaskItemDto>?> PostTaskAsync(TaskListDto task)
+        public Task<ICollection<TaskItemDto>?> PostTaskAsync(TaskListDto task)
         {
-            try
-            {
-                var response = await _httpClient.PostAsJsonAsync("api/task", task);
-                var body = await response.Content.ReadAsStringAsync();
-                if (!response.IsSuccessStatusCode) return null;
-                return JsonSerializer.Deserialize<List<TaskItemDto>>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("postTaskASYNC", ex.ToString());
-                return null;
-            }
-
-
+            return _taskClient.AddTasksToDBAsync(task);
         }
 
         // Retrieve user tasks
-        public async Task<List<TaskItemDto>?> RetrieveUserTasksAsync()
+        public Task<ICollection<TaskItemDto>?> RetrieveUserTasksAsync()
         {
-            try
-            {
-                var res=  await _httpClient.GetFromJsonAsync<List<TaskItemDto>>("api/task");
-                return res;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("apicall exception", ex.ToString());
-                return null;
-            }
+            return _taskClient.GetTasksFromDBAsync();
         }
-        public async Task<int?> UpdateTaskToCompletedAsync(TasksIdDto dto)
+        public Task<int> UpdateTaskToCompletedAsync(TasksIdDto dto)
         {
-            try
-            {
-
-                var response = await _httpClient.PatchAsJsonAsync($"api/task", dto);
-                if (!response.IsSuccessStatusCode)
-                {
-                    return null;
-                }
-                return await response.Content.ReadFromJsonAsync<int?>();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("error might be:", ex.ToString());
-                throw;
-            }
-
+            return _taskClient.MarkTaskAsCompletedAsync(dto);
         }
-        public async Task<GitHubConfigDto?> GetAsync()
+        public Task<GitHubConfigDto?> GetAsync()
         {
-            try
-            {
-               return await _authClient.GetGitHubConfigAsync();
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            return _authClient.GetGitHubConfigAsync();
         }
-        public async Task<bool> PostPetAsync(PetInfoDto pet)
+        public Task PostPetAsync(PetInfoDto pet)
         {
-            try
-            {
-                Debug.WriteLine("postPetAsync");
-                var response = await _httpClient.PostAsJsonAsync("api/pet", pet);
-                return response.IsSuccessStatusCode;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("error yeh hai", ex.Message);
-                return false;
-            }
-
+            return _petClient.PostPetInfoAsync(pet);
         }
-        public async Task<bool> DeleteTaskAsync(Guid id)
+        public Task DeleteTaskAsync(Guid id)
         {
-            var res = await _httpClient.DeleteAsync($"api/task/{id}");
-            return res.IsSuccessStatusCode;
+            return _taskClient.DeleteTaskFromDBAsync(id);
         }
     
 

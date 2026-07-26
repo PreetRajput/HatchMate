@@ -4,16 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using models.Dtos.GitHubDtos;
 using models.Dtos.UserDtos;
 using models.Entities;
-using MongoDB.Bson;
 using MongoDB.Driver;
-using System.Diagnostics;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net.WebSockets;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using WebApplication1.services;
 
 [ApiController]
+[AllowAnonymous]
 [Route("api/[controller]")]
 public class authController : ControllerBase
 {
@@ -38,10 +33,11 @@ public class authController : ControllerBase
             throw;
         }
     }
-
     [HttpGet("github-config")]
     public GitHubConfigDto GetGitHubConfig()
     {
+        Console.WriteLine("abasbcascb");
+
         return new GitHubConfigDto
         {
             ClientId = _gitHubService.GetClientId(),

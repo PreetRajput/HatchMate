@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using HatchMate.Api;
 using MauiApp1.Services;
-using models.Dtos.TaskDtos;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -86,7 +86,7 @@ namespace MauiApp1.viewModel
         {
             try
             {
-                currentTasks = await _apiService.RetrieveUserTasksAsync();
+                currentTasks = (await _apiService.RetrieveUserTasksAsync())?.ToList();
                 BorderContext.Clear();
                 for (int i = 0; i < currentTasks?.Count; i++)
                 {
@@ -217,14 +217,14 @@ namespace MauiApp1.viewModel
                     totalTasks.Add(item.Goal!);
                 }
                     updatedUserData.Tasks = totalTasks;
-                    List<TaskItemDto>? goalsList=  await _apiService.PostTaskAsync(updatedUserData);
+                    List<TaskItemDto>? goalsList=  (await _apiService.PostTaskAsync(updatedUserData))?.ToList();
                     for(int i= 0; i<goalsList?.Count; i++)
                     {
                         foreach (var item in BorderContext)
                         {
                             if (item.Id == Guid.Empty)
                             {
-                                item.Id = goalsList[i].Id;
+                                item.Id = goalsList.ElementAt(i).Id;
                                 break;
                             }
                         }
