@@ -5,10 +5,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using models.Dtos.UserDtos;
-using models.Dtos.PetDtos;
-using models.Dtos.TaskDtos;
-using models.Dtos.EmoteSeedDtos;
+using HatchMate.Api;
 using models.Dtos.GitHubDtos;
 
 namespace MauiApp1.Services
@@ -16,11 +13,19 @@ namespace MauiApp1.Services
     public class ApiService
     {
         private readonly HttpClient _httpClient;
+        private readonly IAuthClient _authClient;
+        private readonly IPetClient _petClient;
+        private readonly IUsersClient _usersClient;
+        private readonly ITaskClient _taskClient;
         private string? _token;
         private const string AuthKey = "auth_token";
 
-        public ApiService()
+        public ApiService(IAuthClient authClient, IPetClient petClient, IUsersClient usersClient, ITaskClient taskClient)
         {
+            _authClient = authClient;
+            _petClient = petClient;
+            _usersClient = usersClient;
+            _taskClient = taskClient;
             _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.4:5000/") };
         }
 
@@ -50,6 +55,7 @@ namespace MauiApp1.Services
         // GetPet
         public async Task<PetInfoDto?> GetPetAsync()
         {
+
             var response = await _httpClient.GetAsync("api/pet");
             var body = await response.Content.ReadAsStringAsync();
             Debug.WriteLine($"[ApiService] GetPetAsync -> {(int)response.StatusCode} {body}");
