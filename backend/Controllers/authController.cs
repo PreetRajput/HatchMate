@@ -33,6 +33,7 @@ public class authController : ControllerBase
             throw;
         }
     }
+    [AllowAnonymous]
     [HttpGet("github-config")]
     public GitHubConfigDto GetGitHubConfig()
     {
