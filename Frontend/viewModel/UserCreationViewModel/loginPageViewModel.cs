@@ -85,22 +85,25 @@ namespace MauiApp1.viewModel
                     Debug.WriteLine($"User email: {user.Email}");
 
                     UserAuthResponseDto check = await _authApiService.GetTokenAsync(person);
-
-                    if (check == null)
+                    if (check != null)
+                    {
+                        await SecureStorage.SetAsync("auth_token", check.Token);
+                        if (check.IsNewUser)
+                        {
+                            var page = ((App)Application.Current).Services.GetRequiredService<SignupPage>();
+                            await Application.Current.MainPage.Navigation.PushAsync(page);
+                        }
+                        else
+                        {
+                            Application.Current.MainPage = new AppShell();
+                        }
+                    }
+                    else
                     {
                         await Application.Current.MainPage.DisplayAlert("Error", "Backend did not return an auth token. See logs for details.", "OK");
                         canClick = true;
                         LoginBtnText = "Login";
                         return;
-                    }
-                    if (check.IsNewUser)
-                    {
-                        var page = ((App)Application.Current).Services.GetRequiredService<SignupPage>();
-                        await Application.Current.MainPage.Navigation.PushAsync(page);
-                    }
-                    else
-                    {
-                        Application.Current.MainPage = new AppShell();
                     }
                 }
             }
