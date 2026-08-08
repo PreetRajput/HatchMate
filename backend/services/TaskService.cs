@@ -162,11 +162,14 @@ namespace WebApplication1.services
            return await _tasks.DeleteOneAsync(filter);
         }
 
-        public async Task<List<TaskItemDto>> RetrieveTasks(Guid userId)
+        public async Task<List<TaskItemDto>> RetrieveInCompleteTasks(Guid userId)
         {
             try
             {
-                var filter = Builders<TaskEntity>.Filter.Eq(t => t.UserId, userId);
+                var filter = Builders<TaskEntity>.Filter.And(
+                    Builders<TaskEntity>.Filter.Eq(t=> t.UserId, userId),
+                    Builders<TaskEntity>.Filter.Eq(t => t.IsCompleted, false)
+                );
                 var response = await _tasks.Find(filter).ToListAsync();
                 List<TaskItemDto> taskItem = new List<TaskItemDto>();
                 foreach (var entity in response)
@@ -182,6 +185,32 @@ namespace WebApplication1.services
                 return new List<TaskItemDto>(); 
             }
         }
-        
+        public async Task<List<TaskItemDto>> RetrieveSomeCompletedTasks(Guid userId, int skip, int take)
+        {
+            try
+            {
+                var filter = Builders<TaskEntity>.Filter.And(
+                            Builders<TaskEntity>.Filter.Eq(t=> t.UserId, userId),
+                            Builders<TaskEntity>.Filter.Eq(t=> t.IsCompleted, true)
+                            );
+                var response = await _tasks.Find(filter)
+                                           .SortByDescending(x => x.CreatedAt)
+                                           .Skip(skip)
+                                           .Limit(take)
+                                           .ToListAsync();
+                List<TaskItemDto> taskItem = new List<TaskItemDto>();
+                foreach (var item in response)
+                {
+                    taskItem.Add(_mapper.Map<TaskItemDto>(item));
+                }
+                return taskItem;
+            }
+            catch (Exception ex )
+            {
+                Console.WriteLine($"Could not find {userId}");
+                Console.WriteLine(ex.ToString());
+                return new List<TaskItemDto>();
+            }
+        }
     }
 }

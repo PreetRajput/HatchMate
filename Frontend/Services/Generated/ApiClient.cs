@@ -1062,11 +1062,11 @@ namespace HatchMate.Api
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> AddTasksToDBAsync(TaskListDto dto, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiClient">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetTasksFromDBAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetInCompleteTasksFromDBAsync();
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiClient">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetTasksFromDBAsync(System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetInCompleteTasksFromDBAsync(System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiClient">A server side error occurred.</exception>
         System.Threading.Tasks.Task<int> MarkTaskAsCompletedAsync(TasksIdDto dto);
@@ -1074,6 +1074,13 @@ namespace HatchMate.Api
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiClient">A server side error occurred.</exception>
         System.Threading.Tasks.Task<int> MarkTaskAsCompletedAsync(TasksIdDto dto, System.Threading.CancellationToken cancellationToken);
+
+        /// <exception cref="ApiClient">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetSomecompletedTaskAsync(int skip, int take);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiClient">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetSomecompletedTaskAsync(int skip, int take, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiClient">A server side error occurred.</exception>
         System.Threading.Tasks.Task<FileResponse> DeleteTaskFromDBAsync(System.Guid id);
@@ -1200,14 +1207,14 @@ namespace HatchMate.Api
         }
 
         /// <exception cref="ApiClient">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetTasksFromDBAsync()
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetInCompleteTasksFromDBAsync()
         {
-            return GetTasksFromDBAsync(System.Threading.CancellationToken.None);
+            return GetInCompleteTasksFromDBAsync(System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiClient">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetTasksFromDBAsync(System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetInCompleteTasksFromDBAsync(System.Threading.CancellationToken cancellationToken)
         {
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -1332,6 +1339,91 @@ namespace HatchMate.Api
                         if (status_ == 200)
                         {
                             var objectResponse_ = await ReadObjectResponseAsync<int>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiClient("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await ReadAsStringAsync(response_.Content, cancellationToken).ConfigureAwait(false);
+                            throw new ApiClient("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <exception cref="ApiClient">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetSomecompletedTaskAsync(int skip, int take)
+        {
+            return GetSomecompletedTaskAsync(skip, take, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <exception cref="ApiClient">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetSomecompletedTaskAsync(int skip, int take, System.Threading.CancellationToken cancellationToken)
+        {
+            if (skip == null)
+                throw new System.ArgumentNullException("skip");
+
+            if (take == null)
+                throw new System.ArgumentNullException("take");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+
+                    var urlBuilder_ = new System.Text.StringBuilder();
+                
+                    // Operation Path: "api/Task/{skip}, {take}"
+                    urlBuilder_.Append("api/Task/");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(skip, System.Globalization.CultureInfo.InvariantCulture)));
+                    urlBuilder_.Append(", ");
+                    urlBuilder_.Append(System.Uri.EscapeDataString(ConvertToString(take, System.Globalization.CultureInfo.InvariantCulture)));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = new System.Collections.Generic.Dictionary<string, System.Collections.Generic.IEnumerable<string>>();
+                        foreach (var item_ in response_.Headers)
+                            headers_[item_.Key] = item_.Value;
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<TaskItemDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiClient("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);

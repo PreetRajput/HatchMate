@@ -25,6 +25,7 @@ namespace models.Entities
         [BsonElement("Task")]
         public string? Task { get; set; }
 
-      
+        [BsonElement("CreatedAt")]
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }
