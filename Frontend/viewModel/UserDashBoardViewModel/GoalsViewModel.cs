@@ -5,6 +5,7 @@ using MauiApp1.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace MauiApp1.viewModel
@@ -24,7 +25,15 @@ namespace MauiApp1.viewModel
     {
         string? id;
         int trash = 0;
-
+        int skip = 0;
+        int take = 10;
+        bool hasMoreTask;
+        [ObservableProperty]
+        bool isLoading = false;
+        public List<int> SkeletonItems { get; } =
+        [
+            1,2,3
+        ];
         [ObservableProperty]
         ObservableCollection<Filter> filters = new()
         {
@@ -65,7 +74,7 @@ namespace MauiApp1.viewModel
         [ObservableProperty]
         bool isEditing = false;
 
-        List<TaskItemDto>? currentTasks;
+        List<TaskItemDto>? currentIncompleteTasks;
         TasksIdDto UpdatedTasks= new();
         int totalTask = 0;
         List<string> totalTasks = new();
@@ -74,8 +83,6 @@ namespace MauiApp1.viewModel
 
         [ObservableProperty]
         ObservableCollection<TaskList> borderContext= new();
-        private static readonly Collection<TaskList> taskLists = new();
-        readonly Collection<TaskList> AllTasks = taskLists;
 
         public const string auth_token = "auth_token";
 
@@ -86,22 +93,18 @@ namespace MauiApp1.viewModel
         {
             try
             {
-                currentTasks = (await _apiService.RetrieveUserTasksAsync())?.ToList();
+                currentIncompleteTasks = (await _apiService.RetrieveUserIncompleteTasksAsync())?.ToList();
                 BorderContext.Clear();
-                for (int i = 0; i < currentTasks?.Count; i++)
+                for (int i = 0; i < currentIncompleteTasks?.Count; i++)
                 {
-                    AllTasks.Add(new TaskList
+                    BorderContext.Add(new TaskList
                     {
-                        Goal = currentTasks[i].Task,
+                        Goal = currentIncompleteTasks[i].Task,
                         BgColor = "Transparent",
-                        Id = currentTasks[i].Id,
+                        Id = currentIncompleteTasks[i].Id,
                         IsSelected = false,
-                        IsCompleted = currentTasks[i].IsCompleted
+                        IsCompleted = currentIncompleteTasks[i].IsCompleted
                     });
-                    if (!currentTasks[i].IsCompleted)
-                    {
-                        BorderContext.Add(AllTasks[i]);
-                    }
                 }
             }
             catch(Exception ex)
@@ -122,7 +125,6 @@ namespace MauiApp1.viewModel
         public void addOneMoreTask()
         {
             TaskList newTask = new() { Goal = "" };
-            AllTasks.Add(newTask);
             BorderContext.Add(newTask);
             NewAddedTasks.Add(newTask);
         }
@@ -234,35 +236,71 @@ namespace MauiApp1.viewModel
             }
         }
 
-        public void ShowFilteredTasks()
+        public async Task ShowFilteredTasks()
         {
-            TaskName = TaskMode.ADD;
-
-            BorderContext.Clear();
-            if(SelectedFilter == Filter.Completed)
+            try
             {
-                foreach (var task in AllTasks)
+                TaskName = TaskMode.ADD;
+                BorderContext.Clear();
+                if(SelectedFilter == Filter.Completed)
                 {
-                    if (task.IsCompleted)
+                    var CompletedTasks = (await _apiService.RetrieveUserCompletedTasksAsync(0,10));
+                    hasMoreTask = CompletedTasks.HasMoreTask;
+                    foreach (var task in CompletedTasks.Tasks.ToList())
                     {
-                        task.BgColor = "LightGreen";
-                        BorderContext.Add(task);
+                        BorderContext.Add(new TaskList
+                        {
+                            Goal = task.Task,
+                            BgColor = "Green",
+                            Id = task.Id,
+                            IsSelected = false,
+                            IsCompleted = task.IsCompleted
+                        });
+                    }
+                }
+                else
+                {
+                    var IncompleteTasks = (await _apiService.RetrieveUserIncompleteTasksAsync()).ToList();
+                    foreach (var task in IncompleteTasks)
+                    {
+                        BorderContext.Add(new TaskList
+                        {
+                            Goal = task.Task,
+                            BgColor = "Transparent",
+                            Id = task.Id,
+                            IsSelected = false,
+                            IsCompleted = task.IsCompleted
+                        });
                     }
                 }
             }
-            else
+            catch(Exception ex)
             {
-                foreach (var task in AllTasks)
+                Debug.WriteLine(ex.ToString);
+            }
+        }
+        [RelayCommand]
+        public async Task LoadMoreTasks()
+        {
+            if(hasMoreTask)
+            { 
+                skip+= take;
+                take += 10;
+                var CompletedTasks = (await _apiService.RetrieveUserCompletedTasksAsync(skip, take));
+                hasMoreTask= CompletedTasks.HasMoreTask;
+                foreach (var task in CompletedTasks.Tasks.ToList())
                 {
-                    if (!task.IsCompleted)
+                    BorderContext.Add(new TaskList
                     {
-                        task.BgColor = "Transparent";
-                        BorderContext.Add(task);
-                    }
+                        Goal = task.Task,
+                        BgColor = "Transparent",
+                        Id = task.Id,
+                        IsSelected = false,
+                        IsCompleted = task.IsCompleted
+                    });
                 }
             }
         }
-    
         public partial class TaskList: ObservableObject
         {
             [ObservableProperty]

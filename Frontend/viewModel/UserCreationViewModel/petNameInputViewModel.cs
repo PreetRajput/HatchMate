@@ -73,7 +73,7 @@ namespace MauiApp1.viewModel
             }
             else
             {
-                    pet.PetName = PetName;
+                pet.PetName = PetName;
                 var page = ((App)Application.Current).Services.GetRequiredService<NewPage5>();
                 await Application.Current.MainPage.Navigation.PushAsync(page);
 

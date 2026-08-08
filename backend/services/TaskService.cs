@@ -185,7 +185,7 @@ namespace WebApplication1.services
                 return new List<TaskItemDto>(); 
             }
         }
-        public async Task<List<TaskItemDto>> RetrieveSomeCompletedTasks(Guid userId, int skip, int take)
+        public async Task<TaskElementDto> RetrieveSomeCompletedTasks(Guid userId, int skip, int take)
         {
             try
             {
@@ -193,23 +193,27 @@ namespace WebApplication1.services
                             Builders<TaskEntity>.Filter.Eq(t=> t.UserId, userId),
                             Builders<TaskEntity>.Filter.Eq(t=> t.IsCompleted, true)
                             );
-                var response = await _tasks.Find(filter)
+                var totalCount = await _tasks.CountDocumentsAsync(filter);
+                var LoadSomeTasks = await _tasks.Find(filter)
                                            .SortByDescending(x => x.CreatedAt)
                                            .Skip(skip)
                                            .Limit(take)
                                            .ToListAsync();
                 List<TaskItemDto> taskItem = new List<TaskItemDto>();
-                foreach (var item in response)
+                foreach (var item in LoadSomeTasks)
                 {
                     taskItem.Add(_mapper.Map<TaskItemDto>(item));
                 }
-                return taskItem;
+                TaskElementDto response = new TaskElementDto();
+                response.HasMoreTask= ((skip+take) > totalCount)?false: true;
+                response.Tasks = taskItem;
+                return response;
             }
             catch (Exception ex )
             {
                 Console.WriteLine($"Could not find {userId}");
                 Console.WriteLine(ex.ToString());
-                return new List<TaskItemDto>();
+                return new TaskElementDto();
             }
         }
     }
