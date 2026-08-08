@@ -1076,11 +1076,11 @@ namespace HatchMate.Api
         System.Threading.Tasks.Task<int> MarkTaskAsCompletedAsync(TasksIdDto dto, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiClient">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetSomecompletedTaskAsync(int skip, int take);
+        System.Threading.Tasks.Task<TaskElementDto> GetSomecompletedTaskAsync(int skip, int take);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiClient">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetSomecompletedTaskAsync(int skip, int take, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<TaskElementDto> GetSomecompletedTaskAsync(int skip, int take, System.Threading.CancellationToken cancellationToken);
 
         /// <exception cref="ApiClient">A server side error occurred.</exception>
         System.Threading.Tasks.Task<FileResponse> DeleteTaskFromDBAsync(System.Guid id);
@@ -1366,14 +1366,14 @@ namespace HatchMate.Api
         }
 
         /// <exception cref="ApiClient">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetSomecompletedTaskAsync(int skip, int take)
+        public virtual System.Threading.Tasks.Task<TaskElementDto> GetSomecompletedTaskAsync(int skip, int take)
         {
             return GetSomecompletedTaskAsync(skip, take, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiClient">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskItemDto>> GetSomecompletedTaskAsync(int skip, int take, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<TaskElementDto> GetSomecompletedTaskAsync(int skip, int take, System.Threading.CancellationToken cancellationToken)
         {
             if (skip == null)
                 throw new System.ArgumentNullException("skip");
@@ -1423,7 +1423,7 @@ namespace HatchMate.Api
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<TaskItemDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<TaskElementDto>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiClient("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -2043,6 +2043,18 @@ namespace HatchMate.Api
 
         [Newtonsoft.Json.JsonProperty("tasks", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<string> Tasks { get; set; }
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "14.7.1.0 (NJsonSchema v11.6.1.0 (Newtonsoft.Json v13.0.0.0))")]
+    public partial class TaskElementDto
+    {
+
+        [Newtonsoft.Json.JsonProperty("tasks", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<TaskItemDto> Tasks { get; set; }
+
+        [Newtonsoft.Json.JsonProperty("hasMoreTask", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool HasMoreTask { get; set; }
 
     }
 

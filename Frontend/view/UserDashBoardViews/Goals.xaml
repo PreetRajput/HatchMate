@@ -5,24 +5,24 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="Black">
     <Grid RowDefinitions="auto,auto,*,auto" x:Name="goalsContainer">
-        
-        
-        
+
+
+
         <Label Text="Daily Goals" FontSize="35"  FontAttributes="Bold" Padding="15,15,0,0"/>
 
         <Picker Grid.Row="1"  ItemsSource="{Binding Filters}"  SelectedItem="{Binding SelectedFilter}" />
 
-        <ScrollView Grid.Row="2">
-            
-            <VerticalStackLayout x:Name="tasksContainer" BindableLayout.ItemsSource="{Binding BorderContext}">
-                <BindableLayout.ItemTemplate>
+        <CollectionView Grid.Row="2" 
+                        ItemsSource="{Binding BorderContext}"
+                        RemainingItemsThreshold="3"
+                        RemainingItemsThresholdReachedCommand="{Binding LoadMoreTasksCommand}">
+            <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border
                              Stroke="Transparent"
                              StrokeThickness="2"
                              BackgroundColor="{Binding BgColor}"
-                             Padding="12"
-                            >          
+                             Padding="12">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="16" />
                             </Border.StrokeShape>
@@ -58,14 +58,53 @@
                                      VerticalOptions="Center"/>
                             </Grid>
                         </Border>
-
                     </DataTemplate>
-                </BindableLayout.ItemTemplate>
-               
+                </CollectionView.ItemTemplate>
+        </CollectionView>
+        <CollectionView
+                            IsVisible="{Binding IsLoading}"
+                            ItemsSource="{Binding SkeletonItems}">
 
-            </VerticalStackLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Margin="10"
+                                StrokeThickness="0"
+                                BackgroundColor="White">
 
-        </ScrollView>
+                                <Grid
+                                Padding="15"
+                                ColumnDefinitions="40,*">
+
+                                    <!-- Checkbox placeholder -->
+                                <BoxView
+                                WidthRequest="24"
+                                HeightRequest="24"
+                                CornerRadius="4"
+                                BackgroundColor="#D9D9D9"/>
+
+                                <VerticalStackLayout
+                                Grid.Column="1"
+                                Margin="12,0,0,0">
+
+                                <BoxView
+                                HeightRequest="18"
+                                WidthRequest="180"
+                                BackgroundColor="#D9D9D9"/>
+
+                                <BoxView
+                                Margin="0,8,0,0"
+                                HeightRequest="14"
+                                WidthRequest="120"
+                                BackgroundColor="#D9D9D9"/>
+                                </VerticalStackLayout>
+
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
 
         <Button Grid.Row="3" 
                 HorizontalOptions="Start"
@@ -111,7 +150,7 @@
                     Value="{Binding addedMoreTasksCommand}" />
 
                 </DataTrigger>
-                
+
                 <DataTrigger TargetType="Button"
                     
                     Binding="{Binding TaskName}"
@@ -131,7 +170,7 @@
         </Button>
 
     </Grid>
-    
+
 </ContentPage>
 
 

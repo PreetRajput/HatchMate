@@ -64,9 +64,13 @@ namespace MauiApp1.Services
         }
 
         // Retrieve user tasks
-        public Task<ICollection<TaskItemDto>?> RetrieveUserTasksAsync()
+        public Task<ICollection<TaskItemDto>?> RetrieveUserIncompleteTasksAsync()
         {
-            return _taskClient.GetTasksFromDBAsync();
+            return _taskClient.GetInCompleteTasksFromDBAsync();
+        }
+        public Task<TaskElementDto> RetrieveUserCompletedTasksAsync(int skip, int take)
+        {
+            return _taskClient.GetSomecompletedTaskAsync(skip, take);
         }
         public Task<int> UpdateTaskToCompletedAsync(TasksIdDto dto)
         {

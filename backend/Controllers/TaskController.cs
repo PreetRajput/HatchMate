@@ -33,6 +33,7 @@ namespace WebApplication1.Controllers
         [Authorize]
         public async Task<List<TaskItemDto>> GetInCompleteTasksFromDB()
         {
+            Console.WriteLine("entered tasks");
             var userIdValue = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userId = Guid.Parse(userIdValue);
             var res = await _taskService.RetrieveInCompleteTasks(userId);
@@ -40,11 +41,12 @@ namespace WebApplication1.Controllers
         }
         [HttpGet("{skip}, {take}")]
         [Authorize]
-        public async Task<List<TaskItemDto>> GetSomecompletedTask(int skip, int take)
+        public async Task<TaskElementDto> GetSomecompletedTask(int skip, int take)
         {
             var userIdValue = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userId = Guid.Parse(userIdValue);
             var res = await _taskService.RetrieveSomeCompletedTasks(userId, skip, take);
+            Console.WriteLine(res);
             return res;
         }
         [HttpDelete("{id}")]
