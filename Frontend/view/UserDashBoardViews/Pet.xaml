@@ -2,95 +2,164 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Pet"
-             BackgroundColor="White">
-    <Grid RowDefinitions="Auto,*" 
-          RowSpacing="20" 
-          Padding="20">
+             BackgroundColor="#F4F3FB">
+    <Grid RowDefinitions="Auto,*" RowSpacing="0">
 
-        <!-- Top Row: Pet Name (Center) and Level (Right) -->
-        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
-            <Label Grid.Column="0" 
-                   Text="{Binding PetName}" 
-                   TextColor="Black"
-                   FontSize="24"
-                   FontAttributes="Bold"
+        <!-- Header -->
+        <Border Grid.Row="0"
+                StrokeThickness="0"
+                BackgroundColor="{StaticResource Primary}"
+                Padding="24,50,24,26">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,28,28" />
+            </Border.StrokeShape>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                    <Label Text="{Binding PetName}"
+                           TextColor="White"
+                           FontSize="26"
+                           FontAttributes="Bold"/>
+                    <Label Text="Your loyal companion"
+                           TextColor="White"
+                           Opacity="0.85"
+                           FontSize="13"/>
+                </VerticalStackLayout>
+
+                <Border Grid.Column="1"
+                        StrokeThickness="0"
+                        BackgroundColor="White"
+                        Padding="14,6"
+                        VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16"/>
+                    </Border.StrokeShape>
+                    <Label Text="{Binding PetLevel, StringFormat='Lv. {0}'}"
+                           TextColor="{StaticResource Primary}"
+                           FontAttributes="Bold"
+                           FontSize="14"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Content -->
+        <Grid Grid.Row="1"
+              RowDefinitions="*,Auto"
+              Padding="20,24,20,20">
+
+            <!-- Pet stage card -->
+            <Border Grid.Row="0"
+                    StrokeThickness="0"
+                    BackgroundColor="White"
+                    Padding="10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="26"/>
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="Black" Opacity="0.10" Radius="16" Offset="0,6"/>
+                </Border.Shadow>
+
+                <Grid ColumnDefinitions="Auto,*,Auto"
+                      RowDefinitions="Auto,*,Auto"
+                      ColumnSpacing="16"
+                      RowSpacing="16">
+
+                    <!-- Top Left Emote -->
+                    <Border Grid.Row="0" Grid.Column="0"
+                            StrokeThickness="0"
+                            BackgroundColor="#F4F3FB"
+                            WidthRequest="64"
+                            HeightRequest="64"
+                            Padding="8"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18"/>
+                        </Border.StrokeShape>
+                        <ImageButton Source="{Binding EmoteOne.Image}"
+                                     BackgroundColor="Transparent"
+                                     Command="{Binding PlayAnimationCommand}"
+                                     CommandParameter="{Binding EmoteOne}"
+                                     Aspect="AspectFit"/>
+                    </Border>
+
+                    <!-- Top Right Emote -->
+                    <Border Grid.Row="0" Grid.Column="2"
+                            StrokeThickness="0"
+                            BackgroundColor="#F4F3FB"
+                            WidthRequest="64"
+                            HeightRequest="64"
+                            Padding="8"
+                            HorizontalOptions="End"
+                            VerticalOptions="Start">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18"/>
+                        </Border.StrokeShape>
+                        <ImageButton Source="{Binding EmoteTwo.Image}"
+                                     BackgroundColor="Transparent"
+                                     Command="{Binding PlayAnimationCommand}"
+                                     CommandParameter="{Binding EmoteTwo}"
+                                     Aspect="AspectFit"/>
+                    </Border>
+
+                    <!-- Center Pet Image -->
+                    <Image x:Name="myPet"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Source="{Binding PetImage}"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           WidthRequest="200"
+                           HeightRequest="200"/>
+
+                    <!-- Bottom Left Emote -->
+                    <Border Grid.Row="2" Grid.Column="0"
+                            StrokeThickness="0"
+                            BackgroundColor="#F4F3FB"
+                            WidthRequest="64"
+                            HeightRequest="64"
+                            Padding="8"
+                            HorizontalOptions="Start"
+                            VerticalOptions="End">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18"/>
+                        </Border.StrokeShape>
+                        <ImageButton Source="{Binding EmoteThree.Image}"
+                                     BackgroundColor="Transparent"
+                                     Command="{Binding PlayAnimationCommand}"
+                                     CommandParameter="{Binding EmoteThree}"
+                                     Aspect="AspectFit"/>
+                    </Border>
+
+                    <!-- Bottom Right Emote -->
+                    <Border Grid.Row="2" Grid.Column="2"
+                            StrokeThickness="0"
+                            BackgroundColor="#F4F3FB"
+                            WidthRequest="64"
+                            HeightRequest="64"
+                            Padding="8"
+                            HorizontalOptions="End"
+                            VerticalOptions="End">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18"/>
+                        </Border.StrokeShape>
+                        <ImageButton Source="{Binding EmoteFour.Image}"
+                                     BackgroundColor="Transparent"
+                                     Command="{Binding PlayAnimationCommand}"
+                                     CommandParameter="{Binding EmoteFour}"
+                                     Aspect="AspectFit"/>
+                    </Border>
+
+                </Grid>
+            </Border>
+
+            <Label Grid.Row="1"
+                   Text="Tap an emote to interact with your pet"
+                   FontSize="13"
+                   TextColor="#8B8B96"
                    HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
-
-            <Label Grid.Column="1" 
-                   Text="{Binding PetLevel, StringFormat='Level: {0}'}" 
-                   TextColor="Black"
-                   FontSize="18"
-                   HorizontalOptions="End"
-                   VerticalOptions="Center"
-                   Margin="20,0,0,0"/>
-        </Grid>
-
-        <!-- Center Row: 4 Emotes as corners with Pet in center -->
-        <Grid Grid.Row="1" 
-              ColumnDefinitions="Auto,*,Auto" 
-              RowDefinitions="Auto,*,Auto"
-              ColumnSpacing="20"
-              RowSpacing="20">
-
-            <!-- Top Left Emote -->
-            <ImageButton Grid.Row="0" 
-                         Grid.Column="0"
-                         Source="{Binding EmoteOne.Image}" 
-                         WidthRequest="80" 
-                         HeightRequest="80"
-                         Command="{Binding PlayAnimationCommand}"
-                         CommandParameter="{Binding EmoteOne}"
-                         Aspect="AspectFit"
-                         VerticalOptions="Start"
-                         HorizontalOptions="Start"/>
-
-            <!-- Top Right Emote -->
-            <ImageButton Grid.Row="0" 
-                         Grid.Column="2"
-                         Source="{Binding EmoteTwo.Image}" 
-                         WidthRequest="80" 
-                         HeightRequest="80"
-                         Command="{Binding PlayAnimationCommand}"
-                         CommandParameter="{Binding EmoteTwo}"
-                         Aspect="AspectFit"
-                         VerticalOptions="Start"
-                         HorizontalOptions="End"/>
-
-            <!-- Center Pet Image -->
-            <Image x:Name="myPet" 
-                   Grid.Row="1" 
-                   Grid.Column="1"
-                   Source="{Binding PetImage}" 
-                   Aspect="AspectFit"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   WidthRequest="200"
-                   HeightRequest="200"/>
-
-            <!-- Bottom Left Emote -->
-            <ImageButton Grid.Row="2" 
-                         Grid.Column="0"
-                         Source="{Binding EmoteThree.Image}" 
-                         WidthRequest="80" 
-                         HeightRequest="80"
-                         Command="{Binding PlayAnimationCommand}"
-                         CommandParameter="{Binding EmoteThree}"
-                         Aspect="AspectFit"
-                         VerticalOptions="End"
-                         HorizontalOptions="Start"/>
-
-            <!-- Bottom Right Emote -->
-            <ImageButton Grid.Row="2" 
-                         Grid.Column="2"
-                         Source="{Binding EmoteFour.Image}" 
-                         WidthRequest="80" 
-                         HeightRequest="80"
-                         Command="{Binding PlayAnimationCommand}"
-                         CommandParameter="{Binding EmoteFour}"
-                         Aspect="AspectFit"
-                         VerticalOptions="End"
-                         HorizontalOptions="End"/>
+                   Margin="0,16,0,0"/>
 
         </Grid>
 

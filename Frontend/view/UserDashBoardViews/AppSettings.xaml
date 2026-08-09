@@ -2,39 +2,96 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.AppSettings"
-             Title="settings">
-    <VerticalStackLayout
-    Padding="20"
-    Spacing="15"
-    HorizontalOptions="Center"
-    VerticalOptions="Center">
+             BackgroundColor="#F4F3FB">
 
-        <Border
-        Stroke="White"
-        StrokeThickness="2"
-        StrokeShape="RoundRectangle"
-        BackgroundColor="#1E90FF"
-        Padding="10"
-        >
+    <Grid RowDefinitions="Auto,*" RowSpacing="0">
 
-            <Border.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding logOutCommand}" />
-            </Border.GestureRecognizers>
+        <!-- Header -->
+        <Border Grid.Row="0"
+                StrokeThickness="0"
+                BackgroundColor="{StaticResource Primary}"
+                Padding="24,50,24,26">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,28,28" />
+            </Border.StrokeShape>
 
-            <HorizontalStackLayout
-            HorizontalOptions="Center"
-            VerticalOptions="Center">
-
-                <Label Text="Log Out"
-                   FontAttributes="Bold"
-                   FontSize="18"
-                   TextColor="White"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-
-            </HorizontalStackLayout>
+            <VerticalStackLayout Spacing="4">
+                <Label Text="Settings"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+                <Label Text="Manage your account and preferences"
+                       FontSize="13"
+                       Opacity="0.85"
+                       TextColor="White"/>
+            </VerticalStackLayout>
         </Border>
 
-    </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1"
+                              Padding="20,24,20,20"
+                              Spacing="16">
+
+            <!-- Account section -->
+            <Label Text="ACCOUNT"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   TextColor="#8B8B96"
+                   Margin="6,0,0,0"/>
+
+            <Border StrokeThickness="0"
+                    BackgroundColor="White"
+                    Padding="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18"/>
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="Black" Opacity="0.08" Radius="10" Offset="0,3"/>
+                </Border.Shadow>
+
+                <Grid Padding="18,16">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding logOutCommand}" />
+                    </Grid.GestureRecognizers>
+
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
+                        <Border Grid.Column="0"
+                                StrokeThickness="0"
+                                BackgroundColor="#FDEAEA"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12"/>
+                            </Border.StrokeShape>
+                            <Label Text="&#8594;"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   TextColor="#E64848"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Border>
+
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                            <Label Text="Log Out"
+                                   FontAttributes="Bold"
+                                   FontSize="16"
+                                   TextColor="#2B2B2B"/>
+                            <Label Text="Sign out of your account"
+                                   FontSize="12"
+                                   TextColor="#8B8B96"/>
+                        </VerticalStackLayout>
+
+                        <Label Grid.Column="2"
+                               Text="›"
+                               FontSize="22"
+                               TextColor="#C7C7CF"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Grid>
+            </Border>
+
+        </VerticalStackLayout>
+
+    </Grid>
 
 </ContentPage>
