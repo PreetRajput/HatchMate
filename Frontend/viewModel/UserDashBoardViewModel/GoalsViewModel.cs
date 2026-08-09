@@ -63,8 +63,6 @@ namespace MauiApp1.viewModel
         bool forColor= true;
         List<TaskList> NewAddedTasks = new List<TaskList>();
 
-        bool ToCheckIfTaskCompleted;
-
         [ObservableProperty]
         bool addBtnVisible = false;
 
@@ -76,8 +74,6 @@ namespace MauiApp1.viewModel
 
         List<TaskItemDto>? currentIncompleteTasks;
         TasksIdDto UpdatedTasks= new();
-        int totalTask = 0;
-        List<string> totalTasks = new();
 
         readonly TaskListDto updatedUserData = new();
 
@@ -94,18 +90,22 @@ namespace MauiApp1.viewModel
             try
             {
                 currentIncompleteTasks = (await _apiService.RetrieveUserIncompleteTasksAsync())?.ToList();
-                BorderContext.Clear();
-                for (int i = 0; i < currentIncompleteTasks?.Count; i++)
+                var items = new List<TaskList>();
+                if (currentIncompleteTasks != null)
                 {
-                    BorderContext.Add(new TaskList
+                    for (int i = 0; i < currentIncompleteTasks.Count; i++)
                     {
-                        Goal = currentIncompleteTasks[i].Task,
-                        BgColor = "Transparent",
-                        Id = currentIncompleteTasks[i].Id,
-                        IsSelected = false,
-                        IsCompleted = currentIncompleteTasks[i].IsCompleted
-                    });
+                        items.Add(new TaskList
+                        {
+                            Goal = currentIncompleteTasks[i].Task,
+                            BgColor = "Transparent",
+                            Id = currentIncompleteTasks[i].Id,
+                            IsSelected = false,
+                            IsCompleted = currentIncompleteTasks[i].IsCompleted
+                        });
+                    }
                 }
+                BorderContext = new ObservableCollection<TaskList>(items);
             }
             catch(Exception ex)
             {
@@ -175,6 +175,7 @@ namespace MauiApp1.viewModel
         {
             try
             {
+                UpdatedTasks.TaskIds ??= new List<Guid>();
                 var toProcess = BorderContext.Where(x => x.IsSelected).ToList();
                 foreach (var item in toProcess)
                 {
@@ -216,9 +217,8 @@ namespace MauiApp1.viewModel
                 IsEditing = false;
                 foreach (var item  in NewAddedTasks)
                 {
-                    totalTasks.Add(item.Goal!);
+                    updatedUserData.Tasks.Add(item.Goal!);
                 }
-                    updatedUserData.Tasks = totalTasks;
                     List<TaskItemDto>? goalsList=  (await _apiService.PostTaskAsync(updatedUserData))?.ToList();
                     for(int i= 0; i<goalsList?.Count; i++)
                     {
@@ -232,7 +232,6 @@ namespace MauiApp1.viewModel
                         }
                     }
                 NewAddedTasks.Clear();
-                totalTasks.Clear();
             }
         }
 
@@ -241,42 +240,37 @@ namespace MauiApp1.viewModel
             try
             {
                 TaskName = TaskMode.ADD;
-                BorderContext.Clear();
-                if(SelectedFilter == Filter.Completed)
+                if (SelectedFilter == Filter.Completed)
                 {
-                    var CompletedTasks = (await _apiService.RetrieveUserCompletedTasksAsync(0,10));
+                    var CompletedTasks = await _apiService.RetrieveUserCompletedTasksAsync(0, 10);
                     hasMoreTask = CompletedTasks.HasMoreTask;
-                    foreach (var task in CompletedTasks.Tasks.ToList())
+                    var items = CompletedTasks.Tasks.Select(task => new TaskList
                     {
-                        BorderContext.Add(new TaskList
-                        {
-                            Goal = task.Task,
-                            BgColor = "Green",
-                            Id = task.Id,
-                            IsSelected = false,
-                            IsCompleted = task.IsCompleted
-                        });
-                    }
+                        Goal = task.Task,
+                        BgColor = "Green",
+                        Id = task.Id,
+                        IsSelected = false,
+                        IsCompleted = task.IsCompleted
+                    }).ToList();
+                    BorderContext = new ObservableCollection<TaskList>(items);
                 }
                 else
                 {
-                    var IncompleteTasks = (await _apiService.RetrieveUserIncompleteTasksAsync()).ToList();
-                    foreach (var task in IncompleteTasks)
+                    var IncompleteTasks = (await _apiService.RetrieveUserIncompleteTasksAsync())?.ToList() ?? new List<TaskItemDto>();
+                    var items = IncompleteTasks.Select(task => new TaskList
                     {
-                        BorderContext.Add(new TaskList
-                        {
-                            Goal = task.Task,
-                            BgColor = "Transparent",
-                            Id = task.Id,
-                            IsSelected = false,
-                            IsCompleted = task.IsCompleted
-                        });
-                    }
+                        Goal = task.Task,
+                        BgColor = "Transparent",
+                        Id = task.Id,
+                        IsSelected = false,
+                        IsCompleted = task.IsCompleted
+                    }).ToList();
+                    BorderContext = new ObservableCollection<TaskList>(items);
                 }
             }
             catch(Exception ex)
             {
-                Debug.WriteLine(ex.ToString);
+                Debug.WriteLine(ex.ToString());
             }
         }
         [RelayCommand]
@@ -284,21 +278,22 @@ namespace MauiApp1.viewModel
         {
             if(hasMoreTask)
             { 
-                skip+= take;
-                take += 10;
-                var CompletedTasks = (await _apiService.RetrieveUserCompletedTasksAsync(skip, take));
-                hasMoreTask= CompletedTasks.HasMoreTask;
-                foreach (var task in CompletedTasks.Tasks.ToList())
+                skip += take;
+                take = 10;
+                var completedTasks = await _apiService.RetrieveUserCompletedTasksAsync(skip, take);
+                hasMoreTask = completedTasks.HasMoreTask;
+                var newItems = completedTasks.Tasks.Select(task => new TaskList
                 {
-                    BorderContext.Add(new TaskList
-                    {
-                        Goal = task.Task,
-                        BgColor = "Transparent",
-                        Id = task.Id,
-                        IsSelected = false,
-                        IsCompleted = task.IsCompleted
-                    });
-                }
+                    Goal = task.Task,
+                    BgColor = "Green",
+                    Id = task.Id,
+                    IsSelected = false,
+                    IsCompleted = task.IsCompleted
+                }).ToList();
+
+                var existing = BorderContext ?? new ObservableCollection<TaskList>();
+                var combined = existing.Concat(newItems).ToList();
+                BorderContext = new ObservableCollection<TaskList>(combined);
             }
         }
         public partial class TaskList: ObservableObject
