@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using models.Dtos.PetDtos;
+using models.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +19,10 @@ namespace MauiApp1.viewModel
         double translate;
 
 
-        public PetInfoDto pet;
-        public petNameInputViewModel(PetInfoDto pet)
+        private readonly UserDetailsInfoDto _userDetails;
+        public petNameInputViewModel(UserDetailsInfoDto userDetails)
         {
-            this.pet = pet;
-
+            _userDetails = userDetails;
         }
         
         [RelayCommand]
@@ -73,7 +72,7 @@ namespace MauiApp1.viewModel
             }
             else
             {
-                pet.PetName = PetName;
+                _userDetails.PetName = PetName;
                 var page = ((App)Application.Current).Services.GetRequiredService<NewPage5>();
                 await Application.Current.MainPage.Navigation.PushAsync(page);
 

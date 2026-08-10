@@ -28,7 +28,7 @@ namespace WebApplication1.services
             }
             catch (Exception ex)
             {
-                Console.WriteLine("thi is the error inside the apiservice of post petasync", ex.ToString());
+                Console.WriteLine(ex.ToString());
             }
         }
 

@@ -2,40 +2,53 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.AppSettings"
-             BackgroundColor="#F4F3FB">
+             BackgroundColor="#F6F4FF">
 
     <Grid RowDefinitions="Auto,*" RowSpacing="0">
 
-        <!-- Header -->
         <Border Grid.Row="0"
                 StrokeThickness="0"
-                BackgroundColor="{StaticResource Primary}"
+                BackgroundColor="#6B5BFF"
                 Padding="24,50,24,26">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="0,0,28,28" />
             </Border.StrokeShape>
 
-            <VerticalStackLayout Spacing="4">
-                <Label Text="Settings"
-                       FontSize="30"
-                       FontAttributes="Bold"
-                       TextColor="White"/>
-                <Label Text="Manage your account and preferences"
-                       FontSize="13"
-                       Opacity="0.85"
-                       TextColor="White"/>
-            </VerticalStackLayout>
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                    <Label Text="Settings"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                    <Label Text="Keep your pet care routine tidy and simple."
+                           FontSize="13"
+                           Opacity="0.9"
+                           TextColor="White"/>
+                </VerticalStackLayout>
+
+                <Border Grid.Column="1"
+                        StrokeThickness="0"
+                        BackgroundColor="#FFF2D8"
+                        Padding="12,10"
+                        VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Label Text="⚙️"
+                           FontSize="18"
+                           HorizontalOptions="Center"/>
+                </Border>
+            </Grid>
         </Border>
 
         <VerticalStackLayout Grid.Row="1"
                               Padding="20,24,20,20"
                               Spacing="16">
 
-            <!-- Account section -->
             <Label Text="ACCOUNT"
                    FontSize="12"
                    FontAttributes="Bold"
-                   TextColor="#8B8B96"
+                   TextColor="#8D87A8"
                    Margin="6,0,0,0"/>
 
             <Border StrokeThickness="0"
@@ -56,17 +69,17 @@
                     <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="14">
                         <Border Grid.Column="0"
                                 StrokeThickness="0"
-                                BackgroundColor="#FDEAEA"
-                                WidthRequest="42"
-                                HeightRequest="42"
+                                BackgroundColor="#FFEDE8"
+                                WidthRequest="44"
+                                HeightRequest="44"
                                 Padding="0">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="12"/>
                             </Border.StrokeShape>
-                            <Label Text="&#8594;"
+                            <Label Text="↪"
                                    FontSize="20"
                                    FontAttributes="Bold"
-                                   TextColor="#E64848"
+                                   TextColor="#FF7A59"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
                         </Border>
@@ -75,21 +88,37 @@
                             <Label Text="Log Out"
                                    FontAttributes="Bold"
                                    FontSize="16"
-                                   TextColor="#2B2B2B"/>
+                                   TextColor="#2F2A45"/>
                             <Label Text="Sign out of your account"
                                    FontSize="12"
-                                   TextColor="#8B8B96"/>
+                                   TextColor="#8D87A8"/>
                         </VerticalStackLayout>
 
                         <Label Grid.Column="2"
                                Text="›"
                                FontSize="22"
-                               TextColor="#C7C7CF"
+                               TextColor="#C7C2D8"
                                VerticalOptions="Center"/>
                     </Grid>
                 </Grid>
             </Border>
 
+            <Border StrokeThickness="0"
+                    BackgroundColor="#F4F0FF"
+                    Padding="16,14">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="2">
+                    <Label Text="Pet care note"
+                           FontAttributes="Bold"
+                           FontSize="15"
+                           TextColor="#4B3F84"/>
+                    <Label Text="A steady routine keeps your pet happy and your productivity rising."
+                           FontSize="12"
+                           TextColor="#6F6A84"/>
+                </VerticalStackLayout>
+            </Border>
         </VerticalStackLayout>
 
     </Grid>

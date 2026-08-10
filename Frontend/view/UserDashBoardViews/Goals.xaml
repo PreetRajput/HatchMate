@@ -3,53 +3,91 @@
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:vm="clr-namespace:MauiApp1.viewModel"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundColor="#F4F3FB">
+             BackgroundColor="#F6F4FF">
 
     <Grid RowDefinitions="Auto,Auto,*,Auto" x:Name="goalsContainer" RowSpacing="0">
 
-        <!-- Header -->
         <Border Grid.Row="0"
                 StrokeThickness="0"
-                BackgroundColor="{StaticResource Primary}"
+                BackgroundColor="#6B5BFF"
                 Padding="24,50,24,26">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="0,0,28,28" />
             </Border.StrokeShape>
 
-            <VerticalStackLayout Spacing="4">
-                <Label Text="Daily Goals"
-                       FontSize="30"
-                       FontAttributes="Bold"
-                       TextColor="White"/>
-                <Label Text="Keep your streak alive and level up your pet!"
-                       FontSize="13"
-                       Opacity="0.85"
-                       TextColor="White"/>
-            </VerticalStackLayout>
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                    <Label Text="Daily Goals"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                    <Label Text="Every completed task helps your pet grow stronger."
+                           FontSize="13"
+                           Opacity="0.9"
+                           TextColor="White"/>
+                </VerticalStackLayout>
+
+                <Border Grid.Column="1"
+                        StrokeThickness="0"
+                        BackgroundColor="#FFF2D8"
+                        Padding="12,10"
+                        VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="🐾"
+                               FontSize="18"
+                               HorizontalOptions="Center"/>
+                        <Label Text="Pet Focus"
+                               FontSize="11"
+                               FontAttributes="Bold"
+                               TextColor="#6B5BFF"/>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
         </Border>
 
-        <!-- Filter -->
         <Border Grid.Row="1"
                 StrokeThickness="0"
                 BackgroundColor="White"
-                Margin="20,-18,20,10"
-                Padding="4">
+                Margin="20,-16,20,10"
+                Padding="10,8">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="14" />
+                <RoundRectangle CornerRadius="16" />
             </Border.StrokeShape>
             <Border.Shadow>
                 <Shadow Brush="Black" Opacity="0.12" Radius="12" Offset="0,4"/>
             </Border.Shadow>
 
-            <Picker ItemsSource="{Binding Filters}"
-                    SelectedItem="{Binding SelectedFilter}"
-                    TextColor="{StaticResource Primary}"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    BackgroundColor="Transparent"/>
+            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                <Label Grid.Column="0"
+                       Text="🧭"
+                       FontSize="16"
+                       VerticalOptions="Center"/>
+                <Picker Grid.Column="1"
+                        ItemsSource="{Binding Filters}"
+                        SelectedItem="{Binding SelectedFilter}"
+                        TextColor="#43397A"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        BackgroundColor="Transparent"/>
+                <Border Grid.Column="2"
+                        StrokeThickness="0"
+                        BackgroundColor="#F3EDFF"
+                        Padding="8,6"
+                        VerticalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="12" />
+                    </Border.StrokeShape>
+                    <Label Text="Focus"
+                           FontSize="11"
+                           FontAttributes="Bold"
+                           TextColor="#6B5BFF"/>
+                </Border>
+            </Grid>
         </Border>
 
-        <!-- Task list -->
         <CollectionView Grid.Row="2"
                         ItemsSource="{Binding BorderContext}"
                         RemainingItemsThreshold="3"
@@ -59,132 +97,113 @@
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border
-                             Stroke="Transparent"
-                             StrokeThickness="0"
-                             BackgroundColor="White"
-                             Padding="16,14">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="18" />
-                            </Border.StrokeShape>
-                            <Border.Shadow>
-                                <Shadow Brush="Black" Opacity="0.08" Radius="10" Offset="0,3"/>
-                            </Border.Shadow>
+                <DataTemplate>
+                    <Border StrokeThickness="0"
+                            BackgroundColor="White"
+                            Padding="14,12">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18" />
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Opacity="0.08" Radius="10" Offset="0,3"/>
+                        </Border.Shadow>
 
-                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.markAsCompletedCommand}"
-                                        CommandParameter="{Binding .}" />
-                                </Grid.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.markAsCompletedCommand}"
+                                                      CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
 
-                                <!-- Completion indicator -->
-                                <Border Grid.Column="0"
-                                        WidthRequest="26"
-                                        HeightRequest="26"
-                                        Padding="0"
-                                        StrokeThickness="2"
-                                        Stroke="{StaticResource Primary}"
-                                        BackgroundColor="{Binding BgColor}"
-                                        VerticalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="13"/>
-                                    </Border.StrokeShape>
-                                </Border>
+                            <Border Grid.Column="0"
+                                    WidthRequest="28"
+                                    HeightRequest="28"
+                                    Padding="0"
+                                    StrokeThickness="2"
+                                    Stroke="#6B5BFF"
+                                    BackgroundColor="{Binding BgColor}"
+                                    VerticalOptions="Center">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="14"/>
+                                </Border.StrokeShape>
+                            </Border>
 
-                                <Entry Grid.Column="1"
-                                    Text="{Binding Goal}"
-                                    FontSize="16"
-                                    FontAttributes="Bold"
-                                    IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing}"
-                                    TextColor="#2B2B2B"
-                                    VerticalOptions="Center"
-                                    />
-                                <Label Grid.Column="1"
-                                    Text="{Binding Goal}"
-                                    IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing,  Converter={StaticResource InverseBoolConverter}}"
-                                    FontSize="16" 
-                                    FontAttributes="Bold"
-                                    TextColor="#2B2B2B"
-                                    VerticalOptions="Center"/>
+                            <Entry Grid.Column="1"
+                                   Text="{Binding Goal}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing}"
+                                   TextColor="#2F2A45"
+                                   VerticalOptions="Center"/>
+                            <Label Grid.Column="1"
+                                   Text="{Binding Goal}"
+                                   IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing, Converter={StaticResource InverseBoolConverter}}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#2F2A45"
+                                   VerticalOptions="Center"/>
 
-                                <ImageButton Grid.Column="2" 
-                                     Source="cross.png" 
-                                     Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.deleteTaskCommand}"
-                                     IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing }"
-                                     CommandParameter="{Binding .}"
-                                     BackgroundColor="Transparent"
-                                     HeightRequest="26"
-                                     WidthRequest="26"
-                                     VerticalOptions="Center"/>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                            <ImageButton Grid.Column="2"
+                                         Source="cross.png"
+                                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.deleteTaskCommand}"
+                                         IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing }"
+                                         CommandParameter="{Binding .}"
+                                         BackgroundColor="Transparent"
+                                         HeightRequest="26"
+                                         WidthRequest="26"
+                                         VerticalOptions="Center"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <!-- Loading skeleton -->
         <CollectionView Grid.Row="2"
-                            IsVisible="{Binding IsLoading}"
-                            ItemsSource="{Binding SkeletonItems}"
-                            Margin="20,0,20,0">
+                        IsVisible="{Binding IsLoading}"
+                        ItemsSource="{Binding SkeletonItems}"
+                        Margin="20,0,20,0">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
             </CollectionView.ItemsLayout>
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Border
-                                StrokeThickness="0"
-                                BackgroundColor="White"
-                                Padding="16,14">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="18" />
-                                </Border.StrokeShape>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeThickness="0"
+                            BackgroundColor="White"
+                            Padding="16,14">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="18" />
+                        </Border.StrokeShape>
 
-                                <Grid
-                                ColumnDefinitions="30,*">
+                        <Grid ColumnDefinitions="30,*">
+                            <BoxView WidthRequest="24"
+                                     HeightRequest="24"
+                                     CornerRadius="12"
+                                     BackgroundColor="#E8E2FF"/>
 
-                                    <!-- Checkbox placeholder -->
-                                <BoxView
-                                WidthRequest="24"
-                                HeightRequest="24"
-                                CornerRadius="12"
-                                BackgroundColor="#E4E1F5"/>
+                            <VerticalStackLayout Grid.Column="1"
+                                                 Margin="12,0,0,0"
+                                                 Spacing="6">
+                                <BoxView HeightRequest="16"
+                                         WidthRequest="180"
+                                         CornerRadius="4"
+                                         BackgroundColor="#E8E2FF"/>
+                                <BoxView HeightRequest="12"
+                                         WidthRequest="120"
+                                         CornerRadius="4"
+                                         BackgroundColor="#F3EDFF"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
-                                <VerticalStackLayout
-                                Grid.Column="1"
-                                Margin="12,0,0,0"
-                                Spacing="6">
-
-                                <BoxView
-                                HeightRequest="16"
-                                WidthRequest="180"
-                                CornerRadius="4"
-                                BackgroundColor="#E4E1F5"/>
-
-                                <BoxView
-                                HeightRequest="12"
-                                WidthRequest="120"
-                                CornerRadius="4"
-                                BackgroundColor="#EFEDF9"/>
-                                </VerticalStackLayout>
-
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-
-                </CollectionView>
-
-        <!-- Footer actions -->
         <Grid Grid.Row="3" ColumnDefinitions="Auto,*,Auto" Margin="20,12,20,20">
-
             <Button Grid.Column="0"
                     Text="+"
                     FontSize="22"
-                    BackgroundColor="White"
-                    TextColor="{StaticResource Primary}"
+                    BackgroundColor="#FFF8E1"
+                    TextColor="#6B5BFF"
                     FontAttributes="Bold"
                     CornerRadius="24"
                     WidthRequest="48"
@@ -198,65 +217,43 @@
             </Button>
 
             <Button Grid.Column="2"
-            HorizontalOptions="End"
-            BackgroundColor="{StaticResource Primary}"
-            FontAttributes="Bold"
-            TextColor="White"
-            CornerRadius="24"
-            Padding="24,0"
-            HeightRequest="48">
+                    HorizontalOptions="End"
+                    BackgroundColor="#FF7A59"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    CornerRadius="24"
+                    Padding="24,0"
+                    HeightRequest="48">
 
                 <Button.Shadow>
                     <Shadow Brush="Black" Opacity="0.2" Radius="10" Offset="0,4"/>
                 </Button.Shadow>
 
                 <Button.Triggers>
-
                     <DataTrigger TargetType="Button"
-                         Binding="{Binding TaskName}"
-                         Value= "{x:Static vm:TaskMode.ADD}">
-
-                        <Setter Property="Text"
-                        Value= "+ Add Goal" />
-
-                        <Setter Property="Command"
-                        Value="{Binding addMoreTasksCommand}" />
-
+                                 Binding="{Binding TaskName}"
+                                 Value="{x:Static vm:TaskMode.ADD}">
+                        <Setter Property="Text" Value="+ Add Goal" />
+                        <Setter Property="Command" Value="{Binding addMoreTasksCommand}" />
                     </DataTrigger>
 
                     <DataTrigger TargetType="Button"
-                         Binding="{Binding TaskName}"
-                         Value= "{x:Static vm:TaskMode.DONE}">
-
-                        <Setter Property="Text"
-                        Value="Done" />
-
-                        <Setter Property="Command"
-                        Value="{Binding addedMoreTasksCommand}" />
-
+                                 Binding="{Binding TaskName}"
+                                 Value="{x:Static vm:TaskMode.DONE}">
+                        <Setter Property="Text" Value="Done" />
+                        <Setter Property="Command" Value="{Binding addedMoreTasksCommand}" />
                     </DataTrigger>
 
                     <DataTrigger TargetType="Button"
-
-                        Binding="{Binding TaskName}"
-                        Value= "{x:Static vm:TaskMode.PATCH}">
-
-
-                        <Setter Property="Text"
-                         Value="Save Changes" />
-
-                        <Setter Property="Command"
-                         Value="{Binding updateCompletedTaskCommand}" />
-
+                                 Binding="{Binding TaskName}"
+                                 Value="{x:Static vm:TaskMode.PATCH}">
+                        <Setter Property="Text" Value="Save Changes" />
+                        <Setter Property="Command" Value="{Binding updateCompletedTaskCommand}" />
                     </DataTrigger>
-
                 </Button.Triggers>
-
             </Button>
         </Grid>
-
     </Grid>
-
 </ContentPage>
 
 
