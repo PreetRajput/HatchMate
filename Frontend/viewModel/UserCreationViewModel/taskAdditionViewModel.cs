@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Controls.Shapes;
-using models.Dtos.TaskDtos;
+using models.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,10 +18,10 @@ namespace MauiApp1.viewModel
 
         [ObservableProperty]
         double rotateY;
-        public TaskListDto _tasks;
-        public taskAdditionViewModel(TaskListDto tasks )
+        private readonly UserDetailsInfoDto _userDetails;
+        public taskAdditionViewModel(UserDetailsInfoDto userDetails )
         {
-            _tasks = tasks;
+            _userDetails = userDetails;
         }
        
         [RelayCommand]
@@ -50,7 +50,8 @@ namespace MauiApp1.viewModel
         {
             foreach (var item in Tasks)
             {
-                  _tasks.Tasks.Add(item.EntryText);
+                if (!string.IsNullOrWhiteSpace(item.EntryText))
+                    _userDetails.Tasks.Add(item.EntryText);
             }
             var page = ((App)Application.Current).Services.GetRequiredService<petNameInput>();
             await Application.Current.MainPage.Navigation.PushAsync(page);

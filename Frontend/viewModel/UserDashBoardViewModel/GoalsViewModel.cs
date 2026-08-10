@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using HatchMate.Api;
 using MauiApp1.Services;
+using models.Dtos.UserDtos;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -75,7 +76,7 @@ namespace MauiApp1.viewModel
         List<TaskItemDto>? currentIncompleteTasks;
         TasksIdDto UpdatedTasks= new();
 
-        readonly TaskListDto updatedUserData = new();
+        readonly UserDetailsInfoDto updatedUserData = new();
 
         [ObservableProperty]
         ObservableCollection<TaskList> borderContext= new();
@@ -132,8 +133,6 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public async Task deleteTask(TaskList task)
         {
-            BorderContext.Remove(task);
-            NewAddedTasks.Remove(task);
 
             Guid id = task.Id;
             try
@@ -141,6 +140,8 @@ namespace MauiApp1.viewModel
                 if(!(id == Guid.Empty))
                 {
                   await _apiService.DeleteTaskAsync(id);
+                  BorderContext.Remove(task);
+                  NewAddedTasks.Remove(task);
                 }
 
             }

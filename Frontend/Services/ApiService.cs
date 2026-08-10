@@ -52,15 +52,17 @@ namespace MauiApp1.Services
         }
 
         // Post user
-        public Task PostUserAsync(UserAppRelatedInfoDto user)
+        public Task PostUserAsync(models.Dtos.UserDtos.UserDetailsInfoDto user)
         {
-            return _usersClient.CreateAsync(user);
+            var userDto = new UserAppRelatedInfoDto { Username = user.Username };
+            return _usersClient.CreateAsync(userDto);
         }
 
         // Post task
-        public Task<ICollection<TaskItemDto>?> PostTaskAsync(TaskListDto task)
+        public Task<ICollection<TaskItemDto>?> PostTaskAsync(models.Dtos.UserDtos.UserDetailsInfoDto task)
         {
-            return _taskClient.AddTasksToDBAsync(task);
+            var taskDto = new TaskListDto { Tasks = task.Tasks };
+            return _taskClient.AddTasksToDBAsync(taskDto);
         }
 
         // Retrieve user tasks
@@ -80,9 +82,10 @@ namespace MauiApp1.Services
         {
             return _authClient.GetGitHubConfigAsync();
         }
-        public Task PostPetAsync(PetInfoDto pet)
+        public Task PostPetAsync(models.Dtos.UserDtos.UserDetailsInfoDto pet)
         {
-            return _petClient.PostPetInfoAsync(pet);
+            var petDto = new PetInfoDto { PetName = pet.PetName, Pet_Type = pet.Pet_Type, Pet_Level = pet.Pet_Level };
+            return _petClient.PostPetInfoAsync(petDto);
         }
         public Task DeleteTaskAsync(Guid id)
         {

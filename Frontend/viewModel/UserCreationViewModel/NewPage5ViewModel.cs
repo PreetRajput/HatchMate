@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using HatchMate.Api;
 using MauiApp1.Services;
+using models.Dtos.UserDtos;
 
 
 namespace MauiApp1.viewModel
@@ -23,17 +23,13 @@ namespace MauiApp1.viewModel
         [ObservableProperty]
         double scaling = 1;
 
-        private readonly UserAppRelatedInfoDto Player;
+        private readonly UserDetailsInfoDto _userDetails;
         private readonly ApiService _apiService;
-        private readonly TaskListDto _tasks;
-        private readonly PetInfoDto pet;
       
-        public NewPage5ViewModel(ApiService api, UserAppRelatedInfoDto Player, TaskListDto tasks, PetInfoDto pet)
+        public NewPage5ViewModel(ApiService api, UserDetailsInfoDto userDetails)
         {
-            _tasks = tasks;
             _apiService = api;
-            this.Player = Player;
-            this.pet = pet;
+            _userDetails = userDetails;
         }
 
         [RelayCommand]
@@ -109,10 +105,10 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public async Task navToShell()
         {
-            pet.Pet_Level = 1;
-            await _apiService.PostUserAsync(Player);
-            await _apiService.PostPetAsync(pet);
-            await _apiService.PostTaskAsync(_tasks);
+            _userDetails.Pet_Level = 1;
+            await _apiService.PostUserAsync(_userDetails);
+            await _apiService.PostPetAsync(_userDetails);
+            await _apiService.PostTaskAsync(_userDetails);
 
             await Application.Current.MainPage.DisplayAlert("Success", "User added", "OK");
             Application.Current.MainPage = new AppShell();

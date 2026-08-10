@@ -4,6 +4,7 @@ using MauiApp1.Services.Generated;
 using MauiApp1.viewModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Handlers;
+using models.Dtos.UserDtos;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace MauiApp1
@@ -28,6 +29,7 @@ namespace MauiApp1
 
             builder.Services.AddSingleton<ApiService>();
             builder.Services.AddSingleton<AuthApiService>();
+            builder.Services.AddSingleton<UserDetailsInfoDto>();
 
             builder.Services.AddTransient<AuthHandler>();
             builder.Services.AddHttpClient<IAuthClient,AuthClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();

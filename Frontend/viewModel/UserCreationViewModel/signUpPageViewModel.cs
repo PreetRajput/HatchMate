@@ -11,10 +11,10 @@ namespace MauiApp1.viewModel
 {
     public partial class signUpPageViewModel: ObservableObject
     {
-        public readonly UserAppRelatedInfoDto _player;
-        public signUpPageViewModel(UserAppRelatedInfoDto player)
+        private readonly UserDetailsInfoDto _userDetails;
+        public signUpPageViewModel(UserDetailsInfoDto userDetails)
         {
-            _player = player;
+            _userDetails = userDetails;
         }
 
         [ObservableProperty]
@@ -24,7 +24,7 @@ namespace MauiApp1.viewModel
         async Task signUp()
         {
 
-            _player.Username = usernameEntry;
+            _userDetails.Username = usernameEntry;
             var page = ((App)Application.Current).Services.GetRequiredService<chooseEgg>();
             await Application.Current.MainPage.Navigation.PushAsync(page);
         }
