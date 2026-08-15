@@ -74,9 +74,6 @@ namespace MauiApp1.viewModel
         bool isEditing = false;
 
         List<TaskItemDto>? currentIncompleteTasks;
-        TasksIdDto UpdatedTasks= new();
-
-        readonly UserDetailsInfoDto updatedUserData = new();
 
         [ObservableProperty]
         ObservableCollection<TaskList> borderContext= new();
@@ -139,9 +136,9 @@ namespace MauiApp1.viewModel
             {
                 if(!(id == Guid.Empty))
                 {
-                  await _apiService.DeleteTaskAsync(id);
                   BorderContext.Remove(task);
                   NewAddedTasks.Remove(task);
+                  await _apiService.DeleteTaskAsync(id);
                 }
 
             }
@@ -176,6 +173,7 @@ namespace MauiApp1.viewModel
         {
             try
             {
+                TasksIdDto UpdatedTasks = new();
                 UpdatedTasks.TaskIds ??= new List<Guid>();
                 var toProcess = BorderContext.Where(x => x.IsSelected).ToList();
                 foreach (var item in toProcess)
@@ -213,6 +211,7 @@ namespace MauiApp1.viewModel
             }
             if (trash == 0)
             {
+                UserDetailsInfoDto updatedUserData = new();
                 TaskName = TaskMode.ADD;
                 AddBtnVisible = false;
                 IsEditing = false;
