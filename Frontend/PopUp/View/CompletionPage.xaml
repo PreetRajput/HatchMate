@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.PopUp.View.CompletionPage">
+
+    <Border
+        WidthRequest="320"
+        Padding="25"
+        BackgroundColor="White"
+        StrokeShape="RoundRectangle 20">
+
+        <VerticalStackLayout Spacing="15">
+            <Label
+                Text="Task Completed!"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="Black" />
+            <Label
+                Text="You completed your task."
+                HorizontalOptions="Center"
+                TextColor="Gray" />
+            <Button
+                Text="OK"
+                Clicked="OnOkClicked" />
+        </VerticalStackLayout>
+
+    </Border>
+</toolkit:Popup>

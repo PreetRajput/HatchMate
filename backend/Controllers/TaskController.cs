@@ -53,6 +53,7 @@ namespace WebApplication1.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteTaskFromDB(Guid id)
         {
+            Console.WriteLine("dlete task ");
             var userIdValue = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
             if (userIdValue == null)
