@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiApp1.BaseClass;
+using MauiApp1.Interfaces;
 using MauiApp1.Services;
 using models.Dtos.UserDtos;
 
@@ -25,11 +27,12 @@ namespace MauiApp1.viewModel
 
         private readonly UserDetailsInfoDto _userDetails;
         private readonly ApiService _apiService;
-      
+        private IPopupService _popUp;
         public NewPage5ViewModel(ApiService api, UserDetailsInfoDto userDetails)
         {
             _apiService = api;
             _userDetails = userDetails;
+            _popUp = AppService.GetService<IPopupService>();
         }
 
         [RelayCommand]
@@ -110,7 +113,7 @@ namespace MauiApp1.viewModel
             await _apiService.PostPetAsync(_userDetails);
             await _apiService.PostTaskAsync(_userDetails);
 
-            await Application.Current.MainPage.DisplayAlert("Success", "User added", "OK");
+            await _popUp.OpenUserAddedPopUp("UserAdded", "Completion");
             Application.Current.MainPage = new AppShell();
 
             }

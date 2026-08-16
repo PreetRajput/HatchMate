@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net10.0-android;net10.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net10.0-android36.0;net10.0-windows10.0.19041.0;</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net10.0-tizen</TargetFrameworks> -->
 
@@ -11,7 +11,6 @@
 		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
 		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
 		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
-
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MauiApp1</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -144,6 +143,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="PopUp\View\CompletionPopUp.xaml.cs">
+	    <DependentUpon>CompletionPopUp.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="view\UserCreationViews\loginPage.xaml.cs">
 	    <DependentUpon>loginPage.xaml</DependentUpon>
 	  </Compile>
@@ -174,7 +176,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="PopUp\View\CompletionPage.xaml">
+	  <MauiXaml Update="PopUp\View\CompletionPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="view\UserDashBoardViews\Goals.xaml">
@@ -204,7 +206,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Interfaces\" />
+	  <None Update="PopUp\View\CompletionPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </None>
 	</ItemGroup>
 
 </Project>
