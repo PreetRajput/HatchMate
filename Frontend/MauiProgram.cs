@@ -25,7 +25,6 @@ namespace MauiApp1
                 fonts.AddFont("CheeseRegular.ttf", "cheeseRegular");
                 fonts.AddFont("bitcount.ttf", "bitcount");
             }).UseMauiCommunityToolkit();
-            builder.Logging.AddDebug();
             builder.Services.AddSingleton<IPopupService, PopUpService>();
             builder.Services.AddSingleton<ApiService>();
             builder.Services.AddSingleton<AuthApiService>();

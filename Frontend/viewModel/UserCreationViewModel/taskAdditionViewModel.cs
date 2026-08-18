@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiApp1.BaseClass;
+using MauiApp1.Interfaces;
 using Microsoft.Maui.Controls.Shapes;
 using models.Dtos.UserDtos;
 using System;
@@ -15,6 +17,7 @@ namespace MauiApp1.viewModel
     {
         [ObservableProperty] 
         ObservableCollection<taskItem> tasks= new();
+        private IPopupService _popUp;
 
         [ObservableProperty]
         double rotateY;
@@ -22,8 +25,10 @@ namespace MauiApp1.viewModel
         public taskAdditionViewModel(UserDetailsInfoDto userDetails )
         {
             _userDetails = userDetails;
+            _popUp = AppService.GetService<IPopupService>();
+
         }
-       
+
         [RelayCommand]
         void addGoal()
         {

@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiApp1.BaseClass;
+using MauiApp1.Interfaces;
 using MauiApp1.Services;
 using models.Dtos.GitHubDtos;
 using models.Dtos.UserDtos;
@@ -20,6 +22,7 @@ namespace MauiApp1.viewModel
     {
         [ObservableProperty]
         string loginBtnText = "Login";
+        private IPopupService _popUp;
 
         private bool CanClick = true;
         public bool canClick 
@@ -41,6 +44,8 @@ namespace MauiApp1.viewModel
         {
             _authApiService = authApiService;
             _apiService = apiService;
+            _popUp = AppService.GetService<IPopupService>();
+
         }
 
         [RelayCommand(CanExecute = nameof(canClick))]
@@ -67,8 +72,7 @@ namespace MauiApp1.viewModel
 
                 if (result.Properties.TryGetValue("code", out var code))
                 {
-                    Debug.WriteLine($"Authorization code received: {code}");
-                    
+                                   
                     GitHubCodeDto dto = new GitHubCodeDto { code = code };
                     
                     // Exchange code for tokens via backend
@@ -82,8 +86,6 @@ namespace MauiApp1.viewModel
                     }
                    
                     var person = new UserEmailDto { Email = user.Email };
-                    Debug.WriteLine($"User email: {user.Email}");
-
                     UserAuthResponseDto check = await _authApiService.GetTokenAsync(person);
                     if (check != null)
                     {
@@ -107,17 +109,17 @@ namespace MauiApp1.viewModel
                     }
                 }
             }
-            catch (TaskCanceledException)
+            catch (TaskCanceledException ex)
             {
                 // User cancelled authentication
-                Debug.WriteLine("User cancelled authentication");
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
                 canClick = true;
                 LoginBtnText = "Login";
             }
             catch (Exception ex)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", $"Authentication failed: {ex.Message}", "OK");
-                Debug.WriteLine($"Login error: {ex}");
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
                 canClick = true;
                 LoginBtnText = "Login";
             }

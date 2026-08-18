@@ -1,22 +1,25 @@
+using CommunityToolkit.Maui.Views;
+using MauiApp1.BaseClass;
+using MauiApp1.Interfaces;
+using models.Dtos.GitHubDtos;
+using models.Dtos.UserDtos;
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Diagnostics;
 using System.Text.Json;
 using System.Threading.Tasks;
-using models.Dtos.UserDtos;
-using models.Dtos.GitHubDtos;
 
 namespace MauiApp1.Services
 {
     public class AuthApiService
     {
         private readonly HttpClient _httpClient;
-
+        private IPopupService _popUp;
         public AuthApiService()
         {
             _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.4:5000/") };
-
+            _popUp = AppService.GetService<IPopupService>();
         }
 
         public async Task<UserAuthResponseDto?> GetTokenAsync(UserEmailDto user)
@@ -27,7 +30,7 @@ namespace MauiApp1.Services
                 var content = await response.Content.ReadFromJsonAsync<UserAuthResponseDto>();
                 if (!response.IsSuccessStatusCode)
                 {
-                  Debug.WriteLine($"[AuthApiService] GetTokenAsync getToken one failed: {(int)response.StatusCode} {content}");
+                    await _popUp.OpenUserAddedPopUp("Unhandled Exception", $"[AuthApiService] GetTokenAsync getToken one failed: {(int)response.StatusCode} {content}");
                     return null;
                 }
 
@@ -35,7 +38,7 @@ namespace MauiApp1.Services
             }
             catch (Exception ex)
             {
-               Debug.WriteLine($"getToken Exception: {ex}");
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
                 return null;
             }
         }
@@ -54,7 +57,7 @@ namespace MauiApp1.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"postCode api Exception: {ex}");
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
                 return null;
             }
         }
