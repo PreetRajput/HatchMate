@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HatchMate.Api;
+using MauiApp1.BaseClass;
+using MauiApp1.Interfaces;
 using MauiApp1.Services;
 using models.Dtos.UserDtos;
 using System.Collections.ObjectModel;
@@ -22,12 +24,13 @@ namespace MauiApp1.viewModel
         Completed,
         Pending
     };
-    public partial class GoalsViewModel(ApiService api) : ObservableObject
+    public partial class GoalsViewModel: ObservableObject
     {
         string? id;
         int trash = 0;
         int skip = 0;
         int take = 10;
+        private IPopupService _popUp;
         bool hasMoreTask;
         [ObservableProperty]
         bool isLoading = false;
@@ -56,9 +59,6 @@ namespace MauiApp1.viewModel
             }
         }
         [ObservableProperty]
-        ICommand taskBtn;
-
-        [ObservableProperty]
         public TaskMode? taskName= TaskMode.ADD;
 
         bool forColor= true;
@@ -80,8 +80,12 @@ namespace MauiApp1.viewModel
 
         public const string auth_token = "auth_token";
 
-         private readonly ApiService _apiService = api;
-
+        private readonly ApiService _apiService;
+        public GoalsViewModel(ApiService api)
+        {
+            _popUp = AppService.GetService<IPopupService>();
+            _apiService= api;
+        }
         [RelayCommand]
         public async Task addingTasks()
         {
@@ -107,7 +111,7 @@ namespace MauiApp1.viewModel
             }
             catch(Exception ex)
             {
-                Console.WriteLine("errorr", ex);
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
             }
         }
 
@@ -144,7 +148,7 @@ namespace MauiApp1.viewModel
             }
             catch(Exception ex)
             {
-                Debug.WriteLine("excpetion is ", ex.ToString());
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
             }
         }
 
@@ -190,7 +194,7 @@ namespace MauiApp1.viewModel
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error: {ex}");
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
             }
         }
 
@@ -270,7 +274,7 @@ namespace MauiApp1.viewModel
             }
             catch(Exception ex)
             {
-                Debug.WriteLine(ex.ToString());
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
             }
         }
         [RelayCommand]

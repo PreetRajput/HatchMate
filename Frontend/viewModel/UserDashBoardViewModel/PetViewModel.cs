@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using HatchMate.Api;
+using MauiApp1.BaseClass;
+using MauiApp1.Interfaces;
 using MauiApp1.Services;
 using System.Diagnostics;
-using HatchMate.Api;
 namespace MauiApp1.viewModel
 {
     public partial class PetViewModel: ObservableObject
@@ -11,9 +13,12 @@ namespace MauiApp1.viewModel
         public Action<string>[] _ImageSetter;
         public Action<List<string>>[] _AnimationSetter;
         private CancellationTokenSource? _token;
+        private IPopupService _popUp;
+
         public PetViewModel(ApiService apiService)
         {
             _apiService = apiService;
+            _popUp = AppService.GetService<IPopupService>();
             _ImageSetter = new Action<string>[]
              {
                        v => EmoteOne?.Image =v,
@@ -77,7 +82,7 @@ namespace MauiApp1.viewModel
             }
             catch(Exception e)
             {
-                Debug.WriteLine(e);
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", e.ToString());
                 return;
             }
 
@@ -101,8 +106,8 @@ namespace MauiApp1.viewModel
                     }
                 }
             }
-            catch (Exception e) { 
-                Debug.WriteLine(e);
+            catch (Exception e) {
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", e.ToString());
             }
         }
         [RelayCommand]
@@ -133,7 +138,7 @@ namespace MauiApp1.viewModel
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", e.ToString());
             }
         }
     }

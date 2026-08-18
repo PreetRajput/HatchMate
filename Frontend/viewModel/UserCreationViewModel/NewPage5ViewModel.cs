@@ -108,14 +108,19 @@ namespace MauiApp1.viewModel
         [RelayCommand]
         public async Task navToShell()
         {
-            _userDetails.Pet_Level = 1;
-            await _apiService.PostUserAsync(_userDetails);
-            await _apiService.PostPetAsync(_userDetails);
-            await _apiService.PostTaskAsync(_userDetails);
-
-            await _popUp.OpenUserAddedPopUp("UserAdded", "Completion");
-            Application.Current.MainPage = new AppShell();
-
+            try
+            {
+                _userDetails.Pet_Level = 1;
+                await _apiService.PostUserAsync(_userDetails);
+                await _apiService.PostPetAsync(_userDetails);
+                await _apiService.PostTaskAsync(_userDetails);
+                await _popUp.OpenUserAddedPopUp("UserAdded", "Completion");
+                Application.Current.MainPage = new AppShell();
             }
+            catch (Exception ex)
+            {
+                await _popUp.OpenUserAddedPopUp("Unhandled Exception", ex.ToString());
+            }
+        }
     }
 }

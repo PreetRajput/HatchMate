@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MauiApp1.BaseClass;
+using MauiApp1.Interfaces;
 using models.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
@@ -17,14 +19,17 @@ namespace MauiApp1.viewModel
         double rotate;
         [ObservableProperty]
         double translate;
+        private IPopupService _popUp;
 
 
         private readonly UserDetailsInfoDto _userDetails;
         public petNameInputViewModel(UserDetailsInfoDto userDetails)
         {
             _userDetails = userDetails;
+            _popUp = AppService.GetService<IPopupService>();
+
         }
-        
+
         [RelayCommand]
         async Task eggCrumbling()
         {
