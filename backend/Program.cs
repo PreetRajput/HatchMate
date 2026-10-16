@@ -16,7 +16,7 @@ builder.Services.AddOpenApiDocument(configure =>
     configure.Version = "v1";
 });
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(cfg => { }, typeof(Program));
 var jwtKeyString = builder.Configuration["Jwt:Key"];
 if (string.IsNullOrEmpty(jwtKeyString))
 {

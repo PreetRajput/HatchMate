@@ -18,7 +18,7 @@ namespace MauiApp1.Services
         private IPopupService _popUp;
         public AuthApiService()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("http://192.168.1.4:5000/") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://10.24.155.226:5000/") };
             _popUp = AppService.GetService<IPopupService>();
         }
 

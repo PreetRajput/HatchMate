@@ -12,7 +12,7 @@ namespace MauiApp1.viewModel
         public ApiService _apiService;
         public Action<string>[] _ImageSetter;
         public Action<List<string>>[] _AnimationSetter;
-        private CancellationTokenSource? _token;
+        private CancellationTokenSource? _idleToken;
         private IPopupService _popUp;
 
         public PetViewModel(ApiService apiService)
@@ -89,56 +89,59 @@ namespace MauiApp1.viewModel
         }
         public async Task IdleAnimation()
         {
+
+            _idleToken?.Cancel();
+            _idleToken = new CancellationTokenSource();
+            var token = _idleToken.Token;
+
+            if (EmoteOne?.Animation == null || EmoteOne.Animation.Count == 0)
+                return;
+
             try
             {
-                _token?.Cancel();
-                _token = new CancellationTokenSource();
-                CancellationToken token = _token.Token;
-                if (EmoteOne?.Animation == null || EmoteOne.Animation.Count == 0)
-                    return;
                 while (!token.IsCancellationRequested)
                 {
                     foreach (var frame in EmoteOne.Animation)
                     {
                         token.ThrowIfCancellationRequested();
                         PetImage = frame;
-                        await Task.Delay(100);
+                        await Task.Delay(100, token);
                     }
                 }
             }
-            catch (Exception e) {
+            catch (OperationCanceledException) { /* expected */ }
+            catch (Exception e)
+            {
                 await _popUp.OpenUserAddedPopUp("Unhandled Exception", e.ToString());
             }
         }
+
         [RelayCommand]
         public async Task PlayAnimation(Pet pet)
         {
-            _= RunAnimation(pet);
-            return;
-        }
-        public async Task RunAnimation(Pet pet)
-        {
+            // Stop idle
+            _idleToken?.Cancel();
+            _idleToken = null;
+
             try
             {
-                _token?.Cancel();
-                _token = new CancellationTokenSource();
-                CancellationToken token = _token.Token;
-                if (pet?.Animation == null || pet.Animation.Count == 0)
-                    return;
-
-                while (!token.IsCancellationRequested)
+                if (pet?.Animation != null && pet.Animation.Count > 0)
                 {
                     foreach (var frame in pet.Animation)
                     {
-                        token.ThrowIfCancellationRequested();
-                        PetImage = frame;
                         await Task.Delay(100);
+                        PetImage = frame;
                     }
                 }
             }
             catch (Exception e)
             {
                 await _popUp.OpenUserAddedPopUp("Unhandled Exception", e.ToString());
+            }
+            finally
+            {
+                // Resume idle
+                _ = IdleAnimation();
             }
         }
     }

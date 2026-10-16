@@ -31,11 +31,11 @@ namespace MauiApp1
             builder.Services.AddSingleton<UserDetailsInfoDto>();
             builder.Services.AddTransient<AuthHandler>();
 
-            builder.Services.AddHttpClient<IAuthClient, AuthClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
-            builder.Services.AddHttpClient<IPetClient, PetClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
-            builder.Services.AddHttpClient<ISeedClient, SeedClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
-            builder.Services.AddHttpClient<ITaskClient, TaskClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
-            builder.Services.AddHttpClient<IUsersClient, UsersClient>(client => client.BaseAddress = new Uri("http://192.168.1.4:5000/")).AddHttpMessageHandler<AuthHandler>();
+            builder.Services.AddHttpClient<IAuthClient, AuthClient>(client => client.BaseAddress = new Uri("http://10.24.155.226:5000/")).AddHttpMessageHandler<AuthHandler>();
+            builder.Services.AddHttpClient<IPetClient, PetClient>(client => client.BaseAddress = new Uri("http://10.24.155.226:5000/")).AddHttpMessageHandler<AuthHandler>();
+            builder.Services.AddHttpClient<ISeedClient, SeedClient>(client => client.BaseAddress = new Uri("http://10.24.155.226:5000/")).AddHttpMessageHandler<AuthHandler>();
+            builder.Services.AddHttpClient<ITaskClient, TaskClient>(client => client.BaseAddress = new Uri("http://10.24.155.226:5000/")).AddHttpMessageHandler<AuthHandler>();
+            builder.Services.AddHttpClient<IUsersClient, UsersClient>(client => client.BaseAddress = new Uri("http://10.24.155.226:5000/")).AddHttpMessageHandler<AuthHandler>();
             
             builder.Services.AddTransient<loginPage>();
             builder.Services.AddTransient<SignupPage>();
@@ -43,6 +43,9 @@ namespace MauiApp1
             builder.Services.AddTransient<taskAddition>();
             builder.Services.AddTransient<petNameInput>();
             builder.Services.AddTransient<NewPage5>();
+            builder.Services.AddTransient<Goals>();
+            builder.Services.AddTransient<Pet>();
+            builder.Services.AddTransient<AppSettings>();
             
             builder.Services.AddTransient<loginPageViewModel>();
             builder.Services.AddTransient<signUpPageViewModel>();
