@@ -8,13 +8,13 @@
 
     <TabBar>
         <Tab Icon="trophy.png">
-            <ShellContent ContentTemplate="{DataTemplate local:Goals}" />
+            <ShellContent x:Name="GoalsContent" />
         </Tab>
         <Tab Icon="pet.png">
-            <ShellContent ContentTemplate="{DataTemplate local:Pet}" />
+            <ShellContent x:Name="PetContent" />
         </Tab>
         <Tab Icon="settings.png">
-            <ShellContent ContentTemplate="{DataTemplate local:AppSettings}" />
+            <ShellContent x:Name="AppSettingsContent" />
         </Tab>
     </TabBar>
 
